@@ -1,0 +1,293 @@
+2024-07-20 14:56:55,833:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 14:56:57,334:WARNING: * Debugger is active!
+2024-07-20 14:56:57,339:INFO: * Debugger PIN: 666-647-681
+2024-07-20 14:56:57,427:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 14:56:59,142:INFO:127.0.0.1 - - [20/Jul/2024 14:56:59] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-20 14:56:59,414:INFO:127.0.0.1 - - [20/Jul/2024 14:56:59] "GET /login HTTP/1.1" 200 -
+2024-07-20 14:56:59,500:INFO:127.0.0.1 - - [20/Jul/2024 14:56:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 14:57:39,442:INFO:127.0.0.1 - - [20/Jul/2024 14:57:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-20 14:57:39,780:INFO:127.0.0.1 - - [20/Jul/2024 14:57:39] "GET / HTTP/1.1" 200 -
+2024-07-20 14:57:40,022:INFO:127.0.0.1 - - [20/Jul/2024 14:57:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 14:58:28,900:INFO:127.0.0.1 - - [20/Jul/2024 14:58:28] "GET / HTTP/1.1" 200 -
+2024-07-20 14:58:29,239:INFO:127.0.0.1 - - [20/Jul/2024 14:58:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 14:58:41,511:INFO:127.0.0.1 - - [20/Jul/2024 14:58:41] "GET / HTTP/1.1" 200 -
+2024-07-20 14:58:41,853:INFO:127.0.0.1 - - [20/Jul/2024 14:58:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 14:58:52,491:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 14:58:53,936:WARNING: * Debugger is active!
+2024-07-20 14:58:53,941:INFO: * Debugger PIN: 666-647-681
+2024-07-20 14:58:54,025:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 14:58:56,750:INFO:127.0.0.1 - - [20/Jul/2024 14:58:56] "GET / HTTP/1.1" 200 -
+2024-07-20 14:58:57,045:INFO:127.0.0.1 - - [20/Jul/2024 14:58:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 14:59:26,865:INFO:Translated from en to ta: English to Tamil translator -> \u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd
+2024-07-20 14:59:26,873:INFO:127.0.0.1 - - [20/Jul/2024 14:59:26] "POST / HTTP/1.1" 200 -
+2024-07-20 14:59:27,197:INFO:127.0.0.1 - - [20/Jul/2024 14:59:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 14:59:48,585:INFO:127.0.0.1 - - [20/Jul/2024 14:59:48] "GET /leaderboard HTTP/1.1" 200 -
+2024-07-20 14:59:48,905:INFO:127.0.0.1 - - [20/Jul/2024 14:59:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 14:59:51,517:INFO:127.0.0.1 - - [20/Jul/2024 14:59:51] "GET / HTTP/1.1" 200 -
+2024-07-20 14:59:51,845:INFO:127.0.0.1 - - [20/Jul/2024 14:59:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:00:02,582:INFO:127.0.0.1 - - [20/Jul/2024 15:00:02] "GET /leaderboard HTTP/1.1" 200 -
+2024-07-20 15:00:02,908:INFO:127.0.0.1 - - [20/Jul/2024 15:00:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:02:30,304:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:02:31,748:WARNING: * Debugger is active!
+2024-07-20 15:02:31,753:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:02:31,834:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:02:33,351:INFO:127.0.0.1 - - [20/Jul/2024 15:02:33] "GET / HTTP/1.1" 200 -
+2024-07-20 15:02:33,632:INFO:127.0.0.1 - - [20/Jul/2024 15:02:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:02:38,636:INFO:127.0.0.1 - - [20/Jul/2024 15:02:38] "GET /leaderboard HTTP/1.1" 200 -
+2024-07-20 15:02:38,968:INFO:127.0.0.1 - - [20/Jul/2024 15:02:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:05:08,539:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:05:09,911:WARNING: * Debugger is active!
+2024-07-20 15:05:09,916:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:05:10,001:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:05:11,717:INFO:127.0.0.1 - - [20/Jul/2024 15:05:11] "GET / HTTP/1.1" 200 -
+2024-07-20 15:05:12,024:INFO:127.0.0.1 - - [20/Jul/2024 15:05:12] "GET /static/styles.css HTTP/1.1" 200 -
+2024-07-20 15:05:12,047:INFO:127.0.0.1 - - [20/Jul/2024 15:05:12] "[33mGET /static/%7B%7B%20url_for('static',%20filename='background.jpg')%20%7D%7D HTTP/1.1[0m" 404 -
+2024-07-20 15:05:14,075:INFO:127.0.0.1 - - [20/Jul/2024 15:05:14] "GET / HTTP/1.1" 200 -
+2024-07-20 15:05:14,396:INFO:127.0.0.1 - - [20/Jul/2024 15:05:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:07:31,756:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:07:32,924:WARNING: * Debugger is active!
+2024-07-20 15:07:32,928:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:07:33,010:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:07:41,506:INFO:127.0.0.1 - - [20/Jul/2024 15:07:41] "GET / HTTP/1.1" 200 -
+2024-07-20 15:07:41,804:INFO:127.0.0.1 - - [20/Jul/2024 15:07:41] "GET /static/styles.css HTTP/1.1" 200 -
+2024-07-20 15:07:41,840:INFO:127.0.0.1 - - [20/Jul/2024 15:07:41] "[33mGET /static/%7B%7B%20url_for('templates',%20filename='background.jpg')%20%7D%7D HTTP/1.1[0m" 404 -
+2024-07-20 15:07:43,409:INFO:127.0.0.1 - - [20/Jul/2024 15:07:43] "GET / HTTP/1.1" 200 -
+2024-07-20 15:07:43,737:INFO:127.0.0.1 - - [20/Jul/2024 15:07:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:07:45,406:INFO:127.0.0.1 - - [20/Jul/2024 15:07:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:10:24,821:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:10:25,952:WARNING: * Debugger is active!
+2024-07-20 15:10:25,957:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:10:26,040:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:10:32,804:INFO:127.0.0.1 - - [20/Jul/2024 15:10:32] "GET / HTTP/1.1" 200 -
+2024-07-20 15:10:33,104:INFO:127.0.0.1 - - [20/Jul/2024 15:10:33] "GET /static/styles.css HTTP/1.1" 200 -
+2024-07-20 15:10:33,137:INFO:127.0.0.1 - - [20/Jul/2024 15:10:33] "[33mGET /static/%7B%7B%20url_for('static',%20filename='background.jpg')%20%7D%7D HTTP/1.1[0m" 404 -
+2024-07-20 15:10:56,405:INFO:127.0.0.1 - - [20/Jul/2024 15:10:56] "GET / HTTP/1.1" 200 -
+2024-07-20 15:10:56,722:INFO:127.0.0.1 - - [20/Jul/2024 15:10:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:17:06,955:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:17:08,104:WARNING: * Debugger is active!
+2024-07-20 15:17:08,109:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:17:08,198:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:17:11,391:INFO:127.0.0.1 - - [20/Jul/2024 15:17:11] "GET / HTTP/1.1" 200 -
+2024-07-20 15:17:11,690:INFO:127.0.0.1 - - [20/Jul/2024 15:17:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:17:11,710:INFO:127.0.0.1 - - [20/Jul/2024 15:17:11] "GET /static/background.jpg HTTP/1.1" 200 -
+2024-07-20 15:17:41,580:INFO:Translated from ta to en: \u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd -> English to Tamil translator
+2024-07-20 15:17:41,586:INFO:127.0.0.1 - - [20/Jul/2024 15:17:41] "POST / HTTP/1.1" 200 -
+2024-07-20 15:17:41,919:INFO:127.0.0.1 - - [20/Jul/2024 15:17:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:17:42,166:INFO:127.0.0.1 - - [20/Jul/2024 15:17:42] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:18:30,298:INFO:127.0.0.1 - - [20/Jul/2024 15:18:30] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:18:30,622:INFO:127.0.0.1 - - [20/Jul/2024 15:18:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:18:30,885:INFO:127.0.0.1 - - [20/Jul/2024 15:18:30] "[33mGET /static/%7B%7B%20url_for('static',%20filename='background.jpg')%20%7D%7D HTTP/1.1[0m" 404 -
+2024-07-20 15:18:37,025:INFO:127.0.0.1 - - [20/Jul/2024 15:18:37] "GET /download_history HTTP/1.1" 200 -
+2024-07-20 15:18:40,309:INFO:127.0.0.1 - - [20/Jul/2024 15:18:40] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-07-20 15:18:40,572:INFO:127.0.0.1 - - [20/Jul/2024 15:18:40] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:18:40,618:INFO:127.0.0.1 - - [20/Jul/2024 15:18:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:18:43,449:INFO:127.0.0.1 - - [20/Jul/2024 15:18:43] "GET / HTTP/1.1" 200 -
+2024-07-20 15:18:43,782:INFO:127.0.0.1 - - [20/Jul/2024 15:18:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:18:43,782:INFO:127.0.0.1 - - [20/Jul/2024 15:18:43] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:18:48,307:INFO:127.0.0.1 - - [20/Jul/2024 15:18:48] "GET /favorites HTTP/1.1" 200 -
+2024-07-20 15:18:48,642:INFO:127.0.0.1 - - [20/Jul/2024 15:18:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:18:50,205:INFO:127.0.0.1 - - [20/Jul/2024 15:18:50] "GET / HTTP/1.1" 200 -
+2024-07-20 15:18:50,529:INFO:127.0.0.1 - - [20/Jul/2024 15:18:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:18:50,529:INFO:127.0.0.1 - - [20/Jul/2024 15:18:50] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:18:51,890:INFO:127.0.0.1 - - [20/Jul/2024 15:18:51] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:18:52,212:INFO:127.0.0.1 - - [20/Jul/2024 15:18:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:18:53,546:INFO:127.0.0.1 - - [20/Jul/2024 15:18:53] "GET / HTTP/1.1" 200 -
+2024-07-20 15:18:53,880:INFO:127.0.0.1 - - [20/Jul/2024 15:18:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:18:53,880:INFO:127.0.0.1 - - [20/Jul/2024 15:18:53] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:19:10,171:INFO:Translated from en to ta: English to Tamil translator -> \u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0bb3\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd
+2024-07-20 15:19:10,179:INFO:127.0.0.1 - - [20/Jul/2024 15:19:10] "POST / HTTP/1.1" 200 -
+2024-07-20 15:19:10,500:INFO:127.0.0.1 - - [20/Jul/2024 15:19:10] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:10,765:INFO:127.0.0.1 - - [20/Jul/2024 15:19:10] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:19:21,096:INFO:127.0.0.1 - - [20/Jul/2024 15:19:21] "POST / HTTP/1.1" 200 -
+2024-07-20 15:19:21,414:INFO:127.0.0.1 - - [20/Jul/2024 15:19:21] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:21,681:INFO:127.0.0.1 - - [20/Jul/2024 15:19:21] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:19:31,688:INFO:127.0.0.1 - - [20/Jul/2024 15:19:31] "GET /leaderboard HTTP/1.1" 200 -
+2024-07-20 15:19:32,010:INFO:127.0.0.1 - - [20/Jul/2024 15:19:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:34,949:INFO:127.0.0.1 - - [20/Jul/2024 15:19:34] "GET / HTTP/1.1" 200 -
+2024-07-20 15:19:35,278:INFO:127.0.0.1 - - [20/Jul/2024 15:19:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:35,279:INFO:127.0.0.1 - - [20/Jul/2024 15:19:35] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:19:45,177:INFO:127.0.0.1 - - [20/Jul/2024 15:19:45] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:19:45,510:INFO:127.0.0.1 - - [20/Jul/2024 15:19:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:47,882:INFO:127.0.0.1 - - [20/Jul/2024 15:19:47] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-07-20 15:19:48,203:INFO:127.0.0.1 - - [20/Jul/2024 15:19:48] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:19:48,453:INFO:127.0.0.1 - - [20/Jul/2024 15:19:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:49,634:INFO:127.0.0.1 - - [20/Jul/2024 15:19:49] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-07-20 15:19:49,946:INFO:127.0.0.1 - - [20/Jul/2024 15:19:49] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:19:50,211:INFO:127.0.0.1 - - [20/Jul/2024 15:19:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:51,656:INFO:127.0.0.1 - - [20/Jul/2024 15:19:51] "GET / HTTP/1.1" 200 -
+2024-07-20 15:19:51,987:INFO:127.0.0.1 - - [20/Jul/2024 15:19:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:51,987:INFO:127.0.0.1 - - [20/Jul/2024 15:19:51] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:19:53,142:INFO:127.0.0.1 - - [20/Jul/2024 15:19:53] "GET /favorites HTTP/1.1" 200 -
+2024-07-20 15:19:53,462:INFO:127.0.0.1 - - [20/Jul/2024 15:19:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:54,792:INFO:127.0.0.1 - - [20/Jul/2024 15:19:54] "GET / HTTP/1.1" 200 -
+2024-07-20 15:19:55,130:INFO:127.0.0.1 - - [20/Jul/2024 15:19:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:19:55,130:INFO:127.0.0.1 - - [20/Jul/2024 15:19:55] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:20:47,347:INFO:Translated from en to en: Check out our Chrome extension for real-time e-commerce product information -> Check out our Chrome extension for real-time e-commerce product information
+2024-07-20 15:20:47,354:INFO:127.0.0.1 - - [20/Jul/2024 15:20:47] "POST / HTTP/1.1" 200 -
+2024-07-20 15:20:47,673:INFO:127.0.0.1 - - [20/Jul/2024 15:20:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:20:47,939:INFO:127.0.0.1 - - [20/Jul/2024 15:20:47] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:20:58,797:INFO:127.0.0.1 - - [20/Jul/2024 15:20:58] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:20:59,121:INFO:127.0.0.1 - - [20/Jul/2024 15:20:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:21:01,222:INFO:127.0.0.1 - - [20/Jul/2024 15:21:01] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-07-20 15:21:01,539:INFO:127.0.0.1 - - [20/Jul/2024 15:21:01] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:21:01,805:INFO:127.0.0.1 - - [20/Jul/2024 15:21:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:21:03,295:INFO:127.0.0.1 - - [20/Jul/2024 15:21:03] "GET / HTTP/1.1" 200 -
+2024-07-20 15:21:03,623:INFO:127.0.0.1 - - [20/Jul/2024 15:21:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:21:03,623:INFO:127.0.0.1 - - [20/Jul/2024 15:21:03] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:21:04,508:INFO:127.0.0.1 - - [20/Jul/2024 15:21:04] "GET /favorites HTTP/1.1" 200 -
+2024-07-20 15:21:04,838:INFO:127.0.0.1 - - [20/Jul/2024 15:21:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:21:06,885:INFO:127.0.0.1 - - [20/Jul/2024 15:21:06] "GET / HTTP/1.1" 200 -
+2024-07-20 15:21:07,222:INFO:127.0.0.1 - - [20/Jul/2024 15:21:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:21:07,222:INFO:127.0.0.1 - - [20/Jul/2024 15:21:07] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:22:11,783:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:22:13,277:WARNING: * Debugger is active!
+2024-07-20 15:22:13,282:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:22:13,365:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:22:15,392:INFO:127.0.0.1 - - [20/Jul/2024 15:22:15] "GET / HTTP/1.1" 200 -
+2024-07-20 15:22:15,685:INFO:127.0.0.1 - - [20/Jul/2024 15:22:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:22:15,717:INFO:127.0.0.1 - - [20/Jul/2024 15:22:15] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:22:24,231:INFO:Translated from en to en: Check out our Chrome extension for real-time e-commerce product information -> Check out our Chrome extension for real-time e-commerce product information
+2024-07-20 15:22:24,240:INFO:127.0.0.1 - - [20/Jul/2024 15:22:24] "POST / HTTP/1.1" 200 -
+2024-07-20 15:22:24,566:INFO:127.0.0.1 - - [20/Jul/2024 15:22:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:22:24,829:INFO:127.0.0.1 - - [20/Jul/2024 15:22:24] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:22:27,585:INFO:127.0.0.1 - - [20/Jul/2024 15:22:27] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:22:27,909:INFO:127.0.0.1 - - [20/Jul/2024 15:22:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:22:28,175:INFO:127.0.0.1 - - [20/Jul/2024 15:22:28] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:22:36,303:INFO:127.0.0.1 - - [20/Jul/2024 15:22:36] "GET / HTTP/1.1" 200 -
+2024-07-20 15:22:36,637:INFO:127.0.0.1 - - [20/Jul/2024 15:22:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:22:36,638:INFO:127.0.0.1 - - [20/Jul/2024 15:22:36] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:22:37,784:INFO:127.0.0.1 - - [20/Jul/2024 15:22:37] "GET /favorites HTTP/1.1" 200 -
+2024-07-20 15:22:38,121:INFO:127.0.0.1 - - [20/Jul/2024 15:22:38] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:22:38,121:INFO:127.0.0.1 - - [20/Jul/2024 15:22:38] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:22:40,753:INFO:127.0.0.1 - - [20/Jul/2024 15:22:40] "GET / HTTP/1.1" 200 -
+2024-07-20 15:22:41,086:INFO:127.0.0.1 - - [20/Jul/2024 15:22:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:22:41,087:INFO:127.0.0.1 - - [20/Jul/2024 15:22:41] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:22:48,604:INFO:127.0.0.1 - - [20/Jul/2024 15:22:48] "GET /leaderboard HTTP/1.1" 200 -
+2024-07-20 15:22:48,933:INFO:127.0.0.1 - - [20/Jul/2024 15:22:48] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:22:49,198:INFO:127.0.0.1 - - [20/Jul/2024 15:22:49] "[33mGET /static/%7B%7B%20url_for('static',%20filename='background.jpg')%20%7D%7D HTTP/1.1[0m" 404 -
+2024-07-20 15:45:46,636:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:45:48,912:WARNING: * Debugger is active!
+2024-07-20 15:45:48,919:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:45:49,056:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:45:54,470:INFO:127.0.0.1 - - [20/Jul/2024 15:45:54] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-20 15:45:54,484:INFO:127.0.0.1 - - [20/Jul/2024 15:45:54] "GET /login HTTP/1.1" 200 -
+2024-07-20 15:45:54,801:INFO:127.0.0.1 - - [20/Jul/2024 15:45:54] "GET /static/styles.css HTTP/1.1" 200 -
+2024-07-20 15:45:55,113:INFO:127.0.0.1 - - [20/Jul/2024 15:45:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-07-20 15:45:55,127:INFO:127.0.0.1 - - [20/Jul/2024 15:45:55] "[33mGET /static/%7B%7B%20url_for('static',%20filename='background.jpg')%20%7D%7D HTTP/1.1[0m" 404 -
+2024-07-20 15:45:57,677:INFO:127.0.0.1 - - [20/Jul/2024 15:45:57] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-20 15:45:57,993:INFO:127.0.0.1 - - [20/Jul/2024 15:45:57] "GET / HTTP/1.1" 200 -
+2024-07-20 15:45:58,345:INFO:127.0.0.1 - - [20/Jul/2024 15:45:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:45:58,364:INFO:127.0.0.1 - - [20/Jul/2024 15:45:58] "GET /static/background.jpg HTTP/1.1" 200 -
+2024-07-20 15:46:03,687:INFO:127.0.0.1 - - [20/Jul/2024 15:46:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-20 15:46:03,987:INFO:127.0.0.1 - - [20/Jul/2024 15:46:03] "GET / HTTP/1.1" 200 -
+2024-07-20 15:46:04,345:INFO:127.0.0.1 - - [20/Jul/2024 15:46:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:46:04,346:INFO:127.0.0.1 - - [20/Jul/2024 15:46:04] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:48:42,513:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-20 15:48:42,515:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-20 15:48:42,516:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-20 15:48:42,516:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-20 15:48:43,148:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:48:48,722:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:48:51,008:WARNING: * Debugger is active!
+2024-07-20 15:48:51,015:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:48:51,230:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:48:52,911:INFO:127.0.0.1 - - [20/Jul/2024 15:48:52] "GET / HTTP/1.1" 200 -
+2024-07-20 15:48:53,025:INFO:127.0.0.1 - - [20/Jul/2024 15:48:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:48:53,149:INFO:127.0.0.1 - - [20/Jul/2024 15:48:53] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:49:02,499:INFO:127.0.0.1 - - [20/Jul/2024 15:49:02] "GET /history HTTP/1.1" 200 -
+2024-07-20 15:49:02,634:INFO:127.0.0.1 - - [20/Jul/2024 15:49:02] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:49:02,757:INFO:127.0.0.1 - - [20/Jul/2024 15:49:02] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:49:06,116:INFO:127.0.0.1 - - [20/Jul/2024 15:49:06] "GET /favorites HTTP/1.1" 200 -
+2024-07-20 15:49:06,412:INFO:127.0.0.1 - - [20/Jul/2024 15:49:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:49:06,472:INFO:127.0.0.1 - - [20/Jul/2024 15:49:06] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:49:08,014:INFO:127.0.0.1 - - [20/Jul/2024 15:49:08] "GET / HTTP/1.1" 200 -
+2024-07-20 15:49:08,124:INFO:127.0.0.1 - - [20/Jul/2024 15:49:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:49:08,279:INFO:127.0.0.1 - - [20/Jul/2024 15:49:08] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:49:30,204:INFO:Translated from en to ta: English to Tamil translation -> \u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b86\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bae\u0bcd
+2024-07-20 15:49:30,205:INFO:127.0.0.1 - - [20/Jul/2024 15:49:30] "POST / HTTP/1.1" 200 -
+2024-07-20 15:49:30,231:INFO:127.0.0.1 - - [20/Jul/2024 15:49:30] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:49:30,541:INFO:127.0.0.1 - - [20/Jul/2024 15:49:30] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:49:34,985:INFO:127.0.0.1 - - [20/Jul/2024 15:49:34] "GET / HTTP/1.1" 200 -
+2024-07-20 15:56:46,818:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:56:49,116:WARNING: * Debugger is active!
+2024-07-20 15:56:49,125:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:56:49,327:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:56:53,926:INFO:127.0.0.1 - - [20/Jul/2024 15:56:53] "GET / HTTP/1.1" 200 -
+2024-07-20 15:56:54,251:INFO:127.0.0.1 - - [20/Jul/2024 15:56:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:56:54,275:INFO:127.0.0.1 - - [20/Jul/2024 15:56:54] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:57:06,200:INFO:127.0.0.1 - - [20/Jul/2024 15:57:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:57:08,110:INFO:Translated from en to en: Dasavathaaram (transl.\u2009The Ten Avatars) is a 2008 Indian Tamil-language science fiction action film directed by K. S. Ravikumar, written by Kamal Haasan and produced by V. Ravichandran under Aascar Film Pvt. Ltd. It stars Kamal Haasan in ten distinct roles, alongside an ensemble cast of Asin, Jaya Prada, Mallika Sherawat, K. R. Vijaya, Rekha Harris, Nagesh, P. Vasu, Raghuram, Napoleon and M. S. Bhaskar. In the film, a scientist named Govind is forced to steal a vial containing a deadly virus from his corrupt boss, who intended to sell it to a terrorist nation, all the while Govind is hunted by Christian Fletcher, an American mercenary. An Indian Inspector Balram Naidu and a set of dark events. Several other people also get involved in the process and all their stories connect after the striking of 2004 Indian Ocean earthquake and tsunami, thus bringing philosophical views into the picture.
+
+The film, which had been under production for nearly three years, was distributed by V. Ravichandran. Primary filming locations included the United States and across Tamil Nadu in India. The soundtrack was composed by Himesh Reshammiya, while the musical score was composed by Devi Sri Prasad. The cinematography and editing were handled by Ravi Varman and K. Thanigachalam respectively. -> Dasavathaaram (transl.\u2009The Ten Avatars) is a 2008 Indian Tamil-language science fiction action film directed by K. S. Ravikumar, written by Kamal Haasan and produced by V. Ravichandran under Aascar Film Pvt. Ltd. It stars Kamal Haasan in ten distinct roles, alongside an ensemble cast of Asin, Jaya Prada, Mallika Sherawat, K. R. Vijaya, Rekha Harris, Nagesh, P. Vasu, Raghuram, Napoleon and M. S. Bhaskar. In the film, a scientist named Govind is forced to steal a vial containing a deadly virus from his corrupt boss, who intended to sell it to a terrorist nation, all the while Govind is hunted by Christian Fletcher, an American mercenary. An Indian Inspector Balram Naidu and a set of dark events. Several other people also get involved in the process and all their stories connect after the striking of 2004 Indian Ocean earthquake and tsunami, thus bringing philosophical views into the picture.
+
+The film, which had been under production for nearly three years, was distributed by V. Ravichandran. Primary filming locations included the United States and across Tamil Nadu in India. The soundtrack was composed by Himesh Reshammiya, while the musical score was composed by Devi Sri Prasad. The cinematography and editing were handled by Ravi Varman and K. Thanigachalam respectively.
+2024-07-20 15:57:08,111:INFO:127.0.0.1 - - [20/Jul/2024 15:57:08] "POST / HTTP/1.1" 200 -
+2024-07-20 15:57:08,161:INFO:127.0.0.1 - - [20/Jul/2024 15:57:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:57:08,448:INFO:127.0.0.1 - - [20/Jul/2024 15:57:08] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 15:57:40,095:INFO:127.0.0.1 - - [20/Jul/2024 15:57:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:59:43,694:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 15:59:46,002:WARNING: * Debugger is active!
+2024-07-20 15:59:46,012:INFO: * Debugger PIN: 666-647-681
+2024-07-20 15:59:46,168:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 15:59:50,342:INFO:127.0.0.1 - - [20/Jul/2024 15:59:50] "GET / HTTP/1.1" 200 -
+2024-07-20 15:59:50,624:INFO:127.0.0.1 - - [20/Jul/2024 15:59:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 15:59:50,690:INFO:127.0.0.1 - - [20/Jul/2024 15:59:50] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:00:06,420:INFO:Translated from en to ta: Dasavathaaram (transl.\u2009The Ten Avatars) is a 2008 Indian Tamil-language science fiction action film directed by K. S. Ravikumar, written by Kamal Haasan and produced by V. Ravichandran under Aascar Film Pvt. Ltd. It stars Kamal Haasan in ten distinct roles, alongside an ensemble cast of Asin, Jaya Prada, Mallika Sherawat, K. R. Vijaya, Rekha Harris, Nagesh, P. Vasu, Raghuram, Napoleon and M. S. Bhaskar. In the film, a scientist named Govind is forced to steal a vial containing a deadly virus from his corrupt boss, who intended to sell it to a terrorist nation, all the while Govind is hunted by Christian Fletcher, an American mercenary. An Indian Inspector Balram Naidu and a set of dark events. Several other people also get involved in the process and all their stories connect after the striking of 2004 Indian Ocean earthquake and tsunami, thus bringing philosophical views into the picture.
+
+The film, which had been under production for nearly three years, was distributed by V. Ravichandran. Primary filming locations included the United States and across Tamil Nadu in India. The soundtrack was composed by Himesh Reshammiya, while the musical score was composed by Devi Sri Prasad. The cinematography and editing were handled by Ravi Varman and K. Thanigachalam respectively. -> \u0ba4\u0b9a\u0bb5\u0ba4\u0bbe\u0bb0\u0bae\u0bcd (\u0bae\u0bca\u0bb4\u0bbf\u0baa\u0bc6\u0baf\u0bb0\u0bcd\u0baa\u0bcd\u0baa\u0bc1. \u0baa\u0ba4\u0bcd\u0ba4\u0bc1 \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bcd) \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc1 2008 \u0b86\u0bae\u0bcd \u0b86\u0ba3\u0bcd\u0b9f\u0bc1 \u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf \u0ba4\u0bae\u0bbf\u0bb4\u0bcd-\u0bae\u0bca\u0bb4\u0bbf \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0baa\u0bc1\u0ba9\u0bc8\u0b95\u0ba4\u0bc8 \u0ba8\u0b9f\u0bb5\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bc8 \u0ba4\u0bbf\u0bb0\u0bc8\u0baa\u0bcd\u0baa\u0b9f\u0bae\u0bbe\u0b95\u0bc1\u0bae\u0bcd, \u0b87\u0ba4\u0bc1 \u0b95\u0bc7.\u0b8e\u0bb8\u0bcd. \u0bb0\u0bb5\u0bbf\u0b95\u0bc1\u0bae\u0bbe\u0bb0\u0bcd \u0b87\u0baf\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0ba4\u0bc1, \u0b95\u0bae\u0bb2\u0bcd \u0bb9\u0bbe\u0b9a\u0ba9\u0bcd \u0b8e\u0bb4\u0bc1\u0ba4\u0bbf\u0baf\u0ba4\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b86\u0bb8\u0bcd\u0b95\u0bbe\u0bb0\u0bcd \u0ba4\u0bbf\u0bb0\u0bc8\u0baa\u0bcd\u0baa\u0b9f \u0baa\u0bbf.\u0bb5\u0bbf.\u0b9f\u0bbf.\u0bb2\u0bbf\u0bae\u0bbf\u0b9f\u0bc6\u0b9f\u0bcd \u0b87\u0ba4\u0bbf\u0bb2\u0bcd \u0b95\u0bae\u0bb2\u0bcd \u0bb9\u0bbe\u0b9a\u0ba9\u0bcd \u0baa\u0ba4\u0bcd\u0ba4\u0bc1 \u0ba4\u0ba9\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bae\u0bbe\u0ba9 \u0bb5\u0bc7\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0ba8\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9, \u0b85\u0b9a\u0bbf\u0ba9\u0bcd, \u0b9c\u0bc6\u0baf\u0bbe \u0baa\u0bbf\u0bb0\u0bbe\u0b9f\u0bbe, \u0bae\u0bb2\u0bcd\u0bb2\u0bbf\u0b95\u0bbe \u0bb7\u0bc6\u0bb0\u0bbe\u0bb5\u0ba4\u0bcd, \u0b95\u0bc7.\u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd, \u0b95\u0bcb\u0bb5\u0bbf\u0ba8\u0bcd\u0ba4\u0bcd \u0b8e\u0ba9\u0bcd\u0bb1 \u0bb5\u0bbf\u0b9e\u0bcd\u0b9e\u0bbe\u0ba9\u0bbf \u0ba4\u0ba9\u0ba4\u0bc1 \u0b8a\u0bb4\u0bb2\u0bcd \u0bae\u0bc1\u0ba4\u0bb2\u0bbe\u0bb3\u0bbf\u0baf\u0bbf\u0b9f\u0bae\u0bbf\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bc1 \u0b92\u0bb0\u0bc1 \u0b95\u0bca\u0b9f\u0bbf\u0baf \u0bb5\u0bc8\u0bb0\u0bb8\u0bc8\u0b95\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f \u0b92\u0bb0\u0bc1 \u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0b9f \u0bb5\u0bc7\u0ba3\u0bcd\u0b9f\u0bbf\u0baf \u0b95\u0b9f\u0bcd\u0b9f\u0bbe\u0baf\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b89\u0bb3\u0bcd\u0bb3\u0bbe\u0bb0\u0bcd, \u0b85\u0ba4\u0bc8 \u0b92\u0bb0\u0bc1 \u0baa\u0baf\u0b99\u0bcd\u0b95\u0bb0\u0bb5\u0bbe\u0ba4 \u0ba4\u0bc7\u0b9a\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1 \u0bb5\u0bbf\u0bb1\u0bcd\u0b95 \u0ba8\u0bbf\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd, \u0b8e\u0bb2\u0bcd\u0bb2\u0bbe \u0ba8\u0bc7\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bc1\u0bae\u0bcd \u0b95\u0bcb\u0bb5\u0bbf\u0ba8\u0bcd\u0ba4\u0bcd \u0b92\u0bb0\u0bc1 \u0b85\u0bae\u0bc6\u0bb0\u0bbf\u0b95\u0bcd\u0b95 \u0b95\u0bc2\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0b9f\u0bc8\u0baf\u0bbe\u0ba9 \u0b95\u0bbf\u0bb1\u0bbf\u0bb8\u0bcd\u0b9f\u0bbf\u0baf\u0ba9\u0bcd \u0baa\u0bbf\u0bb3\u0bc6\u0b9f\u0bcd\u0b9a\u0bb0\u0bcd \u0bb5\u0bc7\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbe\u0b9f\u0baa\u0bcd\u0baa\u0b9f\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd.\u0b92\u0bb0\u0bc1 \u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf \u0b87\u0ba9\u0bcd\u0bb8\u0bcd\u0baa\u0bc6\u0b95\u0bcd\u0b9f\u0bb0\u0bcd \u0baa\u0bbe\u0bb2\u0bcd\u0bb0\u0bae\u0bcd \u0ba8\u0bbe\u0baf\u0bc1\u0b9f\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b87\u0bb0\u0bc1\u0ba3\u0bcd\u0b9f \u0ba8\u0bbf\u0b95\u0bb4\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0ba4\u0bca\u0b95\u0bc1\u0baa\u0bcd\u0baa\u0bc1.2004 \u0b86\u0bae\u0bcd \u0b86\u0ba3\u0bcd\u0b9f\u0bc1 \u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0baa\u0bcd \u0baa\u0bc6\u0bb0\u0bc1\u0b99\u0bcd\u0b95\u0b9f\u0bb2\u0bcd \u0baa\u0bc2\u0b95\u0bae\u0bcd\u0baa\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b9a\u0bc1\u0ba9\u0bbe\u0bae\u0bbf\u0baf\u0bbf\u0ba9\u0bcd \u0bb5\u0bc7\u0bb2\u0bc8\u0ba8\u0bbf\u0bb1\u0bc1\u0ba4\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bbf\u0bb1\u0bcd\u0b95\u0bc1\u0baa\u0bcd \u0baa\u0bbf\u0bb1\u0b95\u0bc1 \u0b85\u0bb5\u0bb0\u0bcd\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0b95\u0ba4\u0bc8\u0b95\u0bb3\u0bc1\u0bae\u0bcd \u0b87\u0ba3\u0bc8\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9, \u0b87\u0ba4\u0ba9\u0bbe\u0bb2\u0bcd \u0ba4\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0b95\u0bcd \u0b95\u0bbe\u0b9f\u0bcd\u0b9a\u0bbf\u0b95\u0bb3\u0bc8 \u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b95\u0bca\u0ba3\u0bcd\u0b9f\u0bc1 \u0bb5\u0bb0\u0bc1\u0b95\u0bbf\u0bb1\u0ba4\u0bc1.
+
+\u0b8f\u0bb1\u0b95\u0bcd\u0b95\u0bc1\u0bb1\u0bc8\u0baf \u0bae\u0bc2\u0ba9\u0bcd\u0bb1\u0bc1 \u0b86\u0ba3\u0bcd\u0b9f\u0bc1\u0b95\u0bb3\u0bbe\u0b95 \u0ba4\u0baf\u0bbe\u0bb0\u0bbf\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4 \u0b87\u0baa\u0bcd\u0baa\u0b9f\u0ba4\u0bcd\u0ba4\u0bc8 \u0bb5\u0bbf. \u0bb0\u0bb5\u0bbf\u0b9a\u0bcd\u0b9a\u0ba8\u0bcd\u0ba4\u0bbf\u0bb0\u0ba9\u0bcd \u0bb5\u0bbf\u0ba8\u0bbf\u0baf\u0bcb\u0b95\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd.\u0bae\u0bc1\u0ba4\u0ba9\u0bcd\u0bae\u0bc8 \u0baa\u0b9f\u0baa\u0bcd\u0baa\u0bbf\u0b9f\u0bbf\u0baa\u0bcd\u0baa\u0bc1 \u0b87\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b85\u0bae\u0bc6\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bbe \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe\u0bb5\u0bbf\u0bb2\u0bcd \u0ba4\u0bae\u0bbf\u0bb4\u0bcd\u0ba8\u0bbe\u0b9f\u0bc1 \u0bae\u0bc1\u0bb4\u0bc1\u0bb5\u0ba4\u0bc1\u0bae\u0bcd \u0b85\u0b9f\u0b99\u0bcd\u0b95\u0bc1\u0bae\u0bcd.\u0b92\u0bb2\u0bbf\u0baa\u0bcd\u0baa\u0ba4\u0bbf\u0bb5\u0bc8 \u0bb9\u0bbf\u0bb7\u0bcd \u0bb0\u0bbf\u0b9a\u0bae\u0bcd\u0bae\u0bbf\u0baf\u0bbe\u0bb5\u0bbe\u0bb2\u0bcd \u0b87\u0b9a\u0bc8\u0baf\u0bae\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd, \u0b85\u0ba4\u0bc7 \u0ba8\u0bc7\u0bb0\u0ba4\u0bcd\u0ba4\u0bbf\u0bb2\u0bcd \u0b87\u0b9a\u0bc8 \u0bae\u0ba4\u0bbf\u0baa\u0bcd\u0baa\u0bc6\u0ba3\u0bcd \u0ba4\u0bc7\u0bb5\u0bbf \u0bb8\u0bcd\u0bb0\u0bc0 \u0baa\u0bbf\u0bb0\u0b9a\u0bbe\u0ba4\u0bcd \u0b87\u0b9a\u0bc8\u0baf\u0bae\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd.\u0b92\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0ba4\u0bbf\u0bb5\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b8e\u0b9f\u0bbf\u0b9f\u0bcd\u0b9f\u0bbf\u0b99\u0bcd \u0bae\u0bc1\u0bb1\u0bc8\u0baf\u0bc7 \u0bb0\u0bb5\u0bbf \u0bb5\u0bb0\u0bcd\u0bae\u0ba9\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b95\u0bc7. \u0ba4\u0bbe\u0ba9\u0bbf\u0b95\u0bbe\u0b9a\u0bcd\u0b9a\u0bb2\u0bae\u0bcd \u0b86\u0b95\u0bbf\u0baf\u0bcb\u0bb0\u0bbe\u0bb2\u0bcd \u0b95\u0bc8\u0baf\u0bbe\u0bb3\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1.
+2024-07-20 16:00:06,422:INFO:127.0.0.1 - - [20/Jul/2024 16:00:06] "POST / HTTP/1.1" 200 -
+2024-07-20 16:00:06,761:INFO:127.0.0.1 - - [20/Jul/2024 16:00:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:00:07,014:INFO:127.0.0.1 - - [20/Jul/2024 16:00:07] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:00:14,025:INFO:127.0.0.1 - - [20/Jul/2024 16:00:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:03:24,502:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 16:03:26,911:WARNING: * Debugger is active!
+2024-07-20 16:03:26,918:INFO: * Debugger PIN: 666-647-681
+2024-07-20 16:03:27,047:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 16:03:27,811:INFO:127.0.0.1 - - [20/Jul/2024 16:03:27] "GET / HTTP/1.1" 200 -
+2024-07-20 16:03:28,091:INFO:127.0.0.1 - - [20/Jul/2024 16:03:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:03:28,164:INFO:127.0.0.1 - - [20/Jul/2024 16:03:28] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:03:40,176:INFO:Translated from en to en: Dasavathaaram (transl.\u2009The Ten Avatars) is a 2008 Indian Tamil-language science fiction action film directed by K. S. Ravikumar, written by Kamal Haasan and produced by V. Ravichandran under Aascar Film Pvt. Ltd. It stars Kamal Haasan in ten distinct roles, alongside an ensemble cast of Asin, Jaya Prada, Mallika Sherawat, K. R. Vijaya, Rekha Harris, Nagesh, P. Vasu, Raghuram, Napoleon and M. S. Bhaskar. In the film, a scientist named Govind is forced to steal a vial containing a deadly virus from his corrupt boss, who intended to sell it to a terrorist nation, all the while Govind is hunted by Christian Fletcher, an American mercenary. An Indian Inspector Balram Naidu and a set of dark events. Several other people also get involved in the process and all their stories connect after the striking of 2004 Indian Ocean earthquake and tsunami, thus bringing philosophical views into the picture.
+
+The film, which had been under production for nearly three years, was distributed by V. Ravichandran. Primary filming locations included the United States and across Tamil Nadu in India. The soundtrack was composed by Himesh Reshammiya, while the musical score was composed by Devi Sri Prasad. The cinematography and editing were handled by Ravi Varman and K. Thanigachalam respectively. -> Dasavathaaram (transl.\u2009The Ten Avatars) is a 2008 Indian Tamil-language science fiction action film directed by K. S. Ravikumar, written by Kamal Haasan and produced by V. Ravichandran under Aascar Film Pvt. Ltd. It stars Kamal Haasan in ten distinct roles, alongside an ensemble cast of Asin, Jaya Prada, Mallika Sherawat, K. R. Vijaya, Rekha Harris, Nagesh, P. Vasu, Raghuram, Napoleon and M. S. Bhaskar. In the film, a scientist named Govind is forced to steal a vial containing a deadly virus from his corrupt boss, who intended to sell it to a terrorist nation, all the while Govind is hunted by Christian Fletcher, an American mercenary. An Indian Inspector Balram Naidu and a set of dark events. Several other people also get involved in the process and all their stories connect after the striking of 2004 Indian Ocean earthquake and tsunami, thus bringing philosophical views into the picture.
+
+The film, which had been under production for nearly three years, was distributed by V. Ravichandran. Primary filming locations included the United States and across Tamil Nadu in India. The soundtrack was composed by Himesh Reshammiya, while the musical score was composed by Devi Sri Prasad. The cinematography and editing were handled by Ravi Varman and K. Thanigachalam respectively.
+2024-07-20 16:03:40,178:INFO:127.0.0.1 - - [20/Jul/2024 16:03:40] "POST / HTTP/1.1" 200 -
+2024-07-20 16:03:40,516:INFO:127.0.0.1 - - [20/Jul/2024 16:03:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:03:40,779:INFO:127.0.0.1 - - [20/Jul/2024 16:03:40] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:03:46,417:INFO:127.0.0.1 - - [20/Jul/2024 16:03:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:04:33,995:INFO: * Restarting with watchdog (windowsapi)
+2024-07-20 16:04:36,434:WARNING: * Debugger is active!
+2024-07-20 16:04:36,443:INFO: * Debugger PIN: 666-647-681
+2024-07-20 16:04:36,577:INFO: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2024-07-20 16:04:38,789:INFO:127.0.0.1 - - [20/Jul/2024 16:04:38] "GET / HTTP/1.1" 200 -
+2024-07-20 16:04:39,073:INFO:127.0.0.1 - - [20/Jul/2024 16:04:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:04:39,140:INFO:127.0.0.1 - - [20/Jul/2024 16:04:39] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:05:02,954:INFO:Translated from en to en: Dasavathaaram (transl.\u2009The Ten Avatars) is a 2008 Indian Tamil-language science fiction action film directed by K. S. Ravikumar, written by Kamal Haasan and produced by V. Ravichandran under Aascar Film Pvt. Ltd. It stars Kamal Haasan in ten distinct roles, alongside an ensemble cast of Asin, Jaya Prada, Mallika Sherawat, K. R. Vijaya, Rekha Harris, Nagesh, P. Vasu, Raghuram, Napoleon and M. S. Bhaskar. In the film, a scientist named Govind is forced to steal a vial containing a deadly virus from his corrupt boss, who intended to sell it to a terrorist nation, all the while Govind is hunted by Christian Fletcher, an American mercenary. An Indian Inspector Balram Naidu and a set of dark events. Several other people also get involved in the process and all their stories connect after the striking of 2004 Indian Ocean earthquake and tsunami, thus bringing philosophical views into the picture.
+
+The film, which had been under production for nearly three years, was distributed by V. Ravichandran. Primary filming locations included the United States and across Tamil Nadu in India. The soundtrack was composed by Himesh Reshammiya, while the musical score was composed by Devi Sri Prasad. The cinematography and editing were handled by Ravi Varman and K. Thanigachalam respectively. -> Dasavathaaram (transl.\u2009The Ten Avatars) is a 2008 Indian Tamil-language science fiction action film directed by K. S. Ravikumar, written by Kamal Haasan and produced by V. Ravichandran under Aascar Film Pvt. Ltd. It stars Kamal Haasan in ten distinct roles, alongside an ensemble cast of Asin, Jaya Prada, Mallika Sherawat, K. R. Vijaya, Rekha Harris, Nagesh, P. Vasu, Raghuram, Napoleon and M. S. Bhaskar. In the film, a scientist named Govind is forced to steal a vial containing a deadly virus from his corrupt boss, who intended to sell it to a terrorist nation, all the while Govind is hunted by Christian Fletcher, an American mercenary. An Indian Inspector Balram Naidu and a set of dark events. Several other people also get involved in the process and all their stories connect after the striking of 2004 Indian Ocean earthquake and tsunami, thus bringing philosophical views into the picture.
+
+The film, which had been under production for nearly three years, was distributed by V. Ravichandran. Primary filming locations included the United States and across Tamil Nadu in India. The soundtrack was composed by Himesh Reshammiya, while the musical score was composed by Devi Sri Prasad. The cinematography and editing were handled by Ravi Varman and K. Thanigachalam respectively.
+2024-07-20 16:05:02,956:INFO:127.0.0.1 - - [20/Jul/2024 16:05:02] "POST / HTTP/1.1" 200 -
+2024-07-20 16:05:03,292:INFO:127.0.0.1 - - [20/Jul/2024 16:05:03] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:05:03,558:INFO:127.0.0.1 - - [20/Jul/2024 16:05:03] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:05:09,114:INFO:127.0.0.1 - - [20/Jul/2024 16:05:09] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:05:26,220:INFO:127.0.0.1 - - [20/Jul/2024 16:05:26] "GET /history HTTP/1.1" 200 -
+2024-07-20 16:05:26,465:INFO:127.0.0.1 - - [20/Jul/2024 16:05:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:05:26,559:INFO:127.0.0.1 - - [20/Jul/2024 16:05:26] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:05:29,287:INFO:127.0.0.1 - - [20/Jul/2024 16:05:29] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-07-20 16:05:29,617:INFO:127.0.0.1 - - [20/Jul/2024 16:05:29] "GET /history HTTP/1.1" 200 -
+2024-07-20 16:05:29,882:INFO:127.0.0.1 - - [20/Jul/2024 16:05:29] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:05:29,959:INFO:127.0.0.1 - - [20/Jul/2024 16:05:29] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:05:32,160:INFO:127.0.0.1 - - [20/Jul/2024 16:05:32] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-07-20 16:05:32,488:INFO:127.0.0.1 - - [20/Jul/2024 16:05:32] "GET /history HTTP/1.1" 200 -
+2024-07-20 16:05:32,736:INFO:127.0.0.1 - - [20/Jul/2024 16:05:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:05:32,831:INFO:127.0.0.1 - - [20/Jul/2024 16:05:32] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:05:33,691:INFO:127.0.0.1 - - [20/Jul/2024 16:05:33] "GET / HTTP/1.1" 200 -
+2024-07-20 16:05:34,047:INFO:127.0.0.1 - - [20/Jul/2024 16:05:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:05:34,047:INFO:127.0.0.1 - - [20/Jul/2024 16:05:34] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:05:45,899:INFO:127.0.0.1 - - [20/Jul/2024 16:05:45] "GET / HTTP/1.1" 200 -
+2024-07-20 16:05:46,248:INFO:127.0.0.1 - - [20/Jul/2024 16:05:46] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-20 16:05:46,513:INFO:127.0.0.1 - - [20/Jul/2024 16:05:46] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-20 16:05:49,921:INFO:127.0.0.1 - - [20/Jul/2024 16:05:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -

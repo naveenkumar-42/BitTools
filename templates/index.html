@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English to Tamil Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>English to Tamil Translator</h1>
+        <form method="POST">
+            <textarea name="text" id="text" placeholder="Enter text to translate" required></textarea>
+            <button type="button" onclick="startDictation()">🎤 Speak</button>
+            <select name="src_lang">
+                <option value="auto">Detect Language</option>
+                <option value="en">English</option>
+                <option value="ta">Tamil</option>
+                <!-- Add more languages as needed -->
+            </select>
+            <select name="dest_lang">
+                <option value="en">English</option>
+                <option value="ta">Tamil</option>
+                <!-- Add more languages as needed -->
+            </select>
+            <button type="submit">Translate</button>
+        </form>
+
+        <!-- Voice select dropdown for speech synthesis -->
+        <select id="voiceSelect"></select>
+
+        {% if translation %}
+        <div class="result">
+            <h2>Translation:</h2>
+            <p id="translatedText">{{ translation }}</p>
+            <button onclick="copyText()">Copy</button>
+            <button onclick="speak('{{ translation }}')">Listen</button>
+        </div>
+        {% endif %}
+
+        {% if suggestion %}
+        <div class="suggestion">
+            <h2>Suggested Translation:</h2>
+            <p>{{ suggestion }}</p>
+            <button onclick="speak('{{ suggestion }}')">Listen</button>
+        </div>
+        {% endif %}
+
+        <div class="history">
+            <h2>Translation History</h2>
+            <ul>
+                {% for item in history %}
+                <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="{{ url_for('leaderboard') }}" class="button">View Leaderboard</a>
+            <a href="{{ url_for('show_history') }}" class="button">View History</a>
+            <a href="{{ url_for('show_favorites') }}" class="button">View Favorites</a>
+        </div>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F4F4F4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            background-size: cover;
+            background-position: center;
+        }
+        .navigation-buttons {
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let voices = [];
+
+            function populateVoiceList() {
+                voices = window.speechSynthesis.getVoices();
+                let voiceSelect = document.getElementById('voiceSelect');
+                if (!voiceSelect) {
+                    console.error('Voice select element not found');
+                    return;
+                }
+                voiceSelect.innerHTML = ''; // Clear existing options
+                for (let i = 0; i < voices.length; i++) {
+                    let option = document.createElement('option');
+                    option.value = voices[i].name;
+                    option.textContent = voices[i].name;
+                    voiceSelect.appendChild(option);
+                }
+            }
+
+            // Populate voice list when voices change
+            window.speechSynthesis.onvoiceschanged = populateVoiceList;
+
+            function speak(text) {
+                let msg = new SpeechSynthesisUtterance(text);
+                let selectedVoiceName = document.getElementById('voiceSelect').value;
+                msg.voice = voices.find(voice => voice.name === selectedVoiceName);
+                if (!msg.voice) {
+                    console.error('Selected voice not found');
+                }
+                window.speechSynthesis.speak(msg);
+            }
+
+            function copyText() {
+                var text = document.getElementById('translatedText').innerText;
+                navigator.clipboard.writeText(text).then(function() {
+                    alert('Text copied to clipboard');
+                }).catch(function(error) {
+                    console.error('Copy failed', error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

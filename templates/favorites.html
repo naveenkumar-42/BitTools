@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #F4F4F4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("{{ url_for('static', filename='background.jpg') }}");
+    background-size: cover;
+    background-position: center;
+}
+
+    </style>
+    <div class="container">
+        <h1>Favorites</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('show_history') }}">Translation History</a>
+        </nav>
+        <div class="favorites">
+            <ul>
+                {% for item in favorites %}
+                <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('clear_favorites') }}" class="button">Clear Favorites</a>
+        </div>
+    </div>
+</body>
+</html>

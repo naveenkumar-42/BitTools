@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #F4F4F4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("{{ url_for('static', filename='background.jpg') }}");
+    background-size: cover;
+    background-position: center;
+}
+
+    </style>
+    <div class="container">
+        <h1>Translation History</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('show_favorites') }}">Favorites</a>
+        </nav>
+        <div class="history">
+            <ul>
+                {% for item in history %}
+                <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('download_history') }}" class="button">Download History</a>
+            <a href="{{ url_for('clear_history') }}" class="button">Clear History</a>
+        </div>
+    </div>
+</body>
+</html>
