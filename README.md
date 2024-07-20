@@ -24,8 +24,9 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/SabarishCodeWizard/your-repo.git
-   cd your-repo
+   git clone https://github.com/SabarishCodeWizard/-Multilingual-Translation-and-Speech-Synthesis-Application-.git
+   cd Breadcrumbs-Multilingual-Translation-and-Speech-Synthesis-Application-
+
    ```
 
 2. **Install Dependencies**
