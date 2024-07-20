@@ -1,0 +1,4 @@
+Flask==2.0.3
+googletrans==4.0.0-rc1
+numpy==1.24.2
+scikit-learn==1.2.2
