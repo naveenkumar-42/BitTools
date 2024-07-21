@@ -77,6 +77,23 @@
             color: #ff0000;
             font-size: 14px;
         }
+
+        /* Keyframes for animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Applying animation to welcome-text */
+        .welcome-text {
+            animation: fadeInUp 1.5s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +105,11 @@
             {% if error %}
                 <div class="message">{{ error }}</div>
             {% endif %}
+
+            <p class="welcome-text" style="color: black; font-family: 'Arial', sans-serif; font-style: italic;">
+                Hello! I'm <span style="color: red;">Integer</span>, your assistant for all your translation needs. Let's get started!
+            </p>
+            
         </form>
     </div>
 </body>
