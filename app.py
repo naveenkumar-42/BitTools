@@ -7,12 +7,40 @@ import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import logging
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
+
+# Database configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///translator.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+# Database Models
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    history = db.relationship('History', backref='user', lazy=True)
+    favorites = db.relationship('Favorite', backref='user', lazy=True)
+
+class History(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text, nullable=False)
+    translation = db.Column(db.Text, nullable=False)
+    src = db.Column(db.String(50), nullable=False)
+    dest = db.Column(db.String(50), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+class Favorite(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text, nullable=False)
+    translation = db.Column(db.Text, nullable=False)
+    src = db.Column(db.String(50), nullable=False)
+    dest = db.Column(db.String(50), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
 translator = Translator()
-history = []
-favorites = []
 
 # Set up logging
 logging.basicConfig(filename='app.log', level=logging.INFO, 
@@ -22,13 +50,13 @@ logging.basicConfig(filename='app.log', level=logging.INFO,
 def suggest_translation(text, history):
     if not history:
         return None
-    texts = [item['text'] for item in history]
+    texts = [item.text for item in history]
     texts.append(text)
     vectorizer = CountVectorizer().fit_transform(texts)
     vectors = vectorizer.toarray()
     cosine_matrix = cosine_similarity(vectors)
     similar_index = cosine_matrix[-1][:-1].argmax()
-    return history[similar_index]['translation']
+    return history[similar_index].translation
 
 # Decorator to require login
 def login_required(f):
@@ -43,6 +71,11 @@ def login_required(f):
 def login():
     if request.method == 'POST':
         username = request.form['username']
+        user = User.query.filter_by(username=username).first()
+        if not user:
+            user = User(username=username)
+            db.session.add(user)
+            db.session.commit()
         session['username'] = username
         return redirect(url_for('index'))
     return render_template('login.html')
@@ -64,14 +97,17 @@ def index():
         src_lang = request.form['src_lang']
         dest_lang = request.form['dest_lang']
         try:
-            suggestion = suggest_translation(text_to_translate, history)
+            user = User.query.filter_by(username=session['username']).first()
+            suggestion = suggest_translation(text_to_translate, user.history)
             if not suggestion:
                 if src_lang == 'auto':
                     detected_lang = translator.detect(text_to_translate).lang
                     src_lang = detected_lang
                 translated = translator.translate(text_to_translate, src=src_lang, dest=dest_lang)
                 translation = translated.text
-                history.append({'text': text_to_translate, 'translation': translation, 'src': src_lang, 'dest': dest_lang})
+                new_history = History(text=text_to_translate, translation=translation, src=src_lang, dest=dest_lang, user=user)
+                db.session.add(new_history)
+                db.session.commit()
                 logging.info(f"Translated from {src_lang} to {dest_lang}: {text_to_translate} -> {translation}")
         except Exception as e:
             error = str(e)
@@ -81,38 +117,43 @@ def index():
 @app.route('/history')
 @login_required
 def show_history():
-    return render_template('history.html', history=history)
+    user = User.query.filter_by(username=session['username']).first()
+    return render_template('history.html', history=user.history)
 
 @app.route('/favorites')
 @login_required
 def show_favorites():
-    return render_template('favorites.html', favorites=favorites)
+    user = User.query.filter_by(username=session['username']).first()
+    return render_template('favorites.html', favorites=user.favorites)
 
 @app.route('/leaderboard')
 @login_required
 def leaderboard():
-    # Removed database interaction
-    users = [{'username': 'user1', 'points': 10}, {'username': 'user2', 'points': 5}]
-    return render_template('leaderboard.html', users=users)
+    users = User.query.all()
+    leaderboard_data = [{'username': user.username, 'points': len(user.history) + len(user.favorites)} for user in users]
+    return render_template('leaderboard.html', users=leaderboard_data)
 
 @app.route('/download_history')
 @login_required
 def download_history():
+    user = User.query.filter_by(username=session['username']).first()
     si = StringIO()
     writer = csv.writer(si)
     writer.writerow(['Source Language', 'Destination Language', 'Original Text', 'Translation'])
-    for item in history:
-        writer.writerow([item['src'], item['dest'], item['text'], item['translation']])
+    for item in user.history:
+        writer.writerow([item.src, item.dest, item.text, item.translation])
     output = make_response(si.getvalue())
     output.headers["Content-Disposition"] = "attachment; filename=translation_history.csv"
     output.headers["Content-type"] = "text/csv"
     return output
 
 @app.route('/clear_history')
-@login_required 
+@login_required
 def clear_history():
-    global history
-    history = []
+    user = User.query.filter_by(username=session['username']).first()
+    for item in user.history:
+        db.session.delete(item)
+    db.session.commit()
     return redirect(url_for('show_history'))
 
 @app.route('/add_favorite', methods=['POST'])
@@ -122,15 +163,22 @@ def add_favorite():
     translation = request.form['translation']
     src = request.form['src']
     dest = request.form['dest']
-    favorites.append({'text': text, 'translation': translation, 'src': src, 'dest': dest})
+    user = User.query.filter_by(username=session['username']).first()
+    new_favorite = Favorite(text=text, translation=translation, src=src, dest=dest, user=user)
+    db.session.add(new_favorite)
+    db.session.commit()
     return redirect(url_for('index'))
 
 @app.route('/clear_favorites')
 @login_required
 def clear_favorites():
-    global favorites
-    favorites = []
+    user = User.query.filter_by(username=session['username']).first()
+    for item in user.favorites:
+        db.session.delete(item)
+    db.session.commit()
     return redirect(url_for('show_favorites'))
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

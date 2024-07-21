@@ -8,6 +8,12 @@
 </head>
 <body>
     <div class="container">
+        {% if session.username %}
+            <h1>Hi, {{ session.username }}!</h1>
+            <a href="{{ url_for('logout') }}" class="button">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+        {% endif %}
         <h1>English to Tamil Translator</h1>
         <form method="POST">
             <textarea name="text" id="text" placeholder="Enter text to translate" required></textarea>
@@ -25,9 +31,6 @@
             </select>
             <button type="submit">Translate</button>
         </form>
-
-        <!-- Voice select dropdown for speech synthesis -->
-        <select id="voiceSelect"></select>
 
         {% if translation %}
         <div class="result">
@@ -48,6 +51,10 @@
 
         <div class="history">
             <h2>Translation History</h2>
+            <p style="color: red;">
+                After translating the text, clear the history. If you try to translate again, it still shows the previous text.
+            </p>
+            
             <ul>
                 {% for item in history %}
                 <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
@@ -61,7 +68,7 @@
             <a href="{{ url_for('show_favorites') }}" class="button">View Favorites</a>
         </div>
     </div>
-    <style>
+     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #F4F4F4;
@@ -74,10 +81,34 @@
             background-image: url("{{ url_for('static', filename='background.jpg') }}");
             background-size: cover;
             background-position: center;
+            transition: background-image 1s ease-in-out;
         }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         .navigation-buttons {
             margin-top: 20px;
         }
+
         .button {
             display: inline-block;
             padding: 10px 20px;
@@ -86,53 +117,76 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+
         .button:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .result, .suggestion {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .history {
+            margin-top: 20px;
+        }
+
+        /* Add your styles here */
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            let voices = [];
-
-            function populateVoiceList() {
-                voices = window.speechSynthesis.getVoices();
-                let voiceSelect = document.getElementById('voiceSelect');
-                if (!voiceSelect) {
-                    console.error('Voice select element not found');
-                    return;
-                }
-                voiceSelect.innerHTML = ''; // Clear existing options
-                for (let i = 0; i < voices.length; i++) {
-                    let option = document.createElement('option');
-                    option.value = voices[i].name;
-                    option.textContent = voices[i].name;
-                    voiceSelect.appendChild(option);
-                }
+        function startDictation() {
+            if (window.hasOwnProperty('webkitSpeechRecognition')) {
+                var recognition = new webkitSpeechRecognition();
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = "en-US";
+                recognition.start();
+                recognition.onresult = function(e) {
+                    document.getElementById('text').value = e.results[0][0].transcript;
+                    recognition.stop();
+                };
+                recognition.onerror = function(e) {
+                    recognition.stop();
+                };
             }
+        }
 
-            // Populate voice list when voices change
-            window.speechSynthesis.onvoiceschanged = populateVoiceList;
-
-            function speak(text) {
-                let msg = new SpeechSynthesisUtterance(text);
-                let selectedVoiceName = document.getElementById('voiceSelect').value;
-                msg.voice = voices.find(voice => voice.name === selectedVoiceName);
-                if (!msg.voice) {
-                    console.error('Selected voice not found');
-                }
-                window.speechSynthesis.speak(msg);
+        let voices = [];
+        function populateVoiceList() {
+            voices = window.speechSynthesis.getVoices();
+            let voiceSelect = document.getElementById('voiceSelect');
+            for (let i = 0; i < voices.length; i++) {
+                let option = document.createElement('option');
+                option.value = voices[i].name;
+                option.textContent = voices[i].name;
+                voiceSelect.appendChild(option);
             }
+        }
 
-            function copyText() {
-                var text = document.getElementById('translatedText').innerText;
-                navigator.clipboard.writeText(text).then(function() {
-                    alert('Text copied to clipboard');
-                }).catch(function(error) {
-                    console.error('Copy failed', error);
-                });
-            }
-        });
+        window.speechSynthesis.onvoiceschanged = populateVoiceList;
+
+        function speak(text) {
+            let msg = new SpeechSynthesisUtterance(text);
+            let selectedVoiceName = document.getElementById('voiceSelect').value;
+            msg.voice = voices.find(voice => voice.name === selectedVoiceName);
+            window.speechSynthesis.speak(msg);
+        }
+
+        function copyText() {
+            var text = document.getElementById('translatedText').innerText;
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Text copied to clipboard');
+            }).catch(function(error) {
+                console.error('Copy failed', error);
+            });
+        }
     </script>
 </body>
 </html>

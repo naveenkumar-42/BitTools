@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorites</title>
+    <title>Handle Link</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Handle YouTube Channel or Other Links</h1>
+        <form action="{{ url_for('handle_link') }}" method="POST">
+            <input type="text" name="link" placeholder="Enter YouTube URL" required>
+            <input type="radio" name="action" value="download" checked> Download
+            <input type="radio" name="action" value="translate"> Translate
+            <button type="submit">Submit</button>
+        </form>
+        
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+        <div class="success">{{ success }}</div>
+        {% endif %}
+    </div>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,43 +55,23 @@
             font-size: 28px;
         }
 
-        nav a {
-            margin: 0 15px;
-            color: #007bff;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #0056b3;
-        }
-
-        .favorites ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .favorites li {
-            background-color: #f9f9f9;
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
             border: 1px solid #dddddd;
             border-radius: 5px;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 18px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .button-group {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s;
-        }
-
-        .favorites li:nth-child(odd) {
-            background-color: #f1f1f1;
-        }
-
-        .favorites li:hover {
-            background-color: #e2e2e2;
+            justify-content: center;
+            gap: 20px;
         }
 
         .button {
@@ -85,7 +83,6 @@
             font-size: 16px;
             padding: 10px 20px;
             text-decoration: none;
-            margin-top: 20px;
             transition: background-color 0.3s, transform 0.3s;
         }
 
@@ -94,30 +91,23 @@
             transform: scale(1.05);
         }
 
+        .error, .success {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .error {
+            color: #ff0000;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Favorites</h1>
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('show_history') }}">Translation History</a>
-        </nav>
-        <div class="favorites">
-            <ul>
-                {% for item in favorites %}
-                <li>
-                    <span>{{ item.src }} to {{ item.dest }}:</span>
-                    <span>{{ item.text }} &rarr; {{ item.translation }}</span>
-                </li>
-                {% endfor %}
-            </ul>
-            <a href="{{ url_for('clear_favorites') }}" class="button">Clear Favorites</a>
-        </div>
-    </div>
 </body>
 </html>
