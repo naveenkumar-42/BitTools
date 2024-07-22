@@ -157,7 +157,4 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
 - **JavaScript Errors**: Check the console for specific syntax errors and ensure proper script placement.
 - **API Errors**: If encountering issues with translation or speech synthesis, verify network connectivity and API limits.
 
-## Hosting
-
-The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https://tamiltranslator.pythonanywhere.com/).
 
