@@ -40,6 +40,14 @@ class Favorite(db.Model):
     dest = db.Column(db.String(50), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
+# Feedback Model
+class Feedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), nullable=False)
+    email = db.Column(db.String(150), nullable=False)
+    subject = db.Column(db.String(200), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+
 translator = Translator()
 
 # Set up logging
@@ -66,6 +74,28 @@ def login_required(f):
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     return decorated_function
+
+
+@app.route('/feedback', methods=['GET', 'POST'])
+@login_required
+def feedback():
+    if request.method == 'POST':
+        username = session['username']
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+        feedback_entry = Feedback(username=username, email=email, subject=subject, message=message)
+        db.session.add(feedback_entry)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('feedback.html')
+
+@app.route('/view_feedback')
+@login_required
+def view_feedback():
+    feedbacks = Feedback.query.all()
+    return render_template('view_feedback.html', feedbacks=feedbacks)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

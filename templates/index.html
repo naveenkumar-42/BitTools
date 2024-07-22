@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -51,6 +52,7 @@
             justify-content: center;
             gap: 10px;
             margin-top: 10px;
+            flex-wrap: wrap;
         }
 
         .button {
@@ -61,6 +63,7 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
         }
 
         .button:hover {
@@ -78,6 +81,7 @@
             border: 1px solid #ccc;
             background-color: #ffd966;
             color: #ff7b00;
+            margin-top: 10px;
         }
 
         .result, .suggestion {
@@ -94,30 +98,97 @@
             margin-top: 20px;
         }
 
-        .navigation-buttons {
-            margin-top: 20px;
+        .navigation-dropdown {
+            margin-top: 10px;
             display: flex;
             justify-content: center;
             gap: 10px;
         }
 
+        .navigation-dropdown select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #007bff;
+            color: white;
+        }
+
         .voice-select-container {
             margin-top: 20px;
+        }
+
+        .social-sharing {
+            margin-top: 20px;
+        }
+
+        .social-button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            background-color: #00aced;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .social-button:hover {
+            background-color: #0084b4;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .button, select {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .dropdown-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .dropdown-group select {
+                margin-bottom: 10px;
+            }
+
+            .navigation-dropdown {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .navigation-dropdown select {
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+
+            .dropdown-group {
+                gap: 5px;
+            }
+
+            .button, select {
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <p style="text-align: center; font-size: 18px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #ff003c; text-shadow: 0 0 10px #8cff00;"><i>Sabarish-Inc 🚀</i></p>
-        </header>
+        
         {% if session.username %}
-            <h1>Hi, {{ session.username }}!</h1>
+            <h1 >Hi, {{ session.username }}!</h1>
             <a href="{{ url_for('logout') }}" class="button">Logout</a>
         {% else %}
             <a href="{{ url_for('login') }}" class="button">Login</a>
         {% endif %}
-        <h1>English to Tamil Translator</h1>
+        <h2>English to தமிழ் Translator <p style="text-align: center; font-size: 18px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #ff003c; text-shadow: 0 0 10px #8cff00;"><i>Sabarish-Inc 🚀</i></p></h2>
         <form method="POST">
             <textarea name="text" id="text" placeholder="Enter text to translate" required></textarea>
             <div class="form-group">
@@ -153,6 +224,14 @@
             </form>
             <button onclick="document.getElementById('favoriteForm').submit();" class="button">Add to Favorites</button>
         </div>
+
+        <!-- Social Sharing Buttons -->
+        <div class="social-sharing">
+            <h2>Share Your Translation:</h2>
+            <a href="https://twitter.com/intent/tweet?text={{ translation }}" target="_blank" class="social-button">Share on Twitter</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('index', _external=True) }}" target="_blank" class="social-button">Share on Facebook</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('index', _external=True) }}&title=Translation&summary={{ translation }}" target="_blank" class="social-button">Share on LinkedIn</a>
+        </div>
         {% endif %}
 
         {% if suggestion %}
@@ -175,13 +254,18 @@
                 {% endfor %}
             </ul>
         </div>
-
-        <div class="navigation-buttons">
-            <a href="{{ url_for('leaderboard') }}" class="button">View Leaderboard</a>
-            <a href="{{ url_for('show_history') }}" class="button">View History</a>
-            <a href="{{ url_for('show_favorites') }}" class="button">View Favorites</a>
+         <!-- Navigation Dropdown -->
+        <div class="navigation-dropdown">
+            <select onchange="location = this.value;">
+                <option value="#">Navigation</option>
+                <option value="{{ url_for('leaderboard') }}">View Leaderboard</option>
+                <option value="{{ url_for('show_history') }}">View History</option>
+                <option value="{{ url_for('show_favorites') }}">View Favorites</option>
+                <option value="{{ url_for('feedback') }}">Feedback</option>
+                <option value="{{ url_for('view_feedback') }}">View Feedback</option>
+            </select>
         </div>
-        
+
         <div class="voice-select-container">
             <select id="voiceSelect"></select>
         </div>
@@ -222,25 +306,23 @@
         function speak(text) {
             let msg = new SpeechSynthesisUtterance(text);
             let selectedVoiceName = document.getElementById('voiceSelect').value;
-            msg.voice = voices.find(voice => voice.name === selectedVoiceName);
+            let selectedVoice = voices.find(voice => voice.name === selectedVoiceName);
+            if (selectedVoice) {
+                msg.voice = selectedVoice;
+            }
             window.speechSynthesis.speak(msg);
         }
 
         function copyText() {
-            var text = document.getElementById('translatedText').innerText;
-            navigator.clipboard.writeText(text).then(function() {
-                alert('Text copied to clipboard');
-            }).catch(function(error) {
-                console.error('Copy failed', error);
+            let translatedText = document.getElementById('translatedText').innerText;
+            navigator.clipboard.writeText(translatedText).then(function() {
+                alert('Translation copied to clipboard!');
+            }, function() {
+                alert('Failed to copy text.');
             });
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            populateVoiceList();
-            if (window.speechSynthesis.onvoiceschanged !== undefined) {
-                window.speechSynthesis.onvoiceschanged = populateVoiceList;
-            }
-        });
+        document.addEventListener('DOMContentLoaded', populateVoiceList);
     </script>
 </body>
 </html>
