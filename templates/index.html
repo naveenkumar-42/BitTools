@@ -5,70 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English to Tamil Translator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <div class="container">
-        {% if session.username %}
-            <h1>Hi, {{ session.username }}!</h1>
-            <a href="{{ url_for('logout') }}" class="button">Logout</a>
-        {% else %}
-            <a href="{{ url_for('login') }}" class="button">Login</a>
-        {% endif %}
-        <h1>English to Tamil Translator</h1>
-        <form method="POST">
-            <textarea name="text" id="text" placeholder="Enter text to translate" required></textarea>
-            <button type="button" onclick="startDictation()">🎤 Speak</button>
-            <select name="src_lang">
-                <option value="auto">Detect Language</option>
-                <option value="en">English</option>
-                <option value="ta">Tamil</option>
-                <!-- Add more languages as needed -->
-            </select>
-            <select name="dest_lang">
-                <option value="en">English</option>
-                <option value="ta">Tamil</option>
-                <!-- Add more languages as needed -->
-            </select>
-            <button type="submit">Translate</button>
-        </form>
-
-        {% if translation %}
-        <div class="result">
-            <h2>Translation:</h2>
-            <p id="translatedText">{{ translation }}</p>
-            <button onclick="copyText()">Copy</button>
-            <button onclick="speak('{{ translation }}')">Listen</button>
-        </div>
-        {% endif %}
-
-        {% if suggestion %}
-        <div class="suggestion">
-            <h2>Suggested Translation:</h2>
-            <p>{{ suggestion }}</p>
-            <button onclick="speak('{{ suggestion }}')">Listen</button>
-        </div>
-        {% endif %}
-
-        <div class="history">
-            <h2>Translation History</h2>
-            <p style="color: red;">
-                After translating the text, clear the history. If you try to translate again, it still shows the previous text.
-            </p>
-            
-            <ul>
-                {% for item in history %}
-                <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-
-        <div class="navigation-buttons">
-            <a href="{{ url_for('leaderboard') }}" class="button">View Leaderboard</a>
-            <a href="{{ url_for('show_history') }}" class="button">View History</a>
-            <a href="{{ url_for('show_favorites') }}" class="button">View Favorites</a>
-        </div>
-    </div>
-     <style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #F4F4F4;
@@ -105,14 +42,20 @@
             }
         }
 
-        .navigation-buttons {
+        .form-group {
             margin-top: 20px;
+        }
+
+        .dropdown-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .button {
             display: inline-block;
             padding: 10px 20px;
-            margin-right: 10px;
             background-color: #007bff;
             color: white;
             text-decoration: none;
@@ -129,6 +72,14 @@
             transform: scale(0.95);
         }
 
+        select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #ffd966;
+            color: #ff7b00;
+        }
+
         .result, .suggestion {
             opacity: 0;
             animation: fadeIn 1s forwards;
@@ -138,8 +89,94 @@
             margin-top: 20px;
         }
 
-        /* Add your styles here */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .navigation-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .voice-select-container {
+            margin-top: 20px;
+        }
     </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p style="text-align: center; font-size: 18px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #ff003c; text-shadow: 0 0 10px #8cff00;"><i>Sabarish-Inc 🚀</i></p>
+        </header>
+        {% if session.username %}
+            <h1>Hi, {{ session.username }}!</h1>
+            <a href="{{ url_for('logout') }}" class="button">Logout</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="button">Login</a>
+        {% endif %}
+        <h1>English to Tamil Translator</h1>
+        <form method="POST">
+            <textarea name="text" id="text" placeholder="Enter text to translate" required></textarea>
+            <div class="form-group">
+                <button type="button" onclick="startDictation()" class="button">🎤 Speak</button>
+                <div class="dropdown-group">
+                    <select name="src_lang">
+                        <option value="auto">Detect Language</option>
+                        <option value="en">English</option>
+                        <option value="ta">Tamil</option>
+                    </select>
+                    <select name="dest_lang">
+                        <option value="en">English</option>
+                        <option value="ta">Tamil</option>
+                    </select>
+                </div>
+                <button type="submit" class="button">Translate</button>
+            </div>
+        </form>
+
+        {% if translation %}
+        <div class="result">
+            <h2>Translation:</h2>
+            <p id="translatedText">{{ translation }}</p>
+            <button onclick="copyText()" class="button">Copy</button>
+            <button onclick="speak('{{ translation }}')" class="button">Listen</button>
+        </div>
+        {% endif %}
+
+        {% if suggestion %}
+        <div class="suggestion">
+            <h2>Suggested Translation:</h2>
+            <p>{{ suggestion }}</p>
+            <button onclick="speak('{{ suggestion }}')" class="button">Listen</button>
+        </div>
+        {% endif %}
+
+        <div class="history">
+            <h2>Translation History</h2>
+            <p style="color: red;">
+                After translating the text, clear the history. If you try to translate again, it still shows the previous text.
+            </p>
+            
+            <ul>
+                {% for item in history %}
+                <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="{{ url_for('leaderboard') }}" class="button">View Leaderboard</a>
+            <a href="{{ url_for('show_history') }}" class="button">View History</a>
+            <a href="{{ url_for('show_favorites') }}" class="button">View Favorites</a>
+        </div>
+        
+        <div class="voice-select-container">
+            <select id="voiceSelect"></select>
+        </div>
+    </div>
     <script>
         function startDictation() {
             if (window.hasOwnProperty('webkitSpeechRecognition')) {
@@ -162,6 +199,7 @@
         function populateVoiceList() {
             voices = window.speechSynthesis.getVoices();
             let voiceSelect = document.getElementById('voiceSelect');
+            voiceSelect.innerHTML = '';
             for (let i = 0; i < voices.length; i++) {
                 let option = document.createElement('option');
                 option.value = voices[i].name;
@@ -187,6 +225,13 @@
                 console.error('Copy failed', error);
             });
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateVoiceList();
+            if (window.speechSynthesis.onvoiceschanged !== undefined) {
+                window.speechSynthesis.onvoiceschanged = populateVoiceList;
+            }
+        });
     </script>
 </body>
 </html>

@@ -178,6 +178,15 @@ def clear_favorites():
     db.session.commit()
     return redirect(url_for('show_favorites'))
 
+@app.route('/toggle_dark_mode', methods=['POST'])
+@login_required
+def toggle_dark_mode():
+    data = request.get_json()
+    dark_mode = data.get('dark_mode', False)
+    session['dark_mode'] = dark_mode
+    return '', 204
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
