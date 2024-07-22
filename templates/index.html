@@ -143,6 +143,15 @@
             <p id="translatedText">{{ translation }}</p>
             <button onclick="copyText()" class="button">Copy</button>
             <button onclick="speak('{{ translation }}')" class="button">Listen</button>
+
+            <!-- Add to Favorites Form -->
+            <form id="favoriteForm" method="POST" action="{{ url_for('add_favorite') }}" style="display: none;">
+                <input type="hidden" name="text" value="{{ translation }}">
+                <input type="hidden" name="translation" value="{{ translation }}">
+                <input type="hidden" name="src" value="{{ src_lang }}">
+                <input type="hidden" name="dest" value="{{ dest_lang }}">
+            </form>
+            <button onclick="document.getElementById('favoriteForm').submit();" class="button">Add to Favorites</button>
         </div>
         {% endif %}
 

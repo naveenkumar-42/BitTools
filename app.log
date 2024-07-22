@@ -184,3 +184,181 @@
 2024-07-22 15:38:32,170:INFO:127.0.0.1 - - [22/Jul/2024 15:38:32] "GET / HTTP/1.1" 200 -
 2024-07-22 15:38:32,222:INFO:127.0.0.1 - - [22/Jul/2024 15:38:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 2024-07-22 15:38:32,520:INFO:127.0.0.1 - - [22/Jul/2024 15:38:32] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 15:51:52,517:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-22 15:51:52,517:INFO:[33mPress CTRL+C to quit[0m
+2024-07-22 15:51:52,535:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 15:51:55,268:WARNING: * Debugger is active!
+2024-07-22 15:51:55,279:INFO: * Debugger PIN: 428-426-366
+2024-07-22 15:51:56,679:INFO:127.0.0.1 - - [22/Jul/2024 15:51:56] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-22 15:51:56,938:INFO:127.0.0.1 - - [22/Jul/2024 15:51:56] "GET /login HTTP/1.1" 200 -
+2024-07-22 15:51:57,053:INFO:127.0.0.1 - - [22/Jul/2024 15:51:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 15:51:57,258:INFO:127.0.0.1 - - [22/Jul/2024 15:51:57] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 15:51:57,353:INFO:127.0.0.1 - - [22/Jul/2024 15:51:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-07-22 15:52:01,280:INFO:127.0.0.1 - - [22/Jul/2024 15:52:01] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-22 15:52:01,333:INFO:127.0.0.1 - - [22/Jul/2024 15:52:01] "GET / HTTP/1.1" 200 -
+2024-07-22 15:52:01,529:INFO:127.0.0.1 - - [22/Jul/2024 15:52:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 15:52:01,669:INFO:127.0.0.1 - - [22/Jul/2024 15:52:01] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 15:52:28,642:INFO:127.0.0.1 - - [22/Jul/2024 15:52:28] "[31m[1mGET /add_favorite HTTP/1.1[0m" 405 -
+2024-07-22 15:52:49,107:INFO:127.0.0.1 - - [22/Jul/2024 15:52:49] "GET /leaderboard HTTP/1.1" 200 -
+2024-07-22 15:52:49,137:INFO:127.0.0.1 - - [22/Jul/2024 15:52:49] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 15:52:49,460:INFO:127.0.0.1 - - [22/Jul/2024 15:52:49] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 15:52:58,022:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 15:52:58,022:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 15:52:58,023:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 15:52:59,081:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 15:53:04,561:WARNING: * Debugger is active!
+2024-07-22 15:53:04,568:INFO: * Debugger PIN: 428-426-366
+2024-07-22 15:53:08,232:INFO: * Detected change in 'C:\\Python311\\Lib\\site-packages\\flask\\app.py', reloading
+2024-07-22 15:53:08,252:INFO: * Detected change in 'C:\\Python311\\Lib\\site-packages\\flask\\sessions.py', reloading
+2024-07-22 15:53:08,258:INFO:127.0.0.1 - - [22/Jul/2024 15:53:08] "[35m[1mGET /profile HTTP/1.1[0m" 500 -
+2024-07-22 15:53:08,381:INFO:127.0.0.1 - - [22/Jul/2024 15:53:08] "GET /profile?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-07-22 15:53:08,485:INFO:127.0.0.1 - - [22/Jul/2024 15:53:08] "GET /profile?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-07-22 15:53:08,928:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 15:53:11,535:WARNING: * Debugger is active!
+2024-07-22 15:53:11,543:INFO: * Debugger PIN: 428-426-366
+2024-07-22 15:53:11,634:INFO:127.0.0.1 - - [22/Jul/2024 15:53:11] "GET /profile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-07-22 15:53:11,643:INFO:127.0.0.1 - - [22/Jul/2024 15:53:11] "[36mGET /profile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-07-22 16:05:17,961:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-22 16:05:17,962:INFO:[33mPress CTRL+C to quit[0m
+2024-07-22 16:05:17,998:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 16:05:20,797:WARNING: * Debugger is active!
+2024-07-22 16:05:20,806:INFO: * Debugger PIN: 428-426-366
+2024-07-22 16:05:21,849:INFO: * Detected change in 'C:\\Python311\\Lib\\site-packages\\flask\\templating.py', reloading
+2024-07-22 16:05:21,865:INFO: * Detected change in 'C:\\Python311\\Lib\\site-packages\\jinja2\\environment.py', reloading
+2024-07-22 16:05:21,888:INFO: * Detected change in 'C:\\Python311\\Lib\\site-packages\\werkzeug\\routing\\map.py', reloading
+2024-07-22 16:05:21,899:INFO:127.0.0.1 - - [22/Jul/2024 16:05:21] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-07-22 16:05:22,436:INFO:127.0.0.1 - - [22/Jul/2024 16:05:22] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-07-22 16:05:22,803:INFO:127.0.0.1 - - [22/Jul/2024 16:05:22] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-07-22 16:05:23,037:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 16:05:25,685:WARNING: * Debugger is active!
+2024-07-22 16:05:25,694:INFO: * Debugger PIN: 428-426-366
+2024-07-22 16:05:25,797:INFO:127.0.0.1 - - [22/Jul/2024 16:05:25] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-07-22 16:05:41,644:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:05:41,644:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:05:41,645:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:05:41,645:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:05:42,036:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 16:05:44,659:WARNING: * Debugger is active!
+2024-07-22 16:05:44,668:INFO: * Debugger PIN: 428-426-366
+2024-07-22 16:05:44,744:INFO:127.0.0.1 - - [22/Jul/2024 16:05:44] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-07-22 16:05:44,849:INFO:127.0.0.1 - - [22/Jul/2024 16:05:44] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-07-22 16:05:44,855:INFO:127.0.0.1 - - [22/Jul/2024 16:05:44] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-07-22 16:05:45,177:INFO:127.0.0.1 - - [22/Jul/2024 16:05:45] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-07-22 16:05:45,439:INFO:127.0.0.1 - - [22/Jul/2024 16:05:45] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-07-22 16:05:48,139:INFO:127.0.0.1 - - [22/Jul/2024 16:05:48] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2024-07-22 16:05:48,444:INFO:127.0.0.1 - - [22/Jul/2024 16:05:48] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-07-22 16:05:48,474:INFO:127.0.0.1 - - [22/Jul/2024 16:05:48] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-07-22 16:05:48,801:INFO:127.0.0.1 - - [22/Jul/2024 16:05:48] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-07-22 16:05:49,070:INFO:127.0.0.1 - - [22/Jul/2024 16:05:49] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-07-22 16:05:51,576:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:05:51,577:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:05:51,578:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:05:52,032:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 16:05:54,663:WARNING: * Debugger is active!
+2024-07-22 16:05:54,673:INFO: * Debugger PIN: 428-426-366
+2024-07-22 16:07:15,413:INFO:127.0.0.1 - - [22/Jul/2024 16:07:15] "GET / HTTP/1.1" 200 -
+2024-07-22 16:07:15,487:INFO:127.0.0.1 - - [22/Jul/2024 16:07:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:07:15,631:INFO:127.0.0.1 - - [22/Jul/2024 16:07:15] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:07:17,936:INFO:127.0.0.1 - - [22/Jul/2024 16:07:17] "GET / HTTP/1.1" 200 -
+2024-07-22 16:07:17,957:INFO:127.0.0.1 - - [22/Jul/2024 16:07:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:07:18,200:INFO:127.0.0.1 - - [22/Jul/2024 16:07:18] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:07:25,043:INFO:127.0.0.1 - - [22/Jul/2024 16:07:25] "GET /leaderboard HTTP/1.1" 200 -
+2024-07-22 16:07:25,067:INFO:127.0.0.1 - - [22/Jul/2024 16:07:25] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:07:25,267:INFO:127.0.0.1 - - [22/Jul/2024 16:07:25] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:07:33,182:INFO:127.0.0.1 - - [22/Jul/2024 16:07:33] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-22 16:07:33,212:INFO:127.0.0.1 - - [22/Jul/2024 16:07:33] "GET /login HTTP/1.1" 200 -
+2024-07-22 16:07:33,440:INFO:127.0.0.1 - - [22/Jul/2024 16:07:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:07:33,560:INFO:127.0.0.1 - - [22/Jul/2024 16:07:33] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:07:33,988:INFO:127.0.0.1 - - [22/Jul/2024 16:07:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-07-22 16:07:37,199:INFO:127.0.0.1 - - [22/Jul/2024 16:07:37] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-22 16:07:37,484:INFO:127.0.0.1 - - [22/Jul/2024 16:07:37] "GET / HTTP/1.1" 200 -
+2024-07-22 16:07:37,828:INFO:127.0.0.1 - - [22/Jul/2024 16:07:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:07:37,828:INFO:127.0.0.1 - - [22/Jul/2024 16:07:37] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:07:47,422:INFO:127.0.0.1 - - [22/Jul/2024 16:07:47] "[35m[1mGET /profile HTTP/1.1[0m" 500 -
+2024-07-22 16:07:47,717:INFO:127.0.0.1 - - [22/Jul/2024 16:07:47] "GET /profile?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2024-07-22 16:07:47,777:INFO:127.0.0.1 - - [22/Jul/2024 16:07:47] "GET /profile?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2024-07-22 16:07:48,134:INFO:127.0.0.1 - - [22/Jul/2024 16:07:48] "GET /profile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2024-07-22 16:07:48,398:INFO:127.0.0.1 - - [22/Jul/2024 16:07:48] "[36mGET /profile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-07-22 16:07:52,020:INFO:127.0.0.1 - - [22/Jul/2024 16:07:52] "[35m[1mGET /profile HTTP/1.1[0m" 500 -
+2024-07-22 16:07:52,323:INFO:127.0.0.1 - - [22/Jul/2024 16:07:52] "[36mGET /profile?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2024-07-22 16:07:52,368:INFO:127.0.0.1 - - [22/Jul/2024 16:07:52] "[36mGET /profile?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2024-07-22 16:07:52,697:INFO:127.0.0.1 - - [22/Jul/2024 16:07:52] "[36mGET /profile?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2024-07-22 16:07:56,548:INFO:127.0.0.1 - - [22/Jul/2024 16:07:56] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-07-22 16:07:56,856:INFO:127.0.0.1 - - [22/Jul/2024 16:07:56] "GET /login HTTP/1.1" 200 -
+2024-07-22 16:07:57,202:INFO:127.0.0.1 - - [22/Jul/2024 16:07:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:07:57,203:INFO:127.0.0.1 - - [22/Jul/2024 16:07:57] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:08:00,972:INFO:127.0.0.1 - - [22/Jul/2024 16:08:00] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-22 16:08:01,302:INFO:127.0.0.1 - - [22/Jul/2024 16:08:01] "GET / HTTP/1.1" 200 -
+2024-07-22 16:08:01,662:INFO:127.0.0.1 - - [22/Jul/2024 16:08:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:08:01,663:INFO:127.0.0.1 - - [22/Jul/2024 16:08:01] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:08:29,950:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:08:29,953:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:08:29,953:INFO: * Detected change in 'C:\\Users\\ravik\\Downloads\\New folder\\app.py', reloading
+2024-07-22 16:08:30,660:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 16:08:33,354:WARNING: * Debugger is active!
+2024-07-22 16:08:33,363:INFO: * Debugger PIN: 428-426-366
+2024-07-22 16:15:01,207:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-22 16:15:01,207:INFO:[33mPress CTRL+C to quit[0m
+2024-07-22 16:15:01,229:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 16:15:04,081:WARNING: * Debugger is active!
+2024-07-22 16:15:04,089:INFO: * Debugger PIN: 428-426-366
+2024-07-22 16:15:04,166:INFO:127.0.0.1 - - [22/Jul/2024 16:15:04] "GET / HTTP/1.1" 200 -
+2024-07-22 16:15:04,261:INFO:127.0.0.1 - - [22/Jul/2024 16:15:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:04,580:INFO:127.0.0.1 - - [22/Jul/2024 16:15:04] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:07,591:INFO:127.0.0.1 - - [22/Jul/2024 16:15:07] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-07-22 16:15:07,906:INFO:127.0.0.1 - - [22/Jul/2024 16:15:07] "GET /login HTTP/1.1" 200 -
+2024-07-22 16:15:07,927:INFO:127.0.0.1 - - [22/Jul/2024 16:15:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:08,169:INFO:127.0.0.1 - - [22/Jul/2024 16:15:08] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:11,252:INFO:127.0.0.1 - - [22/Jul/2024 16:15:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-22 16:15:11,258:INFO:127.0.0.1 - - [22/Jul/2024 16:15:11] "GET / HTTP/1.1" 200 -
+2024-07-22 16:15:11,488:INFO:127.0.0.1 - - [22/Jul/2024 16:15:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:11,597:INFO:127.0.0.1 - - [22/Jul/2024 16:15:11] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:13,883:INFO:127.0.0.1 - - [22/Jul/2024 16:15:13] "GET /history HTTP/1.1" 200 -
+2024-07-22 16:15:13,948:INFO:127.0.0.1 - - [22/Jul/2024 16:15:13] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:14,118:INFO:127.0.0.1 - - [22/Jul/2024 16:15:14] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:16,114:INFO:127.0.0.1 - - [22/Jul/2024 16:15:16] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-07-22 16:15:16,413:INFO:127.0.0.1 - - [22/Jul/2024 16:15:16] "GET /history HTTP/1.1" 200 -
+2024-07-22 16:15:16,753:INFO:127.0.0.1 - - [22/Jul/2024 16:15:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:17,005:INFO:127.0.0.1 - - [22/Jul/2024 16:15:17] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:18,009:INFO:127.0.0.1 - - [22/Jul/2024 16:15:18] "GET / HTTP/1.1" 200 -
+2024-07-22 16:15:18,323:INFO:127.0.0.1 - - [22/Jul/2024 16:15:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:18,352:INFO:127.0.0.1 - - [22/Jul/2024 16:15:18] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:28,787:INFO:Translated from en to en: my name is anbu -> my name is anbu
+2024-07-22 16:15:28,788:INFO:127.0.0.1 - - [22/Jul/2024 16:15:28] "POST / HTTP/1.1" 200 -
+2024-07-22 16:15:28,806:INFO:127.0.0.1 - - [22/Jul/2024 16:15:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:28,814:INFO:127.0.0.1 - - [22/Jul/2024 16:15:28] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:34,700:INFO:127.0.0.1 - - [22/Jul/2024 16:15:34] "[32mPOST /add_favorite HTTP/1.1[0m" 302 -
+2024-07-22 16:15:34,706:INFO:127.0.0.1 - - [22/Jul/2024 16:15:34] "GET / HTTP/1.1" 200 -
+2024-07-22 16:15:34,951:INFO:127.0.0.1 - - [22/Jul/2024 16:15:34] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:35,265:INFO:127.0.0.1 - - [22/Jul/2024 16:15:35] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:37,070:INFO:127.0.0.1 - - [22/Jul/2024 16:15:37] "GET /favorites HTTP/1.1" 200 -
+2024-07-22 16:15:37,350:INFO:127.0.0.1 - - [22/Jul/2024 16:15:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:37,410:INFO:127.0.0.1 - - [22/Jul/2024 16:15:37] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:40,414:INFO:127.0.0.1 - - [22/Jul/2024 16:15:40] "GET / HTTP/1.1" 200 -
+2024-07-22 16:15:40,509:INFO:127.0.0.1 - - [22/Jul/2024 16:15:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:40,663:INFO:127.0.0.1 - - [22/Jul/2024 16:15:40] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:42,534:INFO:127.0.0.1 - - [22/Jul/2024 16:15:42] "GET /favorites HTTP/1.1" 200 -
+2024-07-22 16:15:42,846:INFO:127.0.0.1 - - [22/Jul/2024 16:15:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:42,863:INFO:127.0.0.1 - - [22/Jul/2024 16:15:42] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:44,785:INFO:127.0.0.1 - - [22/Jul/2024 16:15:44] "[32mGET /clear_favorites HTTP/1.1[0m" 302 -
+2024-07-22 16:15:44,887:INFO:127.0.0.1 - - [22/Jul/2024 16:15:44] "GET /favorites HTTP/1.1" 200 -
+2024-07-22 16:15:45,043:INFO:127.0.0.1 - - [22/Jul/2024 16:15:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:45,213:INFO:127.0.0.1 - - [22/Jul/2024 16:15:45] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:15:47,417:INFO:127.0.0.1 - - [22/Jul/2024 16:15:47] "GET / HTTP/1.1" 200 -
+2024-07-22 16:15:47,722:INFO:127.0.0.1 - - [22/Jul/2024 16:15:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 16:15:47,753:INFO:127.0.0.1 - - [22/Jul/2024 16:15:47] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 16:16:11,804:INFO:127.0.0.1 - - [22/Jul/2024 16:16:11] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 22:45:06,766:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-22 22:45:06,766:INFO:[33mPress CTRL+C to quit[0m
+2024-07-22 22:45:06,784:INFO: * Restarting with watchdog (windowsapi)
+2024-07-22 22:45:09,002:WARNING: * Debugger is active!
+2024-07-22 22:45:09,009:INFO: * Debugger PIN: 428-426-366
+2024-07-22 22:45:17,022:INFO:127.0.0.1 - - [22/Jul/2024 22:45:17] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-22 22:45:17,315:INFO:127.0.0.1 - - [22/Jul/2024 22:45:17] "GET /login HTTP/1.1" 200 -
+2024-07-22 22:45:17,436:INFO:127.0.0.1 - - [22/Jul/2024 22:45:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-22 22:45:17,675:INFO:127.0.0.1 - - [22/Jul/2024 22:45:17] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-22 22:45:18,392:INFO:127.0.0.1 - - [22/Jul/2024 22:45:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
