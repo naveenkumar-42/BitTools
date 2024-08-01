@@ -732,3 +732,87 @@
 2024-07-23 00:04:53,911:INFO:127.0.0.1 - - [23/Jul/2024 00:04:53] "GET / HTTP/1.1" 200 -
 2024-07-23 00:04:54,252:INFO:127.0.0.1 - - [23/Jul/2024 00:04:54] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 2024-07-23 00:04:54,252:INFO:127.0.0.1 - - [23/Jul/2024 00:04:54] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:41:26,184:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-07-23 13:41:26,185:INFO:[33mPress CTRL+C to quit[0m
+2024-07-23 13:41:26,207:INFO: * Restarting with watchdog (windowsapi)
+2024-07-23 13:41:29,161:WARNING: * Debugger is active!
+2024-07-23 13:41:29,174:INFO: * Debugger PIN: 428-426-366
+2024-07-23 13:41:32,811:INFO:127.0.0.1 - - [23/Jul/2024 13:41:32] "[32mGET / HTTP/1.1[0m" 302 -
+2024-07-23 13:41:33,095:INFO:127.0.0.1 - - [23/Jul/2024 13:41:33] "GET /login HTTP/1.1" 200 -
+2024-07-23 13:41:33,217:INFO:127.0.0.1 - - [23/Jul/2024 13:41:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:41:33,460:INFO:127.0.0.1 - - [23/Jul/2024 13:41:33] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:41:33,873:INFO:127.0.0.1 - - [23/Jul/2024 13:41:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-07-23 13:41:36,306:INFO:127.0.0.1 - - [23/Jul/2024 13:41:36] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-07-23 13:41:36,635:INFO:127.0.0.1 - - [23/Jul/2024 13:41:36] "GET / HTTP/1.1" 200 -
+2024-07-23 13:41:36,892:INFO:127.0.0.1 - - [23/Jul/2024 13:41:36] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:41:36,974:INFO:127.0.0.1 - - [23/Jul/2024 13:41:36] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:41:41,711:INFO:127.0.0.1 - - [23/Jul/2024 13:41:41] "GET /feedback HTTP/1.1" 200 -
+2024-07-23 13:41:42,049:INFO:127.0.0.1 - - [23/Jul/2024 13:41:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:41:42,056:INFO:127.0.0.1 - - [23/Jul/2024 13:41:42] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:41:55,961:INFO:127.0.0.1 - - [23/Jul/2024 13:41:55] "[32mPOST /feedback HTTP/1.1[0m" 302 -
+2024-07-23 13:41:56,286:INFO:127.0.0.1 - - [23/Jul/2024 13:41:56] "GET / HTTP/1.1" 200 -
+2024-07-23 13:41:56,541:INFO:127.0.0.1 - - [23/Jul/2024 13:41:56] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:41:56,631:INFO:127.0.0.1 - - [23/Jul/2024 13:41:56] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:42:07,461:INFO:127.0.0.1 - - [23/Jul/2024 13:42:07] "GET /history HTTP/1.1" 200 -
+2024-07-23 13:42:07,803:INFO:127.0.0.1 - - [23/Jul/2024 13:42:07] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:42:07,804:INFO:127.0.0.1 - - [23/Jul/2024 13:42:07] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:42:12,109:INFO:127.0.0.1 - - [23/Jul/2024 13:42:12] "GET / HTTP/1.1" 200 -
+2024-07-23 13:42:12,447:INFO:127.0.0.1 - - [23/Jul/2024 13:42:12] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:42:12,710:INFO:127.0.0.1 - - [23/Jul/2024 13:42:12] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:42:17,724:INFO:127.0.0.1 - - [23/Jul/2024 13:42:17] "GET /favorites HTTP/1.1" 200 -
+2024-07-23 13:42:18,057:INFO:127.0.0.1 - - [23/Jul/2024 13:42:18] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:42:18,058:INFO:127.0.0.1 - - [23/Jul/2024 13:42:18] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:42:20,252:INFO:127.0.0.1 - - [23/Jul/2024 13:42:20] "GET / HTTP/1.1" 200 -
+2024-07-23 13:42:20,581:INFO:127.0.0.1 - - [23/Jul/2024 13:42:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:42:20,582:INFO:127.0.0.1 - - [23/Jul/2024 13:42:20] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-07-23 13:42:24,598:INFO:127.0.0.1 - - [23/Jul/2024 13:42:24] "GET /view_feedback HTTP/1.1" 200 -
+2024-07-23 13:42:24,927:INFO:127.0.0.1 - - [23/Jul/2024 13:42:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-07-23 13:42:24,931:INFO:127.0.0.1 - - [23/Jul/2024 13:42:24] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:43:54,312:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-01 23:43:54,312:INFO:[33mPress CTRL+C to quit[0m
+2024-08-01 23:43:54,328:INFO: * Restarting with watchdog (windowsapi)
+2024-08-01 23:43:55,817:WARNING: * Debugger is active!
+2024-08-01 23:43:55,821:INFO: * Debugger PIN: 549-556-140
+2024-08-01 23:44:13,656:INFO:127.0.0.1 - - [01/Aug/2024 23:44:13] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-01 23:44:13,934:INFO:127.0.0.1 - - [01/Aug/2024 23:44:13] "GET /login HTTP/1.1" 200 -
+2024-08-01 23:44:14,013:INFO:127.0.0.1 - - [01/Aug/2024 23:44:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:44:14,284:INFO:127.0.0.1 - - [01/Aug/2024 23:44:14] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:44:14,650:INFO:127.0.0.1 - - [01/Aug/2024 23:44:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-08-01 23:44:17,039:INFO:127.0.0.1 - - [01/Aug/2024 23:44:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+2024-08-01 23:44:17,385:INFO:127.0.0.1 - - [01/Aug/2024 23:44:17] "GET / HTTP/1.1" 200 -
+2024-08-01 23:44:17,609:INFO:127.0.0.1 - - [01/Aug/2024 23:44:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:44:17,719:INFO:127.0.0.1 - - [01/Aug/2024 23:44:17] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:44:38,859:INFO:Translated from en to ta: tamil is my language  -> \u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0b8e\u0ba9\u0bcd \u0bae\u0bca\u0bb4\u0bbf
+2024-08-01 23:44:38,861:INFO:127.0.0.1 - - [01/Aug/2024 23:44:38] "POST / HTTP/1.1" 200 -
+2024-08-01 23:44:39,186:INFO:127.0.0.1 - - [01/Aug/2024 23:44:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:44:39,453:INFO:127.0.0.1 - - [01/Aug/2024 23:44:39] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:44:47,249:INFO:127.0.0.1 - - [01/Aug/2024 23:44:47] "GET /history HTTP/1.1" 200 -
+2024-08-01 23:44:47,579:INFO:127.0.0.1 - - [01/Aug/2024 23:44:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:44:47,830:INFO:127.0.0.1 - - [01/Aug/2024 23:44:47] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:44:49,489:INFO:127.0.0.1 - - [01/Aug/2024 23:44:49] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-08-01 23:44:49,809:INFO:127.0.0.1 - - [01/Aug/2024 23:44:49] "GET /history HTTP/1.1" 200 -
+2024-08-01 23:44:50,069:INFO:127.0.0.1 - - [01/Aug/2024 23:44:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:44:50,130:INFO:127.0.0.1 - - [01/Aug/2024 23:44:50] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:44:51,409:INFO:127.0.0.1 - - [01/Aug/2024 23:44:51] "GET / HTTP/1.1" 200 -
+2024-08-01 23:44:51,746:INFO:127.0.0.1 - - [01/Aug/2024 23:44:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:44:51,746:INFO:127.0.0.1 - - [01/Aug/2024 23:44:51] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:45:14,859:INFO:Translated from en to ru: tamil is my language and my life -> \u0422\u0430\u043c\u0438\u043b\u044c - \u043c\u043e\u0439 \u044f\u0437\u044b\u043a \u0438 \u043c\u043e\u044f \u0436\u0438\u0437\u043d\u044c
+2024-08-01 23:45:14,859:INFO:127.0.0.1 - - [01/Aug/2024 23:45:14] "POST / HTTP/1.1" 200 -
+2024-08-01 23:45:15,192:INFO:127.0.0.1 - - [01/Aug/2024 23:45:15] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:45:15,457:INFO:127.0.0.1 - - [01/Aug/2024 23:45:15] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:45:41,125:INFO:127.0.0.1 - - [01/Aug/2024 23:45:41] "GET /history HTTP/1.1" 200 -
+2024-08-01 23:45:41,457:INFO:127.0.0.1 - - [01/Aug/2024 23:45:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:45:41,723:INFO:127.0.0.1 - - [01/Aug/2024 23:45:41] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:45:43,779:INFO:127.0.0.1 - - [01/Aug/2024 23:45:43] "[32mGET /clear_history HTTP/1.1[0m" 302 -
+2024-08-01 23:45:44,091:INFO:127.0.0.1 - - [01/Aug/2024 23:45:44] "GET /history HTTP/1.1" 200 -
+2024-08-01 23:45:44,353:INFO:127.0.0.1 - - [01/Aug/2024 23:45:44] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:45:44,414:INFO:127.0.0.1 - - [01/Aug/2024 23:45:44] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:45:45,530:INFO:127.0.0.1 - - [01/Aug/2024 23:45:45] "GET / HTTP/1.1" 200 -
+2024-08-01 23:45:45,858:INFO:127.0.0.1 - - [01/Aug/2024 23:45:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:45:45,858:INFO:127.0.0.1 - - [01/Aug/2024 23:45:45] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-01 23:45:57,751:INFO:Translated from ru to ta: \u0422\u0430\u043c\u0438\u043b\u044c - \u043c\u043e\u0439 \u044f\u0437\u044b\u043a \u0438 \u043c\u043e\u044f \u0436\u0438\u0437\u043d\u044c -> \u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0b8e\u0ba9\u0bcd \u0bae\u0bca\u0bb4\u0bbf \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b8e\u0ba9\u0bcd \u0bb5\u0bbe\u0bb4\u0bcd\u0b95\u0bcd\u0b95\u0bc8
+2024-08-01 23:45:57,752:INFO:127.0.0.1 - - [01/Aug/2024 23:45:57] "POST / HTTP/1.1" 200 -
+2024-08-01 23:45:58,086:INFO:127.0.0.1 - - [01/Aug/2024 23:45:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-01 23:45:58,335:INFO:127.0.0.1 - - [01/Aug/2024 23:45:58] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
