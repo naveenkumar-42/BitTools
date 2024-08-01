@@ -1,10 +1,10 @@
 
 
-# Translation Application Documentation
+# Multilingual Translation and Speech Synthesis Application
 
 ## Overview
 
-This web application provides a translation service that supports translating text between different languages using the Google Translate API. The application features speech-to-text, translation history, favorites management, and a leaderboard. It also supports voice selection for text-to-speech.
+This web application provides a comprehensive translation service that supports translating text between multiple languages using the Google Translate API. It includes features like speech-to-text, voice selection for text-to-speech, translation history, favorites management, and a leaderboard. The application is designed to facilitate easy interaction through its intuitive interface.
 
 ## Hosting
 
@@ -13,11 +13,11 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
 ## Features
 
 - **Text Translation**: Translate text between various languages.
-- **Speech-to-Text**: Convert spoken words into text using browser's speech recognition.
+- **Speech-to-Text**: Convert spoken words into text using the browser's speech recognition capabilities.
 - **Voice Selection**: Choose different voices for text-to-speech synthesis.
 - **Translation History**: View and download the history of translations.
-- **Favorites**: Save and manage favorite translations.
-- **Leaderboard**: View a leaderboard of users (dummy data in this version).
+- **Favorites**: Save and manage favorite translations for quick access.
+- **Leaderboard**: View a leaderboard of users with dummy data in this version.
 
 ## Setup and Installation
 
@@ -26,12 +26,11 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
    ```bash
    git clone https://github.com/SabarishCodeWizard/-Multilingual-Translation-and-Speech-Synthesis-Application-.git
    cd Breadcrumbs-Multilingual-Translation-and-Speech-Synthesis-Application-
-
    ```
 
 2. **Install Dependencies**
 
-   Make sure you have Python installed. Create a virtual environment and install the required packages:
+   Ensure Python is installed. Create a virtual environment and install the required packages:
 
    ```bash
    python -m venv venv
@@ -47,7 +46,7 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
    flask run
    ```
 
-   By default, the application will be available at `http://127.0.0.1:5000/`.
+   The application will be available at `http://127.0.0.1:5000/` by default.
 
 ## API Endpoints
 
@@ -55,7 +54,7 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
 
    - **URL**: `/`
    - **Methods**: `GET`, `POST`
-   - **Description**: Provides the main interface for text translation. Users can input text to be translated and select source and destination languages. Displays translation results and suggestions.
+   - **Description**: Main interface for text translation. Users can input text to be translated, select source and destination languages, and view translation results.
    - **Request Parameters**:
      - `text`: The text to be translated.
      - `src_lang`: The source language code.
@@ -104,7 +103,7 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
    - **Description**: Adds a translation to the favorites list.
    - **Request Parameters**:
      - `text`: The text to be added to favorites.
-     - `translation`: The translation text.
+     - `translation`: The translated text.
      - `src`: Source language code.
      - `dest`: Destination language code.
    - **Response**: Redirects to the index page.
@@ -123,7 +122,7 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
    - **Description**: Allows users to log in.
    - **Request Parameters**:
      - `username`: The username for login.
-   - **Response**: Redirects to the index page upon successful login. Renders `login.html` for login form.
+   - **Response**: Redirects to the index page upon successful login. Renders `login.html` for the login form.
 
 ### 10. **Logout**
 
@@ -151,10 +150,48 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
 
 - **Description**: Copies the translated text to the clipboard.
 
+## Language Selection
+
+### Source Language Options
+
+- **Detect Language**: `auto`
+- **Languages**:
+  - English (`en`)
+  - Tamil (`ta`)
+  - Spanish (`es`)
+  - French (`fr`)
+  - German (`de`)
+  - Chinese (Simplified) (`zh-cn`)
+  - Hindi (`hi`)
+  - Japanese (`ja`)
+  - Russian (`ru`)
+  - Korean (`ko`)
+  - Arabic (`ar`)
+  - Italian (`it`)
+  - Portuguese (`pt`)
+  - Bengali (`bn`)
+
+### Destination Language Options
+
+- **Languages**:
+  - English (`en`)
+  - Tamil (`ta`)
+  - Spanish (`es`)
+  - French (`fr`)
+  - German (`de`)
+  - Chinese (Simplified) (`zh-cn`)
+  - Hindi (`hi`)
+  - Japanese (`ja`)
+  - Russian (`ru`)
+  - Korean (`ko`)
+  - Arabic (`ar`)
+  - Italian (`it`)
+  - Portuguese (`pt`)
+  - Bengali (`bn`)
+
 ## Troubleshooting
 
-- **Voice Selection Issues**: Ensure that the `voiceSelect` element is present in the HTML and is correctly populated.
+- **Voice Selection Issues**: Ensure that the `voiceSelect` element is present in the HTML and correctly populated.
 - **JavaScript Errors**: Check the console for specific syntax errors and ensure proper script placement.
 - **API Errors**: If encountering issues with translation or speech synthesis, verify network connectivity and API limits.
-
 
