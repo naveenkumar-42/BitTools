@@ -48,6 +48,9 @@ The application is hosted at [https://tamiltranslator.pythonanywhere.com/](https
 
    The application will be available at `http://127.0.0.1:5000/` by default.
 
+   ![image](https://github.com/user-attachments/assets/5190325a-2e41-4d68-9541-2ba6d065fe3e)
+
+
 ## API Endpoints
 
 ### 1. **Home Page**
