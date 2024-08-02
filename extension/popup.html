@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translator Extension</title>
+  <script src="popup.js" defer></script>
+  <style>
+    :root {
+      --bg-color: #081b29;
+      --secondary-bg-color: #112e42;
+      --text-color: #E0FFFF;
+      --main-color: #00FA9A;
+      --blink-color: #FFFFE0; /* Light yellow color */
+    }
+
+    body {
+      width: 300px;
+      padding: 20px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glitter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/dark-fabric.png'); /* Replace with glitter texture */
+      z-index: 0;
+      opacity: 0.2;
+      animation: glitter 1.5s infinite;
+    }
+
+    @keyframes glitter {
+      0% { background-position: 0 0; }
+      100% { background-position: 100% 100%; }
+    }
+
+    .container {
+      position: relative;
+      border: solid 2px var(--text-color);
+      border-radius: 5px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .popup-container {
+      text-align: center;
+    }
+
+    .header {
+      background-color: var(--secondary-bg-color);
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+      animation: blink 1s infinite; /* Apply the blinking animation */
+    }
+
+    @keyframes blink {
+      0%, 100% { color: var(--text-color); }
+      50% { color: var(--blink-color); }
+    }
+
+    .main-content {
+      padding: 20px;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: #fff;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--main-color);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px;
+      background-color: var(--main-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 200%;
+      background: url('https://www.transparenttextures.com/patterns/diamond-pattern.png'); /* Replace with glitter texture */
+      background-size: 200px 200px;
+      opacity: 0.5;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.5s;
+    }
+
+    button:hover::before {
+      opacity: 1;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: var(--secondary-bg-color);
+      border: 1px solid var(--text-color);
+      border-radius: 5px;
+    }
+
+    .result h2 {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .result h1 {
+      text-decoration: solid;
+      color: var(--main-color);
+      font-size: 20px;
+      border: 2px solid var(--text-color);
+      padding: 5px;
+    }
+
+    .text-animate {
+      position: relative;
+    }
+
+    .text-animate h3 {
+      font-size: 25px;
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 0.7px var(--main-color);
+      background-image: linear-gradient(var(--main-color), var(--main-color));
+      background-clip: text;
+      animation: homeBgText 6s linear infinite;
+      animation-delay: 2s;
+    }
+
+    .text-animate h3::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      border-right: 2px solid var(--main-color);
+      z-index: -1;
+    }
+
+    @keyframes homeBgText {
+      0%, 10%, 100% {
+        background-position: -33rem 0;
+      }
+      65%, 85% {
+        background-position: 0 0;
+      }
+    }
+
+    .back_button {
+      font-size: 2.4rem;
+      color: var(--main-color);
+      transition: .5s;
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+      z-index: 1;
+      text-decoration: none;
+    }
+
+    .back_button::before {
+      content: '';
+      position: absolute;
+      margin-top: 2px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 85%;
+      border-radius: 5px;
+      background: var(--main-color);
+      transform: scaleX(0);
+      transition: .5s;
+      z-index: -1;
+    }
+
+    .back_button:hover {
+      color: var(--bg-color);
+    }
+
+    .back_button:hover::before {
+      transform: scaleX(1);
+    }
+
+    .modal-header {
+      font-size: 2rem;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+
+    .modal-content {
+      padding: 30px;
+      margin-top: 30px;
+      border-radius: 5px;
+    }
+
+    .number {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 15px;
+      padding: 5px;
+      border: 2px solid var(--bg-color);
+    }
+
+    .analyze-button {
+      background-color: var(--main-color);
+      color: var(--bg-color);
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: .5s;
+      width: 55%;
+      height: 50px;
+      margin-left: 55px;
+      margin-top: 50px;
+    }
+
+    .analyze-button:hover {
+      background-color: var(--bg-color);
+      color: var(--main-color);
+      border: 2px solid var(--main-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="glitter"></div>
+  <div class="container">
+    <div class="header">
+      <h1>Translator Extension</h1>
+    </div>
+    <div class="main-content">
+      <p>Welcome to the Translator Extension! This tool helps you translate text quickly and easily. Just click the button below to open the translator and start using it.</p>
+      <div class="popup-container">
+        <button id="openTranslator">Go to Translator</button>
+        <!-- Additional content here -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
