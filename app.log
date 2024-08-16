@@ -831,3 +831,14 @@
 2024-08-02 09:44:53,694:INFO:127.0.0.1 - - [02/Aug/2024 09:44:53] "GET / HTTP/1.1" 200 -
 2024-08-02 09:44:53,948:INFO:127.0.0.1 - - [02/Aug/2024 09:44:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 2024-08-02 09:44:54,039:INFO:127.0.0.1 - - [02/Aug/2024 09:44:54] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-02 16:41:42,586:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-08-02 16:41:42,586:INFO:[33mPress CTRL+C to quit[0m
+2024-08-02 16:41:42,619:INFO: * Restarting with watchdog (windowsapi)
+2024-08-02 16:41:45,376:WARNING: * Debugger is active!
+2024-08-02 16:41:45,385:INFO: * Debugger PIN: 103-232-642
+2024-08-02 16:41:46,871:INFO:127.0.0.1 - - [02/Aug/2024 16:41:46] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-02 16:41:47,166:INFO:127.0.0.1 - - [02/Aug/2024 16:41:47] "GET /login HTTP/1.1" 200 -
+2024-08-02 16:41:47,298:INFO:127.0.0.1 - - [02/Aug/2024 16:41:47] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-02 16:41:47,539:INFO:127.0.0.1 - - [02/Aug/2024 16:41:47] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-02 16:41:47,928:INFO:127.0.0.1 - - [02/Aug/2024 16:41:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
