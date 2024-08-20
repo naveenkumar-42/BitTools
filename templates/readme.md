@@ -1,6 +1,4 @@
-Here’s an example of a README file for your Playwright test case setup:
 
----
 
 # Tamil Translator Playwright Test
 
@@ -19,15 +17,10 @@ You can install Node.js from the official [Node.js website](https://nodejs.org/)
 
 1. Clone the repository:
 
-```bash
-git clone https://github.com/your-repo-url.git
-```
 
 2. Navigate into the project directory:
 
-```bash
-cd your-repo-directory
-```
+
 
 3. Install the required dependencies:
 
@@ -98,6 +91,3 @@ This opens up a browser and shows the test steps being executed, which is useful
 
 For more details on Playwright, refer to the [official Playwright documentation](https://playwright.dev/).
 
----
-
-This README provides all the necessary information for setting up, running, and understanding the tests in your Playwright project.
