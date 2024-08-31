@@ -100,7 +100,7 @@
     <div class="container">
         <h1>Login</h1>
         <form method="POST">
-            <input type="text" name="username" placeholder="Enter yourname" required>
+            <input type="text" name="username" placeholder="Enter your name" required>
             <button type="submit">Login</button>
             {% if error %}
                 <div class="message">{{ error }}</div>
@@ -109,8 +109,58 @@
             <p class="welcome-text" style="color: black; font-family: 'Arial', sans-serif; font-style: italic;">
                 Hello! I'm <span style="color: red;">தமிழ்</span>, your assistant for all your translation needs. Let's get started!
             </p>
-            
         </form>
+
+        <!-- Google Login Button -->
+        <button id="google-login-btn">Login with Google</button>
+        <div id="user-info"></div> <!-- For displaying errors or user info -->
     </div>
+
+    <script type="module">
+        // Import the functions you need from the SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBtl6lAdiZbJLFmus4tJCEgfG05MLKIkGs",
+            authDomain: "sabarish-2dd0f.firebaseapp.com",
+            projectId: "sabarish-2dd0f",
+            storageBucket: "sabarish-2dd0f.appspot.com",
+            messagingSenderId: "503704010379",
+            appId: "1:503704010379:web:e1db895ac83f6fae0d9e8e",
+            measurementId: "G-JN3C7GJ0T6"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        // Initialize Firebase Authentication and Google provider
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        // DOM Elements
+        const googleLoginBtn = document.getElementById('google-login-btn');
+        const userInfo = document.getElementById('user-info');
+
+        // Login with Google on button click
+        googleLoginBtn.addEventListener('click', () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // Get user info from the result
+                    const user = result.user;
+
+                    // Redirect to another page after login
+                    window.location.href = "dashboard.html"; // Change to your target page
+                })
+                .catch((error) => {
+                    // Handle Errors here
+                    console.error('Error during sign-in:', error);
+                    userInfo.innerHTML = `Error: ${error.message}`;
+                });
+        });
+    </script>
 </body>
 </html>
