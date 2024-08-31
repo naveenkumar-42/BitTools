@@ -158,7 +158,8 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
-
+    
+        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBtl6lAdiZbJLFmus4tJCEgfG05MLKIkGs",
             authDomain: "sabarish-2dd0f.firebaseapp.com",
@@ -168,26 +169,37 @@
             appId: "1:503704010379:web:e1db895ac83f6fae0d9e8e",
             measurementId: "G-JN3C7GJ0T6"
         };
-
+    
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
+    
+        // Initialize Firebase Authentication and Google provider
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
-
+    
+        // DOM Elements
         const googleLoginBtn = document.getElementById('google-login-btn');
         const userInfo = document.getElementById('user-info');
-
+    
+        // Login with Google on button click
         googleLoginBtn.addEventListener('click', () => {
             signInWithPopup(auth, provider)
                 .then((result) => {
+                    // Get user info from the result
                     const user = result.user;
-                    window.location.href = "{{ url_for('index') }}";
+    
+                    // Redirect to the index page after login using Flask's url_for
+                    window.location.href = "/"; // Assuming the index page is at the root
+                    // Flask will dynamically resolve the route
                 })
                 .catch((error) => {
+                    // Handle Errors here
                     console.error('Error during sign-in:', error);
                     userInfo.innerHTML = `Error: ${error.message}`;
                 });
         });
     </script>
+    
 </body>
 </html>

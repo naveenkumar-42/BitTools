@@ -1,33 +1,24 @@
-2024-08-31 22:25:07,238:INFO:127.0.0.1 - - [31/Aug/2024 22:25:07] "[33mGET /index.html HTTP/1.1[0m" 404 -
-2024-08-31 22:29:00,688:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2024-08-31 22:33:21,773:INFO:127.0.0.1 - - [31/Aug/2024 22:33:21] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-31 22:33:22,090:INFO:127.0.0.1 - - [31/Aug/2024 22:33:22] "GET /login HTTP/1.1" 200 -
+2024-08-31 22:33:22,349:INFO:127.0.0.1 - - [31/Aug/2024 22:33:22] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-31 22:33:22,422:INFO:127.0.0.1 - - [31/Aug/2024 22:33:22] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-31 22:33:56,858:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-08-31 22:33:56,860:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-08-31 22:33:57,701:INFO: * Restarting with watchdog (windowsapi)
+2024-08-31 22:34:37,405:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2024-08-31 22:29:00,688:INFO:[33mPress CTRL+C to quit[0m
-2024-08-31 22:29:00,697:INFO: * Restarting with watchdog (windowsapi)
-2024-08-31 22:29:02,290:WARNING: * Debugger is active!
-2024-08-31 22:29:02,295:INFO: * Debugger PIN: 120-134-140
-2024-08-31 22:29:27,731:INFO:127.0.0.1 - - [31/Aug/2024 22:29:27] "[32mGET / HTTP/1.1[0m" 302 -
-2024-08-31 22:29:28,034:INFO:127.0.0.1 - - [31/Aug/2024 22:29:28] "GET /login HTTP/1.1" 200 -
-2024-08-31 22:29:28,148:INFO:127.0.0.1 - - [31/Aug/2024 22:29:28] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
-2024-08-31 22:29:28,482:INFO:127.0.0.1 - - [31/Aug/2024 22:29:28] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
-2024-08-31 22:29:32,203:INFO:127.0.0.1 - - [31/Aug/2024 22:29:32] "GET /login HTTP/1.1" 200 -
-2024-08-31 22:29:32,547:INFO:127.0.0.1 - - [31/Aug/2024 22:29:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
-2024-08-31 22:29:32,810:INFO:127.0.0.1 - - [31/Aug/2024 22:29:32] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
-2024-08-31 22:29:37,028:INFO:127.0.0.1 - - [31/Aug/2024 22:29:37] "[32mPOST /login HTTP/1.1[0m" 302 -
-2024-08-31 22:29:37,376:INFO:127.0.0.1 - - [31/Aug/2024 22:29:37] "GET / HTTP/1.1" 200 -
-2024-08-31 22:29:37,601:INFO:127.0.0.1 - - [31/Aug/2024 22:29:37] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
-2024-08-31 22:29:37,726:INFO:127.0.0.1 - - [31/Aug/2024 22:29:37] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
-2024-08-31 22:30:20,116:INFO:127.0.0.1 - - [31/Aug/2024 22:30:20] "GET / HTTP/1.1" 200 -
-2024-08-31 22:30:20,487:INFO:127.0.0.1 - - [31/Aug/2024 22:30:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
-2024-08-31 22:30:20,748:INFO:127.0.0.1 - - [31/Aug/2024 22:30:20] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
-2024-08-31 22:30:25,527:INFO:127.0.0.1 - - [31/Aug/2024 22:30:25] "[32mGET /logout HTTP/1.1[0m" 302 -
-2024-08-31 22:30:25,844:INFO:127.0.0.1 - - [31/Aug/2024 22:30:25] "GET /login HTTP/1.1" 200 -
-2024-08-31 22:30:26,106:INFO:127.0.0.1 - - [31/Aug/2024 22:30:26] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
-2024-08-31 22:30:26,188:INFO:127.0.0.1 - - [31/Aug/2024 22:30:26] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
-2024-08-31 22:30:33,155:INFO:127.0.0.1 - - [31/Aug/2024 22:30:33] "[32mGET / HTTP/1.1[0m" 302 -
-2024-08-31 22:30:33,478:INFO:127.0.0.1 - - [31/Aug/2024 22:30:33] "GET /login HTTP/1.1" 200 -
-2024-08-31 22:30:33,726:INFO:127.0.0.1 - - [31/Aug/2024 22:30:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
-2024-08-31 22:30:33,812:INFO:127.0.0.1 - - [31/Aug/2024 22:30:33] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
-2024-08-31 22:30:41,673:INFO:127.0.0.1 - - [31/Aug/2024 22:30:41] "[32mGET / HTTP/1.1[0m" 302 -
-2024-08-31 22:30:42,002:INFO:127.0.0.1 - - [31/Aug/2024 22:30:42] "GET /login HTTP/1.1" 200 -
-2024-08-31 22:30:42,265:INFO:127.0.0.1 - - [31/Aug/2024 22:30:42] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
-2024-08-31 22:30:42,337:INFO:127.0.0.1 - - [31/Aug/2024 22:30:42] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-31 22:34:37,405:INFO:[33mPress CTRL+C to quit[0m
+2024-08-31 22:34:37,427:INFO: * Restarting with watchdog (windowsapi)
+2024-08-31 22:34:39,737:WARNING: * Debugger is active!
+2024-08-31 22:34:39,743:INFO: * Debugger PIN: 120-134-140
+2024-08-31 22:34:40,468:INFO:127.0.0.1 - - [31/Aug/2024 22:34:40] "GET /login HTTP/1.1" 200 -
+2024-08-31 22:34:40,776:INFO:127.0.0.1 - - [31/Aug/2024 22:34:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-31 22:34:40,804:INFO:127.0.0.1 - - [31/Aug/2024 22:34:40] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-31 22:34:58,188:INFO:127.0.0.1 - - [31/Aug/2024 22:34:58] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-31 22:34:58,517:INFO:127.0.0.1 - - [31/Aug/2024 22:34:58] "GET /login HTTP/1.1" 200 -
+2024-08-31 22:34:58,757:INFO:127.0.0.1 - - [31/Aug/2024 22:34:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-31 22:34:58,856:INFO:127.0.0.1 - - [31/Aug/2024 22:34:58] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-08-31 22:37:39,712:INFO:127.0.0.1 - - [31/Aug/2024 22:37:39] "[32mGET / HTTP/1.1[0m" 302 -
+2024-08-31 22:37:39,995:INFO:127.0.0.1 - - [31/Aug/2024 22:37:39] "GET /login HTTP/1.1" 200 -
+2024-08-31 22:37:40,028:INFO:127.0.0.1 - - [31/Aug/2024 22:37:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-08-31 22:37:40,344:INFO:127.0.0.1 - - [31/Aug/2024 22:37:40] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
