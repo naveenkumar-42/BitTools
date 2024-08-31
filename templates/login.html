@@ -18,6 +18,7 @@
             background-image: url("{{ url_for('static', filename='background.jpg') }}");
             background-size: cover;
             background-position: center;
+            animation: fadeInBackground 2s ease-in-out; /* Animation for the background */
         }
 
         .container {
@@ -28,18 +29,21 @@
             width: 100%;
             padding: 20px;
             text-align: center;
+            animation: zoomIn 1s ease-out; /* Zoom-in animation for the container */
         }
 
         h1 {
             color: #333333;
             margin-bottom: 20px;
             font-size: 24px;
+            animation: fadeIn 1.2s ease-in-out; /* Fading in effect for heading */
         }
 
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            animation: fadeInUp 1.5s ease-out; /* Fading up animation for the form */
         }
 
         input[type="text"] {
@@ -50,6 +54,7 @@
             width: 100%;
             box-sizing: border-box;
             transition: border-color 0.3s;
+            animation: fadeInUp 1.8s ease-out; /* Fade in input fields */
         }
 
         input[type="text"]:focus {
@@ -66,19 +71,26 @@
             padding: 15px;
             cursor: pointer;
             transition: background-color 0.3s;
+            animation: fadeInUp 2s ease-out; /* Fade in button */
         }
 
         button:hover {
             background-color: #0056b3;
+            transform: scale(1.05); /* Slight zoom on hover */
         }
 
         .message {
             margin-top: 10px;
             color: #ff0000;
             font-size: 14px;
+            animation: fadeIn 1.5s ease-in-out; /* Fade in error message */
         }
 
-        /* Keyframes for animation */
+        .welcome-text {
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        /* Keyframes for animations */
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
@@ -90,10 +102,35 @@
             }
         }
 
-        /* Applying animation to welcome-text */
-        .welcome-text {
-            animation: fadeInUp 1.5s ease-out;
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInBackground {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -117,12 +154,11 @@
     </div>
 
     <script type="module">
-        // Import the functions you need from the SDKs
+        // Firebase authentication setup script (same as before)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 
-        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBtl6lAdiZbJLFmus4tJCEgfG05MLKIkGs",
             authDomain: "sabarish-2dd0f.firebaseapp.com",
@@ -133,30 +169,21 @@
             measurementId: "G-JN3C7GJ0T6"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
-
-        // Initialize Firebase Authentication and Google provider
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
-        // DOM Elements
         const googleLoginBtn = document.getElementById('google-login-btn');
         const userInfo = document.getElementById('user-info');
 
-        // Login with Google on button click
         googleLoginBtn.addEventListener('click', () => {
             signInWithPopup(auth, provider)
                 .then((result) => {
-                    // Get user info from the result
                     const user = result.user;
-
-                    // Redirect to another page after login
                     window.location.href = "{{ url_for('index') }}";
                 })
                 .catch((error) => {
-                    // Handle Errors here
                     console.error('Error during sign-in:', error);
                     userInfo.innerHTML = `Error: ${error.message}`;
                 });
