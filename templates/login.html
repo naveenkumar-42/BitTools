@@ -182,23 +182,31 @@
         const googleLoginBtn = document.getElementById('google-login-btn');
         const userInfo = document.getElementById('user-info');
     
-        // Login with Google on button click
         googleLoginBtn.addEventListener('click', () => {
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    // Get user info from the result
-                    const user = result.user;
-    
-                    // Redirect to the index page after login using Flask's url_for
-                    window.location.href = "/"; // Assuming the index page is at the root
-                    // Flask will dynamically resolve the route
-                })
-                .catch((error) => {
-                    // Handle Errors here
-                    console.error('Error during sign-in:', error);
-                    userInfo.innerHTML = `Error: ${error.message}`;
-                });
+    signInWithPopup(auth, provider)
+        .then((result) => {
+            // Get user info from the result
+            const user = result.user;
+
+            // Trigger a page reload after successful login
+            fetch('/set_session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username: user.displayName })
+            })
+            .then(() => {
+                window.location.href = "/";  // Flask's index page
+            });
+        })
+        .catch((error) => {
+            // Handle Errors here
+            console.error('Error during sign-in:', error);
+            userInfo.innerHTML = `Error: ${error.message}`;
         });
+});
+
     </script>
     
 </body>

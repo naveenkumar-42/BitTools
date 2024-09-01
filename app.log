@@ -22,3 +22,80 @@
 2024-08-31 22:37:39,995:INFO:127.0.0.1 - - [31/Aug/2024 22:37:39] "GET /login HTTP/1.1" 200 -
 2024-08-31 22:37:40,028:INFO:127.0.0.1 - - [31/Aug/2024 22:37:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 2024-08-31 22:37:40,344:INFO:127.0.0.1 - - [31/Aug/2024 22:37:40] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:37:47,655:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-01 21:37:47,655:INFO:[33mPress CTRL+C to quit[0m
+2024-09-01 21:37:47,683:INFO: * Restarting with watchdog (windowsapi)
+2024-09-01 21:37:50,546:WARNING: * Debugger is active!
+2024-09-01 21:37:50,555:INFO: * Debugger PIN: 137-719-717
+2024-09-01 21:37:50,589:INFO:127.0.0.1 - - [01/Sep/2024 21:37:50] "[32mGET / HTTP/1.1[0m" 302 -
+2024-09-01 21:37:50,678:INFO:127.0.0.1 - - [01/Sep/2024 21:37:50] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:37:50,986:INFO:127.0.0.1 - - [01/Sep/2024 21:37:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:37:51,040:INFO:127.0.0.1 - - [01/Sep/2024 21:37:51] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:37:51,544:INFO:127.0.0.1 - - [01/Sep/2024 21:37:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-09-01 21:37:57,138:INFO:127.0.0.1 - - [01/Sep/2024 21:37:57] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:37:57,399:INFO:127.0.0.1 - - [01/Sep/2024 21:37:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:37:57,471:INFO:127.0.0.1 - - [01/Sep/2024 21:37:57] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:38:00,689:INFO:127.0.0.1 - - [01/Sep/2024 21:38:00] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:38:01,027:INFO:127.0.0.1 - - [01/Sep/2024 21:38:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:38:01,285:INFO:127.0.0.1 - - [01/Sep/2024 21:38:01] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:38:05,852:INFO:127.0.0.1 - - [01/Sep/2024 21:38:05] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:38:06,182:INFO:127.0.0.1 - - [01/Sep/2024 21:38:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:38:06,449:INFO:127.0.0.1 - - [01/Sep/2024 21:38:06] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:38:26,607:INFO:127.0.0.1 - - [01/Sep/2024 21:38:26] "[32mGET / HTTP/1.1[0m" 302 -
+2024-09-01 21:38:26,923:INFO:127.0.0.1 - - [01/Sep/2024 21:38:26] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:38:27,187:INFO:127.0.0.1 - - [01/Sep/2024 21:38:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:38:27,260:INFO:127.0.0.1 - - [01/Sep/2024 21:38:27] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:38:37,379:INFO:127.0.0.1 - - [01/Sep/2024 21:38:37] "[33mGET /index HTTP/1.1[0m" 404 -
+2024-09-01 21:38:45,209:INFO:127.0.0.1 - - [01/Sep/2024 21:38:45] "[33mGET /templates/index HTTP/1.1[0m" 404 -
+2024-09-01 21:45:57,819:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-09-01 21:45:57,820:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-09-01 21:45:57,820:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-09-01 21:45:58,827:INFO: * Restarting with watchdog (windowsapi)
+2024-09-01 21:46:01,722:WARNING: * Debugger is active!
+2024-09-01 21:46:01,733:INFO: * Debugger PIN: 137-719-717
+2024-09-01 21:46:02,123:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-09-01 21:46:02,123:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-09-01 21:46:02,125:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-09-01 21:46:03,066:INFO: * Restarting with watchdog (windowsapi)
+2024-09-01 21:46:05,826:WARNING: * Debugger is active!
+2024-09-01 21:46:05,837:INFO: * Debugger PIN: 137-719-717
+2024-09-01 21:46:41,198:INFO:127.0.0.1 - - [01/Sep/2024 21:46:41] "[32mGET / HTTP/1.1[0m" 302 -
+2024-09-01 21:46:41,501:INFO:127.0.0.1 - - [01/Sep/2024 21:46:41] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:46:41,620:INFO:127.0.0.1 - - [01/Sep/2024 21:46:41] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:46:41,961:INFO:127.0.0.1 - - [01/Sep/2024 21:46:41] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:46:52,340:INFO:127.0.0.1 - - [01/Sep/2024 21:46:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:47:16,957:INFO:127.0.0.1 - - [01/Sep/2024 21:47:16] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:47:17,217:INFO:127.0.0.1 - - [01/Sep/2024 21:47:17] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:47:17,295:INFO:127.0.0.1 - - [01/Sep/2024 21:47:17] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:47:59,783:INFO:127.0.0.1 - - [01/Sep/2024 21:47:59] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:48:00,122:INFO:127.0.0.1 - - [01/Sep/2024 21:48:00] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:00,385:INFO:127.0.0.1 - - [01/Sep/2024 21:48:00] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:48:08,046:INFO:127.0.0.1 - - [01/Sep/2024 21:48:08] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-09-01 21:48:08,425:INFO:127.0.0.1 - - [01/Sep/2024 21:48:08] "GET / HTTP/1.1" 200 -
+2024-09-01 21:48:08,664:INFO:127.0.0.1 - - [01/Sep/2024 21:48:08] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:08,772:INFO:127.0.0.1 - - [01/Sep/2024 21:48:08] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:48:16,012:INFO:127.0.0.1 - - [01/Sep/2024 21:48:16] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-09-01 21:48:16,335:INFO:127.0.0.1 - - [01/Sep/2024 21:48:16] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:48:16,584:INFO:127.0.0.1 - - [01/Sep/2024 21:48:16] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:16,685:INFO:127.0.0.1 - - [01/Sep/2024 21:48:16] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:48:24,163:INFO:127.0.0.1 - - [01/Sep/2024 21:48:24] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-09-01 21:48:24,533:INFO:127.0.0.1 - - [01/Sep/2024 21:48:24] "GET / HTTP/1.1" 200 -
+2024-09-01 21:48:24,798:INFO:127.0.0.1 - - [01/Sep/2024 21:48:24] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:24,890:INFO:127.0.0.1 - - [01/Sep/2024 21:48:24] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:48:26,822:INFO:127.0.0.1 - - [01/Sep/2024 21:48:26] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-09-01 21:48:27,140:INFO:127.0.0.1 - - [01/Sep/2024 21:48:27] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:48:27,382:INFO:127.0.0.1 - - [01/Sep/2024 21:48:27] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:27,484:INFO:127.0.0.1 - - [01/Sep/2024 21:48:27] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:48:39,081:INFO:127.0.0.1 - - [01/Sep/2024 21:48:39] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-09-01 21:48:39,455:INFO:127.0.0.1 - - [01/Sep/2024 21:48:39] "GET / HTTP/1.1" 200 -
+2024-09-01 21:48:39,719:INFO:127.0.0.1 - - [01/Sep/2024 21:48:39] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:39,811:INFO:127.0.0.1 - - [01/Sep/2024 21:48:39] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:48:42,831:INFO:127.0.0.1 - - [01/Sep/2024 21:48:42] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-09-01 21:48:43,147:INFO:127.0.0.1 - - [01/Sep/2024 21:48:43] "GET /login HTTP/1.1" 200 -
+2024-09-01 21:48:43,406:INFO:127.0.0.1 - - [01/Sep/2024 21:48:43] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:43,494:INFO:127.0.0.1 - - [01/Sep/2024 21:48:43] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:48:53,302:INFO:127.0.0.1 - - [01/Sep/2024 21:48:53] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-09-01 21:48:53,672:INFO:127.0.0.1 - - [01/Sep/2024 21:48:53] "GET / HTTP/1.1" 200 -
+2024-09-01 21:48:53,936:INFO:127.0.0.1 - - [01/Sep/2024 21:48:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:48:54,030:INFO:127.0.0.1 - - [01/Sep/2024 21:48:54] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -

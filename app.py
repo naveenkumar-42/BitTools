@@ -217,6 +217,12 @@ def toggle_dark_mode():
     return '', 204
 
 
+@app.route('/set_session', methods=['POST'])
+def set_session():
+    data = request.get_json()
+    session['username'] = data['username']
+    return '', 204  # No content response, as we don't need to return anything
+
 
 if __name__ == '__main__':
     with app.app_context():
