@@ -99,3 +99,15 @@
 2024-09-01 21:48:53,672:INFO:127.0.0.1 - - [01/Sep/2024 21:48:53] "GET / HTTP/1.1" 200 -
 2024-09-01 21:48:53,936:INFO:127.0.0.1 - - [01/Sep/2024 21:48:53] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 2024-09-01 21:48:54,030:INFO:127.0.0.1 - - [01/Sep/2024 21:48:54] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:56:03,551:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-01 21:56:03,552:INFO:[33mPress CTRL+C to quit[0m
+2024-09-01 21:56:03,566:INFO: * Restarting with watchdog (windowsapi)
+2024-09-01 21:56:06,000:WARNING: * Debugger is active!
+2024-09-01 21:56:06,008:INFO: * Debugger PIN: 137-719-717
+2024-09-01 21:56:52,176:INFO:127.0.0.1 - - [01/Sep/2024 21:56:52] "GET /feedback HTTP/1.1" 200 -
+2024-09-01 21:56:52,487:INFO:127.0.0.1 - - [01/Sep/2024 21:56:52] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:56:52,526:INFO:127.0.0.1 - - [01/Sep/2024 21:56:52] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-01 21:56:55,135:INFO:127.0.0.1 - - [01/Sep/2024 21:56:55] "GET /feedback HTTP/1.1" 200 -
+2024-09-01 21:56:55,468:INFO:127.0.0.1 - - [01/Sep/2024 21:56:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-01 21:56:55,473:INFO:127.0.0.1 - - [01/Sep/2024 21:56:55] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
