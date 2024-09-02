@@ -111,3 +111,27 @@
 2024-09-01 21:56:55,135:INFO:127.0.0.1 - - [01/Sep/2024 21:56:55] "GET /feedback HTTP/1.1" 200 -
 2024-09-01 21:56:55,468:INFO:127.0.0.1 - - [01/Sep/2024 21:56:55] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
 2024-09-01 21:56:55,473:INFO:127.0.0.1 - - [01/Sep/2024 21:56:55] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-02 20:03:38,063:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-09-02 20:03:38,064:INFO:[33mPress CTRL+C to quit[0m
+2024-09-02 20:03:38,083:INFO: * Restarting with watchdog (windowsapi)
+2024-09-02 20:03:40,902:WARNING: * Debugger is active!
+2024-09-02 20:03:40,914:INFO: * Debugger PIN: 126-614-499
+2024-09-02 20:04:40,562:INFO:127.0.0.1 - - [02/Sep/2024 20:04:40] "[32mGET / HTTP/1.1[0m" 302 -
+2024-09-02 20:04:40,830:INFO:127.0.0.1 - - [02/Sep/2024 20:04:40] "GET /login HTTP/1.1" 200 -
+2024-09-02 20:04:40,992:INFO:127.0.0.1 - - [02/Sep/2024 20:04:40] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-02 20:04:41,189:INFO:127.0.0.1 - - [02/Sep/2024 20:04:41] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-02 20:04:41,390:INFO:127.0.0.1 - - [02/Sep/2024 20:04:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-09-02 20:05:33,250:INFO:127.0.0.1 - - [02/Sep/2024 20:05:33] "GET /login HTTP/1.1" 200 -
+2024-09-02 20:05:33,480:INFO:127.0.0.1 - - [02/Sep/2024 20:05:33] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-02 20:05:33,583:INFO:127.0.0.1 - - [02/Sep/2024 20:05:33] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-02 20:06:50,898:INFO:127.0.0.1 - - [02/Sep/2024 20:06:50] "GET /login HTTP/1.1" 200 -
+2024-09-02 20:06:51,133:INFO:127.0.0.1 - - [02/Sep/2024 20:06:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-02 20:06:51,239:INFO:127.0.0.1 - - [02/Sep/2024 20:06:51] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-02 20:07:20,621:INFO:127.0.0.1 - - [02/Sep/2024 20:07:20] "GET /login HTTP/1.1" 200 -
+2024-09-02 20:07:20,975:INFO:127.0.0.1 - - [02/Sep/2024 20:07:20] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-02 20:07:21,213:INFO:127.0.0.1 - - [02/Sep/2024 20:07:21] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -
+2024-09-02 20:07:31,394:INFO:127.0.0.1 - - [02/Sep/2024 20:07:31] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-09-02 20:07:31,805:INFO:127.0.0.1 - - [02/Sep/2024 20:07:31] "GET / HTTP/1.1" 200 -
+2024-09-02 20:07:32,028:INFO:127.0.0.1 - - [02/Sep/2024 20:07:32] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-09-02 20:07:32,151:INFO:127.0.0.1 - - [02/Sep/2024 20:07:32] "[36mGET /static/background.jpg HTTP/1.1[0m" 304 -

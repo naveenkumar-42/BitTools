@@ -18,7 +18,7 @@
             background-image: url("{{ url_for('static', filename='background.jpg') }}");
             background-size: cover;
             background-position: center;
-            animation: fadeInBackground 2s ease-in-out; /* Animation for the background */
+            animation: fadeInBackground 2s ease-in-out;
         }
 
         .container {
@@ -29,21 +29,21 @@
             width: 100%;
             padding: 20px;
             text-align: center;
-            animation: zoomIn 1s ease-out; /* Zoom-in animation for the container */
+            animation: zoomIn 1s ease-out;
         }
 
         h1 {
             color: #333333;
             margin-bottom: 20px;
             font-size: 24px;
-            animation: fadeIn 1.2s ease-in-out; /* Fading in effect for heading */
+            animation: fadeIn 1.2s ease-in-out;
         }
 
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            animation: fadeInUp 1.5s ease-out; /* Fading up animation for the form */
+            animation: fadeInUp 1.5s ease-out;
         }
 
         input[type="text"] {
@@ -54,7 +54,7 @@
             width: 100%;
             box-sizing: border-box;
             transition: border-color 0.3s;
-            animation: fadeInUp 1.8s ease-out; /* Fade in input fields */
+            animation: fadeInUp 1.8s ease-out;
         }
 
         input[type="text"]:focus {
@@ -71,23 +71,49 @@
             padding: 15px;
             cursor: pointer;
             transition: background-color 0.3s;
-            animation: fadeInUp 2s ease-out; /* Fade in button */
+            animation: fadeInUp 2s ease-out;
         }
 
         button:hover {
             background-color: #0056b3;
-            transform: scale(1.05); /* Slight zoom on hover */
+            transform: scale(1.05);
         }
 
         .message {
             margin-top: 10px;
             color: #ff0000;
             font-size: 14px;
-            animation: fadeIn 1.5s ease-in-out; /* Fade in error message */
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         .welcome-text {
             animation: fadeInUp 1.5s ease-out;
+        }
+
+        /* Google Button Styling */
+        #google-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 4px;
+            color: #757575;
+            font-size: 16px;
+            padding: 12px;
+            cursor: pointer;
+            transition: box-shadow 0.3s, background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        #google-login-btn img {
+            height: 20px;
+            margin-right: 8px;
+        }
+
+        #google-login-btn:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f5f5f5;
         }
 
         /* Keyframes for animations */
@@ -149,17 +175,19 @@
         </form>
 
         <!-- Google Login Button -->
-        <button id="google-login-btn">Login with Google</button>
-        <div id="user-info"></div> <!-- For displaying errors or user info -->
+        <div id="google-login-btn">
+            <img src="https://www.google.com/imgres?q=google%20image&imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100044408950171&imgrefurl=https%3A%2F%2Fwww.facebook.com%2FGoogleIndia%2F&docid=_Qj6mz-Y48rawM&tbnid=xRberq3Fn2MoHM&vet=12ahUKEwj4hb_pvaSIAxXr2TgGHeoJLwsQM3oECBkQAA..i&w=2048&h=2048&hcb=2&ved=2ahUKEwj4hb_pvaSIAxXr2TgGHeoJLwsQM3oECBkQAA" alt="Google Logo">
+            <span>Login with Google</span>
+        </div>
+        <div id="user-info"></div>
     </div>
 
     <script type="module">
-        // Firebase authentication setup script (same as before)
+        // Firebase authentication setup script
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
     
-        // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBtl6lAdiZbJLFmus4tJCEgfG05MLKIkGs",
             authDomain: "sabarish-2dd0f.firebaseapp.com",
@@ -170,42 +198,35 @@
             measurementId: "G-JN3C7GJ0T6"
         };
     
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
     
-        // Initialize Firebase Authentication and Google provider
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
     
-        // DOM Elements
         const googleLoginBtn = document.getElementById('google-login-btn');
         const userInfo = document.getElementById('user-info');
     
         googleLoginBtn.addEventListener('click', () => {
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            // Get user info from the result
-            const user = result.user;
-
-            // Trigger a page reload after successful login
-            fetch('/set_session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username: user.displayName })
-            })
-            .then(() => {
-                window.location.href = "/";  // Flask's index page
-            });
-        })
-        .catch((error) => {
-            // Handle Errors here
-            console.error('Error during sign-in:', error);
-            userInfo.innerHTML = `Error: ${error.message}`;
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    fetch('/set_session', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ username: user.displayName })
+                    })
+                    .then(() => {
+                        window.location.href = "/";
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error during sign-in:', error);
+                    userInfo.innerHTML = `Error: ${error.message}`;
+                });
         });
-});
 
     </script>
     
