@@ -1,234 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url("{{ url_for('static', filename='background.jpg') }}");
-            background-size: cover;
-            background-position: center;
-            animation: fadeInBackground 2s ease-in-out;
-        }
-
-        .container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            width: 100%;
-            padding: 20px;
-            text-align: center;
-            animation: zoomIn 1s ease-out;
-        }
-
-        h1 {
-            color: #333333;
-            margin-bottom: 20px;
-            font-size: 24px;
-            animation: fadeIn 1.2s ease-in-out;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            animation: fadeInUp 1.5s ease-out;
-        }
-
-        input[type="text"] {
-            border: 1px solid #dddddd;
-            border-radius: 4px;
-            padding: 10px;
-            font-size: 16px;
-            width: 100%;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-            animation: fadeInUp 1.8s ease-out;
-        }
-
-        input[type="text"]:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        button {
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
-            color: #ffffff;
-            font-size: 16px;
-            padding: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            animation: fadeInUp 2s ease-out;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        .message {
-            margin-top: 10px;
-            color: #ff0000;
-            font-size: 14px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .welcome-text {
-            animation: fadeInUp 1.5s ease-out;
-        }
-
-        /* Google Button Styling */
-        #google-login-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            border-radius: 4px;
-            color: #757575;
-            font-size: 16px;
-            padding: 12px;
-            cursor: pointer;
-            transition: box-shadow 0.3s, background-color 0.3s;
-            margin-top: 20px;
-        }
-
-        #google-login-btn img {
-            height: 20px;
-            margin-right: 8px;
-        }
-
-        #google-login-btn:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #f5f5f5;
-        }
-
-        /* Keyframes for animations */
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes zoomIn {
-            0% {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInBackground {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-    </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Login</h1>
-        <form method="POST">
-            <input type="text" name="username" placeholder="Enter your name" required>
-            <button type="submit">Login</button>
-            {% if error %}
-                <div class="message">{{ error }}</div>
-            {% endif %}
-
-            <p class="welcome-text" style="color: black; font-family: 'Arial', sans-serif; font-style: italic;">
-                Hello! I'm <span style="color: red;">தமிழ்</span>, your assistant for all your translation needs. Let's get started!
-            </p>
-        </form>
-
-        <!-- Google Login Button -->
-        <div id="google-login-btn">
-            <img src="https://www.google.com/imgres?q=google%20image&imgurl=https%3A%2F%2Flookaside.fbsbx.com%2Flookaside%2Fcrawler%2Fmedia%2F%3Fmedia_id%3D100044408950171&imgrefurl=https%3A%2F%2Fwww.facebook.com%2FGoogleIndia%2F&docid=_Qj6mz-Y48rawM&tbnid=xRberq3Fn2MoHM&vet=12ahUKEwj4hb_pvaSIAxXr2TgGHeoJLwsQM3oECBkQAA..i&w=2048&h=2048&hcb=2&ved=2ahUKEwj4hb_pvaSIAxXr2TgGHeoJLwsQM3oECBkQAA" alt="Google Logo">
-            <span>Login with Google</span>
-        </div>
-        <div id="user-info"></div>
-    </div>
+    <h1>Login</h1>
+    <form id="login-form" method="POST">
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <button id="google-signin">Sign in with Google</button>
+    <button id="forgot-password">Forgot Password</button>
+    <p>Don't have an account? <a href="/register">Register</a></p>
 
     <script type="module">
-        // Firebase authentication setup script
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-analytics.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
-    
+        // Import necessary Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+
+        // Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyBtl6lAdiZbJLFmus4tJCEgfG05MLKIkGs",
-            authDomain: "sabarish-2dd0f.firebaseapp.com",
-            projectId: "sabarish-2dd0f",
-            storageBucket: "sabarish-2dd0f.appspot.com",
-            messagingSenderId: "503704010379",
-            appId: "1:503704010379:web:e1db895ac83f6fae0d9e8e",
-            measurementId: "G-JN3C7GJ0T6"
+            apiKey: "AIzaSyChW576jwvVZYQJ6Fy1NPthH5eBeTf3WLI",
+            authDomain: "translator-f9772.firebaseapp.com",
+            projectId: "translator-f9772",
+            storageBucket: "translator-f9772.firebasestorage.app",
+            messagingSenderId: "338629626503",
+            appId: "1:338629626503:web:c9a9f2767f112d1ec88622",
+            measurementId: "G-1H16RJE596"
         };
-    
+
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-    
         const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
-    
-        const googleLoginBtn = document.getElementById('google-login-btn');
-        const userInfo = document.getElementById('user-info');
-    
-        googleLoginBtn.addEventListener('click', () => {
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    const user = result.user;
-                    fetch('/set_session', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ username: user.displayName })
-                    })
-                    .then(() => {
-                        window.location.href = "/";
-                    });
-                })
-                .catch((error) => {
-                    console.error('Error during sign-in:', error);
-                    userInfo.innerHTML = `Error: ${error.message}`;
-                })
+
+        // Login with email/password
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const idToken = await userCredential.user.getIdToken();
+                await fetch('/set_session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, idToken })
+                });
+                window.location.href = '/';
+            } catch (error) {
+                alert(error.message);
+            }
         });
 
+        // Google Sign-In
+        document.getElementById('google-signin').addEventListener('click', async () => {
+            const provider = new GoogleAuthProvider();
+            try {
+                const userCredential = await signInWithPopup(auth, provider);
+                const idToken = await userCredential.user.getIdToken();
+                await fetch('/set_session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: userCredential.user.email, idToken })
+                });
+                window.location.href = '/';
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        // Password Reset
+        document.getElementById('forgot-password').addEventListener('click', async () => {
+            const email = prompt("Enter your email:");
+            if (email) {
+                try {
+                    await sendPasswordResetEmail(auth, email);
+                    alert('Password reset email sent.');
+                } catch (error) {
+                    alert(error.message);
+                }
+            }
+        });
     </script>
-    
 </body>
+
 </html>

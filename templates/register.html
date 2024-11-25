@@ -1,0 +1,72 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+
+    </head>
+
+    <body>
+        <h1>Register</h1>
+        <form id="register-form">
+            <input type="text" id="name" placeholder="Full Name" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="tel" id="phone" placeholder="Phone Number" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <input type="password" id="confirm-password" placeholder="Confirm Password" required />
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login</a></p>
+
+        <script type="module">
+            // Import the necessary Firebase functions
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+            import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+        
+            // Firebase configuration
+            const firebaseConfig = {
+                apiKey: "AIzaSyChW576jwvVZYQJ6Fy1NPthH5eBeTf3WLI",
+                authDomain: "translator-f9772.firebaseapp.com",
+                projectId: "translator-f9772",
+                storageBucket: "translator-f9772.firebasestorage.app",
+                messagingSenderId: "338629626503",
+                appId: "1:338629626503:web:c9a9f2767f112d1ec88622",
+                measurementId: "G-1H16RJE596"
+            };
+        
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const auth = getAuth(app);
+        
+            // Register form logic
+            document.getElementById('register-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+        
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match.');
+                    return;
+                }
+        
+                try {
+                    // Register the user
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    // Update the user's profile
+                    await updateProfile(userCredential.user, { displayName: name });
+                    alert('Registration successful! Please login.');
+                    window.location.href = '/login';
+                } catch (error) {
+                    alert(error.message);
+                }
+            });
+        </script>
+        
+    </body>
+
+    </html>

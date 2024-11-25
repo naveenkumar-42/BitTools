@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +38,6 @@
             from {
                 opacity: 0;
             }
-
             to {
                 opacity: 1;
             }
@@ -86,8 +84,7 @@
             margin-top: 10px;
         }
 
-        .result,
-        .suggestion {
+        .result, .suggestion {
             opacity: 0;
             animation: fadeIn 1s forwards;
         }
@@ -143,8 +140,7 @@
                 padding: 10px;
             }
 
-            .button,
-            select {
+            .button, select {
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -177,142 +173,22 @@
                 gap: 5px;
             }
 
-            .button,
-            select {
+            .button, select {
                 padding: 8px 15px;
-            }
-        }
-
-        /* Ad Popup Styles */
-        .ad-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.8);
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            width: 90%;
-            max-width: 400px;
-            padding: 20px;
-            text-align: center;
-            z-index: 1000;
-            opacity: 0;
-            animation: fadeInScale 0.5s forwards;
-        }
-
-        @keyframes fadeInScale {
-            to {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 1;
-            }
-        }
-
-        .ad-popup h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .ad-popup p {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .ad-popup a {
-            display: inline-block;
-            background: #ffcc00;
-            color: #333;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s, background-color 0.3s;
-        }
-
-        .ad-popup a:hover {
-            background: #e6b800;
-            transform: scale(1.05);
-        }
-
-        .ad-popup .close-btn {
-            background: none;
-            color: #fff;
-            font-size: 16px;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            margin-top: 20px;
-            border-radius: 5px;
-            border: 1px solid #fff;
-            transition: background-color 0.3s, color 0.3s;
-            background-color: red;
-        }
-
-        .ad-popup .close-btn:hover {
-            background-color: #c80606;
-            color: #fff;
-        }
-
-        /* Ad Overlay */
-        .ad-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 999;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 480px) {
-            .ad-popup {
-                width: 95%;
-                padding: 15px;
-            }
-
-            .ad-popup h3 {
-                font-size: 20px;
-            }
-
-            .ad-popup p {
-                font-size: 14px;
             }
         }
     </style>
 </head>
-
 <body>
-
-    <div class="ad-overlay" id="adOverlay"></div>
-    <div class="ad-popup" id="adPopup">
-        <h3>Welcome to Sabarish-Inc!</h3>
-        <p>Visit our company website for more services and exciting projects</p>
-        <a href="https://fix-it-one.vercel.app/" target="_blank">Explore Now</a>
-        <button class="close-btn" onclick="closeAd()">Close</button>
-    </div>
-
     <div class="container">
-
+        
         {% if session.username %}
-        <h1>Hi, {{ session.username }}!</h1>
-        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+            <h1 >Hi, {{ session.username }}!</h1>
+            <a href="{{ url_for('logout') }}" class="button">Logout</a>
         {% else %}
-        <a href="{{ url_for('login') }}" class="button">Login</a>
+            <a href="{{ url_for('login') }}" class="button">Login</a>
         {% endif %}
-        <h2>English to தமிழ் Translator <p
-                style="text-align: center; font-size: 18px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #ff003c; text-shadow: 0 0 10px #8cff00;">
-                <i>Sabarish-Inc 🚀</i></p>
-        </h2>
+        <h2>English to தமிழ் Translator <p style="text-align: center; font-size: 18px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #ff003c; text-shadow: 0 0 10px #8cff00;"><i>Sabarish-Inc 🚀</i></p></h2>
         <form method="POST">
             <textarea name="text" id="text" placeholder="Enter text to translate" required></textarea>
             <div class="form-group">
@@ -376,12 +252,9 @@
         <!-- Social Sharing Buttons -->
         <div class="social-sharing">
             <h2>Share Your Translation:</h2>
-            <a href="https://twitter.com/intent/tweet?text={{ translation }}" target="_blank"
-                class="social-button">Share on Twitter</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('index', _external=True) }}"
-                target="_blank" class="social-button">Share on Facebook</a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('index', _external=True) }}&title=Translation&summary={{ translation }}"
-                target="_blank" class="social-button">Share on LinkedIn</a>
+            <a href="https://twitter.com/intent/tweet?text={{ translation }}" target="_blank" class="social-button">Share on Twitter</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('index', _external=True) }}" target="_blank" class="social-button">Share on Facebook</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('index', _external=True) }}&title=Translation&summary={{ translation }}" target="_blank" class="social-button">Share on LinkedIn</a>
         </div>
         {% endif %}
 
@@ -396,17 +269,16 @@
         <div class="history">
             <h2>Translation History</h2>
             <p style="color: red;">
-                After translating the text, clear the history. If you try to translate again, it still shows the
-                previous text.
+                After translating the text, clear the history. If you try to translate again, it still shows the previous text.
             </p>
-
+            
             <ul>
                 {% for item in history %}
                 <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
                 {% endfor %}
             </ul>
         </div>
-        <!-- Navigation Dropdown -->
+         <!-- Navigation Dropdown -->
         <div class="navigation-dropdown">
             <select onchange="location = this.value;">
                 <option value="#">Navigation</option>
@@ -430,11 +302,11 @@
                 recognition.interimResults = false;
                 recognition.lang = "en-US";
                 recognition.start();
-                recognition.onresult = function (e) {
+                recognition.onresult = function(e) {
                     document.getElementById('text').value = e.results[0][0].transcript;
                     recognition.stop();
                 };
-                recognition.onerror = function (e) {
+                recognition.onerror = function(e) {
                     recognition.stop();
                 };
             }
@@ -467,34 +339,14 @@
 
         function copyText() {
             let translatedText = document.getElementById('translatedText').innerText;
-            navigator.clipboard.writeText(translatedText).then(function () {
+            navigator.clipboard.writeText(translatedText).then(function() {
                 alert('Translation copied to clipboard!');
-            }, function () {
+            }, function() {
                 alert('Failed to copy text.');
             });
         }
 
         document.addEventListener('DOMContentLoaded', populateVoiceList);
-
-        // JavaScript for Ad Popup
-        window.onload = function() {
-            const adPopup = document.getElementById('adPopup');
-            const adOverlay = document.getElementById('adOverlay');
-
-            // Show the popup after 3 seconds
-            setTimeout(() => {
-                adPopup.style.display = 'block';
-                adOverlay.style.display = 'block';
-            }, 3000);
-        };
-
-        function closeAd() {
-            const adPopup = document.getElementById('adPopup');
-            const adOverlay = document.getElementById('adOverlay');
-            adPopup.style.display = 'none';
-            adOverlay.style.display = 'none';
-        }
     </script>
 </body>
-
 </html>

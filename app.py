@@ -3,14 +3,19 @@ from googletrans import Translator
 import csv
 from io import StringIO
 from functools import wraps
-import numpy as np
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
 import logging
 from flask_sqlalchemy import SQLAlchemy
+import firebase_admin
+from firebase_admin import credentials, auth
+
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = 'adfasfasasdf'
+
+# Firebase setup
+cred = credentials.Certificate("D:/GitHub/Translator/translator-f9772-firebase-adminsdk-ybzox-3d49d5b518.json")
+firebase_admin.initialize_app(cred)
+
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///translator.db'
@@ -20,7 +25,7 @@ db = SQLAlchemy(app)
 # Database Models
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), unique=True, nullable=False)
+    email = db.Column(db.String(150), unique=True, nullable=False)
     history = db.relationship('History', backref='user', lazy=True)
     favorites = db.relationship('Favorite', backref='user', lazy=True)
 
@@ -43,7 +48,6 @@ class Favorite(db.Model):
 # Feedback Model
 class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), nullable=False)
     subject = db.Column(db.String(200), nullable=False)
     message = db.Column(db.Text, nullable=False)
@@ -70,7 +74,7 @@ def suggest_translation(text, history):
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if 'username' not in session:
+        if 'user_id' not in session:
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     return decorated_function
@@ -80,11 +84,10 @@ def login_required(f):
 @login_required
 def feedback():
     if request.method == 'POST':
-        username = session['username']
-        email = request.form['email']
+        email = session['user_email']
         subject = request.form['subject']
         message = request.form['message']
-        feedback_entry = Feedback(username=username, email=email, subject=subject, message=message)
+        feedback_entry = Feedback(email=email, subject=subject, message=message)
         db.session.add(feedback_entry)
         db.session.commit()
         return redirect(url_for('index'))
@@ -96,23 +99,64 @@ def view_feedback():
     feedbacks = Feedback.query.all()
     return render_template('view_feedback.html', feedbacks=feedbacks)
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        user = User.query.filter_by(username=username).first()
-        if not user:
-            user = User(username=username)
-            db.session.add(user)
-            db.session.commit()
-        session['username'] = username
-        return redirect(url_for('index'))
+        data = request.get_json()  # Get the JSON data from the request
+        email = data.get('email')
+        password = data.get('password')
+        id_token = data.get('idToken')
+
+        if email and password:  # Make sure email and password are provided
+            try:
+                user = auth.get_user_by_email(email)  # Verify if user exists
+                user_record = auth.verify_id_token(id_token)  # Firebase ID token verification
+                session['user_id'] = user_record['uid']
+                session['user_email'] = email
+                # Debugging: Ensure that the session is set
+                print(f"Logged in user: {session.get('user_email')}")
+                return redirect(url_for('index'))  # Ensure correct redirect
+            except Exception as e:
+                return str(e)
+        else:
+            return "Missing email or password", 400  # Handle missing fields gracefully
+
     return render_template('login.html')
+
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form['email']
+        name = request.form['name']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        phone = request.form['phone']
+
+        # Validate input
+        if password != confirm_password:
+            return "Passwords do not match", 400
+
+        try:
+            # Register user with Firebase
+            user = auth.create_user(
+                email=email,
+                password=password,
+                display_name=name,
+                phone_number=phone if phone else None
+            )
+            return redirect(url_for('login'))
+        except Exception as e:
+            return str(e), 400
+
+    return render_template('register.html')
+
 
 @app.route('/logout')
 def logout():
-    session.pop('username', None)
+    session.pop('user_id', None)
+    session.pop('user_email', None)
     return redirect(url_for('login'))
 
 @app.route('/', methods=['GET', 'POST'])
@@ -127,7 +171,7 @@ def index():
         src_lang = request.form['src_lang']
         dest_lang = request.form['dest_lang']
         try:
-            user = User.query.filter_by(username=session['username']).first()
+            user = User.query.filter_by(email=session['user_email']).first()
             suggestion = suggest_translation(text_to_translate, user.history)
             if not suggestion:
                 if src_lang == 'auto':
@@ -147,26 +191,26 @@ def index():
 @app.route('/history')
 @login_required
 def show_history():
-    user = User.query.filter_by(username=session['username']).first()
+    user = User.query.filter_by(email=session['user_email']).first()
     return render_template('history.html', history=user.history)
 
 @app.route('/favorites')
 @login_required
 def show_favorites():
-    user = User.query.filter_by(username=session['username']).first()
+    user = User.query.filter_by(email=session['user_email']).first()
     return render_template('favorites.html', favorites=user.favorites)
 
 @app.route('/leaderboard')
 @login_required
 def leaderboard():
     users = User.query.all()
-    leaderboard_data = [{'username': user.username, 'points': len(user.history) + len(user.favorites)} for user in users]
+    leaderboard_data = [{'email': user.email, 'points': len(user.history) + len(user.favorites)} for user in users]
     return render_template('leaderboard.html', users=leaderboard_data)
 
 @app.route('/download_history')
 @login_required
 def download_history():
-    user = User.query.filter_by(username=session['username']).first()
+    user = User.query.filter_by(email=session['user_email']).first()
     si = StringIO()
     writer = csv.writer(si)
     writer.writerow(['Source Language', 'Destination Language', 'Original Text', 'Translation'])
@@ -180,7 +224,7 @@ def download_history():
 @app.route('/clear_history')
 @login_required
 def clear_history():
-    user = User.query.filter_by(username=session['username']).first()
+    user = User.query.filter_by(email=session['user_email']).first()
     for item in user.history:
         db.session.delete(item)
     db.session.commit()
@@ -193,7 +237,7 @@ def add_favorite():
     translation = request.form['translation']
     src = request.form['src']
     dest = request.form['dest']
-    user = User.query.filter_by(username=session['username']).first()
+    user = User.query.filter_by(email=session['user_email']).first()
     new_favorite = Favorite(text=text, translation=translation, src=src, dest=dest, user=user)
     db.session.add(new_favorite)
     db.session.commit()
@@ -202,7 +246,7 @@ def add_favorite():
 @app.route('/clear_favorites')
 @login_required
 def clear_favorites():
-    user = User.query.filter_by(username=session['username']).first()
+    user = User.query.filter_by(email=session['user_email']).first()
     for item in user.favorites:
         db.session.delete(item)
     db.session.commit()
@@ -219,9 +263,11 @@ def toggle_dark_mode():
 
 @app.route('/set_session', methods=['POST'])
 def set_session():
-    data = request.get_json()
-    session['username'] = data['username']
+    data = request.get_json()  # Get JSON data from the request body
+    email = data.get('email')  # Access the email from the JSON payload
+    session['user_email'] = email  # Set the session data
     return '', 204  # No content response, as we don't need to return anything
+
 
 
 if __name__ == '__main__':
