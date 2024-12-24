@@ -150,3 +150,253 @@
 2024-11-25 18:18:26,391:INFO:127.0.0.1 - - [25/Nov/2024 18:18:26] "GET /login HTTP/1.1" 200 -
 2024-11-25 18:18:27,550:INFO:127.0.0.1 - - [25/Nov/2024 18:18:27] "GET /register HTTP/1.1" 200 -
 2024-11-25 18:18:29,354:INFO:127.0.0.1 - - [25/Nov/2024 18:18:29] "GET /login HTTP/1.1" 200 -
+2024-12-11 20:02:19,860:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-11 20:02:19,861:INFO:[33mPress CTRL+C to quit[0m
+2024-12-11 20:02:19,879:INFO: * Restarting with watchdog (windowsapi)
+2024-12-11 20:02:21,292:WARNING: * Debugger is active!
+2024-12-11 20:02:21,298:INFO: * Debugger PIN: 136-372-258
+2024-12-11 20:02:26,140:INFO:127.0.0.1 - - [11/Dec/2024 20:02:26] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-11 20:02:26,438:INFO:127.0.0.1 - - [11/Dec/2024 20:02:26] "GET /login HTTP/1.1" 200 -
+2024-12-11 20:02:30,610:INFO:127.0.0.1 - - [11/Dec/2024 20:02:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-11 20:02:44,684:INFO:127.0.0.1 - - [11/Dec/2024 20:02:44] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-11 20:02:44,948:INFO:127.0.0.1 - - [11/Dec/2024 20:02:44] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-11 20:02:45,010:INFO:127.0.0.1 - - [11/Dec/2024 20:02:45] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:10:39,858:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:10:39,858:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:10:39,876:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:10:41,103:WARNING: * Debugger is active!
+2024-12-24 11:10:41,111:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:10:46,031:INFO:127.0.0.1 - - [24/Dec/2024 11:10:46] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:10:46,344:INFO:127.0.0.1 - - [24/Dec/2024 11:10:46] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:10:47,108:INFO:127.0.0.1 - - [24/Dec/2024 11:10:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-24 11:11:05,235:INFO:127.0.0.1 - - [24/Dec/2024 11:11:05] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:11:05,501:INFO:127.0.0.1 - - [24/Dec/2024 11:11:05] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:11:05,564:INFO:127.0.0.1 - - [24/Dec/2024 11:11:05] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:11:11,578:INFO:127.0.0.1 - - [24/Dec/2024 11:11:11] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:11:11,890:INFO:127.0.0.1 - - [24/Dec/2024 11:11:11] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:11:20,667:INFO:127.0.0.1 - - [24/Dec/2024 11:11:20] "GET /register HTTP/1.1" 200 -
+2024-12-24 11:11:23,636:INFO:127.0.0.1 - - [24/Dec/2024 11:11:23] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:12:40,046:INFO:127.0.0.1 - - [24/Dec/2024 11:12:40] "GET /register HTTP/1.1" 200 -
+2024-12-24 11:12:49,671:INFO:127.0.0.1 - - [24/Dec/2024 11:12:49] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:12:59,245:INFO:127.0.0.1 - - [24/Dec/2024 11:12:59] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:13:03,814:INFO:127.0.0.1 - - [24/Dec/2024 11:13:03] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:13:04,167:INFO:127.0.0.1 - - [24/Dec/2024 11:13:04] "GET /register HTTP/1.1" 200 -
+2024-12-24 11:13:07,246:INFO:127.0.0.1 - - [24/Dec/2024 11:13:07] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:16:44,602:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:16:44,603:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:16:44,603:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:16:45,519:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:16:47,492:WARNING: * Debugger is active!
+2024-12-24 11:16:47,506:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:16:49,668:INFO:127.0.0.1 - - [24/Dec/2024 11:16:49] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:17:31,944:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:17:31,944:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:17:31,945:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:17:32,895:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:17:34,840:WARNING: * Debugger is active!
+2024-12-24 11:17:34,853:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:17:46,114:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:17:46,114:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:17:46,115:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:17:47,157:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:17:48,896:WARNING: * Debugger is active!
+2024-12-24 11:17:48,905:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:18:21,862:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:18:21,863:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:18:21,863:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:18:22,214:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:18:36,496:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:18:36,497:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:18:36,512:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:18:38,330:WARNING: * Debugger is active!
+2024-12-24 11:18:38,340:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:18:46,652:INFO:127.0.0.1 - - [24/Dec/2024 11:18:46] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:18:46,914:INFO:127.0.0.1 - - [24/Dec/2024 11:18:46] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:18:46,981:INFO:127.0.0.1 - - [24/Dec/2024 11:18:46] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:19:50,798:INFO:127.0.0.1 - - [24/Dec/2024 11:19:50] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:19:51,063:INFO:127.0.0.1 - - [24/Dec/2024 11:19:51] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:19:51,126:INFO:127.0.0.1 - - [24/Dec/2024 11:19:51] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:21:48,217:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:21:48,218:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:21:48,218:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:21:49,281:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:21:51,188:WARNING: * Debugger is active!
+2024-12-24 11:21:51,199:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:22:38,980:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:22:38,980:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:22:38,997:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:22:40,930:WARNING: * Debugger is active!
+2024-12-24 11:22:40,942:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:22:42,336:INFO:127.0.0.1 - - [24/Dec/2024 11:22:42] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:22:47,601:INFO:127.0.0.1 - - [24/Dec/2024 11:22:47] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:22:47,966:INFO:127.0.0.1 - - [24/Dec/2024 11:22:47] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:22:48,226:INFO:127.0.0.1 - - [24/Dec/2024 11:22:48] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:24:40,367:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:24:40,368:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:24:40,670:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:24:46,095:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:24:46,095:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:24:46,114:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:24:47,915:WARNING: * Debugger is active!
+2024-12-24 11:24:47,925:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:24:48,911:INFO:127.0.0.1 - - [24/Dec/2024 11:24:48] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:24:56,851:INFO:127.0.0.1 - - [24/Dec/2024 11:24:56] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:24:57,229:INFO:127.0.0.1 - - [24/Dec/2024 11:24:57] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:24:57,493:INFO:127.0.0.1 - - [24/Dec/2024 11:24:57] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:25:52,596:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:25:52,597:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:25:53,410:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:25:55,184:WARNING: * Debugger is active!
+2024-12-24 11:25:55,194:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:26:04,718:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:26:04,718:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:26:04,719:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:26:05,561:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:26:54,111:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:26:54,111:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:26:54,126:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:26:55,839:WARNING: * Debugger is active!
+2024-12-24 11:26:55,847:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:27:00,690:INFO:127.0.0.1 - - [24/Dec/2024 11:27:00] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:27:06,851:INFO:127.0.0.1 - - [24/Dec/2024 11:27:06] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:27:07,190:INFO:127.0.0.1 - - [24/Dec/2024 11:27:07] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:27:07,458:INFO:127.0.0.1 - - [24/Dec/2024 11:27:07] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:27:52,899:INFO:127.0.0.1 - - [24/Dec/2024 11:27:52] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:27:53,220:INFO:127.0.0.1 - - [24/Dec/2024 11:27:53] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:28:27,072:INFO:127.0.0.1 - - [24/Dec/2024 11:28:27] "GET /register HTTP/1.1" 200 -
+2024-12-24 11:28:30,481:INFO:127.0.0.1 - - [24/Dec/2024 11:28:30] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:29:22,252:INFO:127.0.0.1 - - [24/Dec/2024 11:29:22] "GET /register HTTP/1.1" 200 -
+2024-12-24 11:30:07,795:INFO:127.0.0.1 - - [24/Dec/2024 11:30:07] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:32:01,078:INFO:127.0.0.1 - - [24/Dec/2024 11:32:01] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:32:01,344:INFO:127.0.0.1 - - [24/Dec/2024 11:32:01] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:32:06,502:INFO:127.0.0.1 - - [24/Dec/2024 11:32:06] "GET /register HTTP/1.1" 200 -
+2024-12-24 11:32:41,235:INFO:127.0.0.1 - - [24/Dec/2024 11:32:41] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:33:05,195:INFO:127.0.0.1 - - [24/Dec/2024 11:33:05] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:33:05,522:INFO:127.0.0.1 - - [24/Dec/2024 11:33:05] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:33:05,788:INFO:127.0.0.1 - - [24/Dec/2024 11:33:05] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:33:52,137:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:33:52,137:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:33:52,716:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:33:54,753:WARNING: * Debugger is active!
+2024-12-24 11:33:54,763:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:35:35,076:INFO:127.0.0.1 - - [24/Dec/2024 11:35:35] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:35:42,376:INFO:127.0.0.1 - - [24/Dec/2024 11:35:42] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2024-12-24 11:35:42,700:INFO:127.0.0.1 - - [24/Dec/2024 11:35:42] "[32mGET /home HTTP/1.1[0m" 302 -
+2024-12-24 11:35:42,964:INFO:127.0.0.1 - - [24/Dec/2024 11:35:42] "GET /login HTTP/1.1" 200 -
+2024-12-24 11:38:44,293:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:38:44,294:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:38:45,045:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:38:47,038:WARNING: * Debugger is active!
+2024-12-24 11:38:47,047:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:39:48,327:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:39:48,328:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:39:49,454:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:39:51,281:WARNING: * Debugger is active!
+2024-12-24 11:39:51,289:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:40:09,459:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:40:09,459:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:40:09,460:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:40:10,608:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:40:12,342:WARNING: * Debugger is active!
+2024-12-24 11:40:12,351:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:40:57,954:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:40:57,956:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:40:57,956:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:40:58,772:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:41:05,102:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:41:05,102:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:41:05,117:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:41:06,995:WARNING: * Debugger is active!
+2024-12-24 11:41:07,005:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:41:10,210:INFO:127.0.0.1 - - [24/Dec/2024 11:41:10] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:22,847:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:41:22,847:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:41:22,869:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:41:24,454:WARNING: * Debugger is active!
+2024-12-24 11:41:24,462:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:41:27,262:INFO:127.0.0.1 - - [24/Dec/2024 11:41:27] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:28,026:INFO:127.0.0.1 - - [24/Dec/2024 11:41:28] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:28,530:INFO:127.0.0.1 - - [24/Dec/2024 11:41:28] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:28,794:INFO:127.0.0.1 - - [24/Dec/2024 11:41:28] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:28,948:INFO:127.0.0.1 - - [24/Dec/2024 11:41:28] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:29,150:INFO:127.0.0.1 - - [24/Dec/2024 11:41:29] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:29,352:INFO:127.0.0.1 - - [24/Dec/2024 11:41:29] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:29,557:INFO:127.0.0.1 - - [24/Dec/2024 11:41:29] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:29,802:INFO:127.0.0.1 - - [24/Dec/2024 11:41:29] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:41:43,320:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:41:43,320:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:41:43,321:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:41:43,824:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:41:45,780:WARNING: * Debugger is active!
+2024-12-24 11:41:45,793:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:41:46,983:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:41:46,983:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:41:46,984:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:41:47,995:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:41:49,815:WARNING: * Debugger is active!
+2024-12-24 11:41:49,824:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:41:51,793:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:41:52,076:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:41:58,440:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:41:58,440:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:41:58,458:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:42:00,267:WARNING: * Debugger is active!
+2024-12-24 11:42:00,277:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:42:00,776:INFO:127.0.0.1 - - [24/Dec/2024 11:42:00] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:42:01,336:INFO:127.0.0.1 - - [24/Dec/2024 11:42:01] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:42:01,845:INFO:127.0.0.1 - - [24/Dec/2024 11:42:01] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:42:02,110:INFO:127.0.0.1 - - [24/Dec/2024 11:42:02] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:42:02,269:INFO:127.0.0.1 - - [24/Dec/2024 11:42:02] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:42:07,485:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:42:07,486:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:42:08,533:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:42:10,352:WARNING: * Debugger is active!
+2024-12-24 11:42:10,362:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:42:10,543:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:42:10,544:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:42:10,544:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:42:11,554:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:42:13,290:WARNING: * Debugger is active!
+2024-12-24 11:42:13,299:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:42:15,707:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:42:15,708:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:42:16,580:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:42:18,322:WARNING: * Debugger is active!
+2024-12-24 11:42:18,331:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:42:24,150:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:42:24,150:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:42:24,169:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:42:25,968:WARNING: * Debugger is active!
+2024-12-24 11:42:25,977:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:42:26,935:INFO:127.0.0.1 - - [24/Dec/2024 11:42:26] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:42:27,658:INFO:127.0.0.1 - - [24/Dec/2024 11:42:27] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:42:39,411:INFO:127.0.0.1 - - [24/Dec/2024 11:42:39] "GET /register HTTP/1.1" 200 -
+2024-12-24 11:42:41,423:INFO:127.0.0.1 - - [24/Dec/2024 11:42:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-12-24 11:42:43,465:INFO:127.0.0.1 - - [24/Dec/2024 11:42:43] "[33mGET / HTTP/1.1[0m" 404 -
+2024-12-24 11:43:02,989:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:43:02,990:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:43:02,990:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:43:03,344:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:43:05,318:WARNING: * Debugger is active!
+2024-12-24 11:43:05,327:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:43:05,951:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:43:05,952:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2024-12-24 11:43:06,493:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:43:18,437:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-24 11:43:18,437:INFO:[33mPress CTRL+C to quit[0m
+2024-12-24 11:43:18,455:INFO: * Restarting with watchdog (windowsapi)
+2024-12-24 11:43:20,228:WARNING: * Debugger is active!
+2024-12-24 11:43:20,238:INFO: * Debugger PIN: 834-009-628
+2024-12-24 11:43:21,560:INFO:127.0.0.1 - - [24/Dec/2024 11:43:21] "[32mGET / HTTP/1.1[0m" 302 -
+2024-12-24 11:43:21,875:INFO:127.0.0.1 - - [24/Dec/2024 11:43:21] "GET /login HTTP/1.1" 200 -

@@ -52,7 +52,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, idToken })
                 });
-                window.location.href = '/';
+                window.location.replace('/home');
+
             } catch (error) {
                 alert(error.message);
             }
@@ -69,7 +70,8 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: userCredential.user.email, idToken })
                 });
-                window.location.href = '/';
+                window.location.replace('/home');
+
             } catch (error) {
                 alert(error.message);
             }
