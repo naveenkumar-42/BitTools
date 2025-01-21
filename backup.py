@@ -17,42 +17,7 @@ cred = credentials.Certificate("D:/GitHub/Translator/translator-f9772-firebase-a
 firebase_admin.initialize_app(cred)
 
 
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///translator.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-# Database Models
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True, nullable=False)
-    history = db.relationship('History', backref='user', lazy=True)
-    favorites = db.relationship('Favorite', backref='user', lazy=True)
-
-class History(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Text, nullable=False)
-    translation = db.Column(db.Text, nullable=False)
-    src = db.Column(db.String(50), nullable=False)
-    dest = db.Column(db.String(50), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-class Favorite(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.Text, nullable=False)
-    translation = db.Column(db.Text, nullable=False)
-    src = db.Column(db.String(50), nullable=False)
-    dest = db.Column(db.String(50), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
-# Feedback Model
-class Feedback(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), nullable=False)
-    subject = db.Column(db.String(200), nullable=False)
-    message = db.Column(db.Text, nullable=False)
-
-translator = Translator()
+#
 
 # Set up logging
 logging.basicConfig(filename='app.log', level=logging.INFO, 

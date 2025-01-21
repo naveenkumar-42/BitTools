@@ -541,3 +541,87 @@
 2025-01-21 17:17:11,062:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
 2025-01-21 17:17:11,062:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
 2025-01-21 17:17:11,443:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:19:50,014:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-21 17:19:50,014:INFO:[33mPress CTRL+C to quit[0m
+2025-01-21 17:19:50,022:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:19:50,955:WARNING: * Debugger is active!
+2025-01-21 17:19:50,961:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:20:38,785:INFO:127.0.0.1 - - [21/Jan/2025 17:20:38] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:23:48,312:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:23:48,312:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:23:48,313:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:23:48,313:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:23:48,579:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:27:23,512:WARNING: * Debugger is active!
+2025-01-21 17:27:23,518:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:27:46,252:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:27:46,253:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:27:46,253:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:27:47,880:WARNING: * Debugger is active!
+2025-01-21 17:27:47,886:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:27:48,421:INFO:127.0.0.1 - - [21/Jan/2025 17:27:48] "[32mGET /home HTTP/1.1[0m" 302 -
+2025-01-21 17:27:48,668:INFO:127.0.0.1 - - [21/Jan/2025 17:27:48] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:27:54,167:INFO:127.0.0.1 - - [21/Jan/2025 17:27:54] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2025-01-21 17:27:54,512:INFO:127.0.0.1 - - [21/Jan/2025 17:27:54] "[32mGET /home HTTP/1.1[0m" 302 -
+2025-01-21 17:27:54,774:INFO:127.0.0.1 - - [21/Jan/2025 17:27:54] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:28:02,703:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:02,703:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:02,703:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:04,013:WARNING: * Debugger is active!
+2025-01-21 17:28:04,017:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:28:06,820:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:06,821:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:08,180:WARNING: * Debugger is active!
+2025-01-21 17:28:08,184:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:28:08,675:INFO:127.0.0.1 - - [21/Jan/2025 17:28:08] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:28:17,375:INFO:127.0.0.1 - - [21/Jan/2025 17:28:17] "[35m[1mPOST /set_session HTTP/1.1[0m" 204 -
+2025-01-21 17:28:17,725:INFO:127.0.0.1 - - [21/Jan/2025 17:28:17] "[32mGET /home HTTP/1.1[0m" 302 -
+2025-01-21 17:28:17,972:INFO:127.0.0.1 - - [21/Jan/2025 17:28:17] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:28:22,872:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:22,873:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:22,873:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:28:22,874:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:37:36,242:INFO:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-01-21 17:37:36,242:INFO:[33mPress CTRL+C to quit[0m
+2025-01-21 17:37:36,251:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:37:37,147:WARNING: * Debugger is active!
+2025-01-21 17:37:37,153:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:37:46,953:INFO:127.0.0.1 - - [21/Jan/2025 17:37:46] "[32mGET / HTTP/1.1[0m" 302 -
+2025-01-21 17:37:47,219:INFO:127.0.0.1 - - [21/Jan/2025 17:37:47] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:37:54,555:INFO:127.0.0.1 - - [21/Jan/2025 17:37:54] "[33mPOST /set_session HTTP/1.1[0m" 404 -
+2025-01-21 17:37:54,903:INFO:127.0.0.1 - - [21/Jan/2025 17:37:54] "[32mGET /home HTTP/1.1[0m" 302 -
+2025-01-21 17:37:55,153:INFO:127.0.0.1 - - [21/Jan/2025 17:37:55] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:38:06,712:INFO:127.0.0.1 - - [21/Jan/2025 17:38:06] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:38:12,498:INFO:127.0.0.1 - - [21/Jan/2025 17:38:12] "[33mPOST /set_session HTTP/1.1[0m" 404 -
+2025-01-21 17:38:12,756:INFO:127.0.0.1 - - [21/Jan/2025 17:38:12] "[32mGET /home HTTP/1.1[0m" 302 -
+2025-01-21 17:38:12,849:INFO:127.0.0.1 - - [21/Jan/2025 17:38:12] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:38:33,138:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:38:33,139:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:38:33,139:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:38:33,139:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:38:33,355:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:40:22,419:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:40:23,335:WARNING: * Debugger is active!
+2025-01-21 17:40:23,341:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:40:43,555:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:40:43,556:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:40:43,556:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:40:44,494:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:40:45,449:WARNING: * Debugger is active!
+2025-01-21 17:40:45,454:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:40:45,588:INFO:127.0.0.1 - - [21/Jan/2025 17:40:45] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:40:51,318:INFO:127.0.0.1 - - [21/Jan/2025 17:40:51] "[33mPOST /set_session HTTP/1.1[0m" 404 -
+2025-01-21 17:40:51,659:INFO:127.0.0.1 - - [21/Jan/2025 17:40:51] "[32mGET /home HTTP/1.1[0m" 302 -
+2025-01-21 17:40:51,924:INFO:127.0.0.1 - - [21/Jan/2025 17:40:51] "GET /login HTTP/1.1" 200 -
+2025-01-21 17:41:01,470:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:41:01,471:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:41:01,471:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:41:01,581:INFO: * Restarting with watchdog (windowsapi)
+2025-01-21 17:41:02,503:WARNING: * Debugger is active!
+2025-01-21 17:41:02,509:INFO: * Debugger PIN: 226-333-278
+2025-01-21 17:41:02,639:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:41:02,639:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:41:02,644:INFO: * Detected change in 'D:\\GitHub\\Translator\\app.py', reloading
+2025-01-21 17:41:03,622:INFO: * Restarting with watchdog (windowsapi)
