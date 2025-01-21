@@ -5,116 +5,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-</head>
-
-<body>
     <style>
-        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
 
-        /* Form Container */
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
         form {
             display: flex;
             flex-direction: column;
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Form Header */
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        /* Form Inputs */
         input {
-            margin-bottom: 15px;
-            padding: 10px;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
             border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
+            border-radius: 5px;
+            font-size: 1rem;
         }
 
-        /* Buttons */
         button {
-            padding: 10px;
-            font-size: 16px;
+            padding: 0.8rem;
+            font-size: 1rem;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-bottom: 1rem;
+            color: #fff;
         }
 
         button[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            transition: background-color 0.3s;
-        }
-
-        button[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #007BFF;
         }
 
         #google-signin {
-            background-color: #4285F4;
-            color: white;
-            transition: background-color 0.3s;
-        }
-
-        #google-signin:hover {
-            background-color: #357ae8;
+            background-color: #DB4437;
         }
 
         #forgot-password {
-            background-color: #f44336;
-            color: white;
-            transition: background-color 0.3s;
+            background-color: #F4B400;
         }
 
-        #forgot-password:hover {
-            background-color: #d32f2f;
+        button:hover {
+            opacity: 0.9;
         }
 
-        /* Register Link */
         p {
-            text-align: center;
-            margin-top: 20px;
+            margin-top: 1rem;
         }
 
         a {
-            color: #4285F4;
+            color: #007BFF;
             text-decoration: none;
-            transition: color 0.3s;
         }
 
         a:hover {
-            color: #357ae8;
+            text-decoration: underline;
         }
     </style>
-    <h1>Login</h1>
-    <form id="login-form" method="POST">
-        <input type="email" id="email" name="email" placeholder="Email" required>
-        <input type="password" id="password" name="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-    </form>
-    <button id="google-signin">Sign in with Google</button>
-    <button id="forgot-password">Forgot Password</button>
-    <p>Don't have an account? <a href="/register">Register</a></p>
+</head>
 
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="login-form" method="POST">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <button id="google-signin">Sign in with Google</button>
+        <button id="forgot-password">Forgot Password</button>
+        <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
     <script type="module">
         // Import necessary Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
@@ -187,8 +172,6 @@
             }
         });
     </script>
-
-
 </body>
 
 </html>
