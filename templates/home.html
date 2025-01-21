@@ -231,6 +231,7 @@
                 <button type="submit" class="button">Translate</button>
             </div>
         </form>
+        
 
         {% if translation %}
         <div class="result">
@@ -286,7 +287,6 @@
                 <option value="{{ url_for('show_history') }}">View History</option>
                 <option value="{{ url_for('show_favorites') }}">View Favorites</option>
                 <option value="{{ url_for('feedback') }}">Feedback</option>
-                <option value="{{ url_for('view_feedback') }}">View Feedback</option>
             </select>
         </div>
 

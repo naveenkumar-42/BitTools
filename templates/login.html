@@ -120,7 +120,6 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        // Login with email/password
         document.getElementById('login-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
@@ -129,35 +128,53 @@
             try {
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 const idToken = await userCredential.user.getIdToken();
-                await fetch('/set_session', {
+                const response = await fetch('/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, idToken })
                 });
-                window.location.replace('/home');
+
+                const data = await response.json();
+                if (response.status === 200) {
+                    window.location.replace('/home');  // Redirect to home page after successful login
+                } else {
+                    alert(data.error);
+                }
 
             } catch (error) {
                 alert(error.message);
             }
         });
 
-        // Google Sign-In
+
         document.getElementById('google-signin').addEventListener('click', async () => {
             const provider = new GoogleAuthProvider();
             try {
                 const userCredential = await signInWithPopup(auth, provider);
                 const idToken = await userCredential.user.getIdToken();
-                await fetch('/set_session', {
+
+                // Send the ID token to Flask to verify and set session
+                const response = await fetch('/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: userCredential.user.email, idToken })
+                    body: JSON.stringify({
+                        email: userCredential.user.email,
+                        idToken: idToken
+                    })
                 });
-                window.location.replace('/home');
+
+                const data = await response.json();
+                if (response.status === 200) {
+                    window.location.replace('/home');  // Redirect to home page after successful login
+                } else {
+                    alert(data.error);
+                }
 
             } catch (error) {
                 alert(error.message);
             }
         });
+
 
         // Password Reset
         document.getElementById('forgot-password').addEventListener('click', async () => {
