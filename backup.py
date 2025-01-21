@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.secret_key = 'adfasfasasdf'
 
 # Firebase setup
-cred = credentials.Certificate("E:/TEAM EXCALIBUR/Translator/Translator/translator-f9772-firebase-adminsdk-ybzox-3d49d5b518.json")
+cred = credentials.Certificate("E:/TEAM EXCALIBUR/Translator/translator-f9772-firebase-adminsdk-ybzox-3d49d5b518.json")
 firebase_admin.initialize_app(cred)
 
 
