@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        button[type="submit"] {
+            background-color: #007BFF;
+        }
+
+        #google-signin {
+            background-color: #DB4437;
+        }
+
+        #forgot-password {
+            background-color: #F4B400;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        p {
+            margin-top: 1rem;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="login-form" method="POST">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <button id="google-signin">Sign in with Google</button>
+        <button id="forgot-password">Forgot Password</button>
+        <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
+    <script type="module">
+        // Import necessary Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyChW576jwvVZYQJ6Fy1NPthH5eBeTf3WLI",
+            authDomain: "translator-f9772.firebaseapp.com",
+            projectId: "translator-f9772",
+            storageBucket: "translator-f9772.firebasestorage.app",
+            messagingSenderId: "338629626503",
+            appId: "1:338629626503:web:c9a9f2767f112d1ec88622",
+            measurementId: "G-1H16RJE596"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const idToken = await userCredential.user.getIdToken();
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, idToken })
+                });
+
+                const data = await response.json();
+                if (response.status === 200) {
+                    window.location.replace('/home');  // Redirect to home page after successful login
+                } else {
+                    alert(data.error);
+                }
+
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+
+        document.getElementById('google-signin').addEventListener('click', async () => {
+            const provider = new GoogleAuthProvider();
+            try {
+                const userCredential = await signInWithPopup(auth, provider);
+                const idToken = await userCredential.user.getIdToken();
+
+                // Send the ID token to Flask to verify and set session
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: userCredential.user.email,
+                        idToken: idToken
+                    })
+                });
+
+                const data = await response.json();
+                if (response.status === 200) {
+                    window.location.replace('/home');  // Redirect to home page after successful login
+                } else {
+                    alert(data.error);
+                }
+
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+
+        // Password Reset
+        document.getElementById('forgot-password').addEventListener('click', async () => {
+            const email = prompt("Enter your email:");
+            if (email) {
+                try {
+                    await sendPasswordResetEmail(auth, email);
+                    alert('Password reset email sent.');
+                } catch (error) {
+                    alert(error.message);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
