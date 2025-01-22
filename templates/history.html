@@ -6,10 +6,17 @@
     <title>Translation History</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-        /* General Styles */
+      
+         :root {
+            --bg-color: #222831;
+            --text-color: #00ADB5;
+            --main-color: #393E46;
+            --secondary-bg-color: #EEEEEE;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #F4F4F4;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,30 +26,29 @@
             background-image: url("{{ url_for('static', filename='background.jpg') }}");
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
         }
 
         .container {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
+            background-color: var(--main-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
             width: 100%;
-            padding: 30px;
+            padding: 20px;
             text-align: center;
-            animation: fadeIn 0.8s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
-            color: #333333;
-            margin-bottom: 30px;
-            font-size: 32px;
-            font-weight: bold;
+            color: var(--secondary-bg-color);
+            margin-bottom: 20px;
+            font-size: 28px;
         }
+
 
         nav a {
             margin: 0 15px;
-            color: #007bff;
+            color: var(--text-color);
             text-decoration: none;
             font-size: 16px;
             transition: color 0.3s ease-in-out;
@@ -82,25 +88,7 @@
             transform: translateY(-3px);
         }
 
-        /* Button Styles */
-        .button {
-            display: inline-block;
-            background-color: #007bff;
-            border: none;
-            border-radius: 6px;
-            color: #ffffff;
-            font-size: 16px;
-            padding: 12px 25px;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
+      
 
         /* Animations */
         @keyframes fadeIn {
