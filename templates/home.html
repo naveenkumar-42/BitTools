@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English to Tamil Translator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
+        :root {
+            --bg-color: #222831;
+            --text-color: #00ADB5;
+            --main-color: #393E46;
+            --secondary-bg-color: #EEEEEE;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #F4F4F4;
+            background-color: var(--bg-color);
             margin: 0;
-            padding: 0;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-image: url("{{ url_for('static', filename='background.jpg') }}");
+            height: auto;
             background-size: cover;
             background-position: center;
             transition: background-image 1s ease-in-out;
         }
 
         .container {
-            background-color: #ffffff;
+            background-color: var(--main-color);
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             width: 100%;
-            padding: 20px;
+            padding: 10px 20px 20px 20px;
             text-align: center;
             opacity: 0;
             animation: fadeIn 1s forwards;
@@ -38,9 +45,48 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
+        }
+
+        .textarea {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            color: var(--bg-color);
+            margin-top: 10px;
+            resize: none;
+            height: 100px;
+        }
+
+        .top-btn {
+            display: flex;
+            justify-content: space-between;
+            margin-right: 20px;
+            gap: 10px;
+        }
+
+        .logout-btn {
+            text-align: right;
+            align-items: flex-end;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
+            color: var(--secondary-bg-color);
+            background-color: rgb(174, 13, 13);
+        }
+
+        .logout-btn:hover {
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .heading {
+            color: var(--secondary-bg-color);
         }
 
         .form-group {
@@ -51,15 +97,15 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 10px;
+            margin: 10px;
             flex-wrap: wrap;
         }
 
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
+            background-color: var(--text-color);
+            color: var(--secondary-bg-color);
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -67,8 +113,7 @@
         }
 
         .button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
+            transition: 0.3s;
         }
 
         .button:active {
@@ -79,12 +124,13 @@
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            background-color: #ffd966;
-            color: #ff7b00;
+            background-color: var(--text-color);
+            color: var(--bg-color);
             margin-top: 10px;
         }
 
-        .result, .suggestion {
+        .result,
+        .suggestion {
             opacity: 0;
             animation: fadeIn 1s forwards;
         }
@@ -99,9 +145,7 @@
         }
 
         .navigation-dropdown {
-            margin-top: 10px;
-            display: flex;
-            justify-content: center;
+            text-align: left;
             gap: 10px;
         }
 
@@ -109,7 +153,7 @@
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            background-color: #007bff;
+            background-color: var(--bg-color);
             color: white;
         }
 
@@ -140,7 +184,8 @@
                 padding: 10px;
             }
 
-            .button, select {
+            .button,
+            select {
                 width: 100%;
                 box-sizing: border-box;
             }
@@ -173,65 +218,82 @@
                 gap: 5px;
             }
 
-            .button, select {
+            .button,
+            select {
                 padding: 8px 15px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        
+
         {% if session.username %}
-            <h1 >Hi, {{ session.username }}!</h1>
-            <a href="{{ url_for('logout') }}" class="button">Logout</a>
+        <h1>Hi, {{ session.username }}!</h1>
+        <a href="{{ url_for('logout') }}" class="button">Logout</a>
         {% else %}
-            <a href="{{ url_for('login') }}" class="button">Login</a>
+        <div class="top-btn">
+            <div class="navigation-dropdown">
+                <select onchange="location = this.value;">
+                    <option value="#">Navigation</option>
+                    <option value="{{ url_for('leaderboard') }}">View Leaderboard</option>
+                    <option value="{{ url_for('show_history') }}">View History</option>
+                    <option value="{{ url_for('show_favorites') }}">View Favorites</option>
+                    <option value="{{ url_for('feedback') }}">Feedback</option>
+                </select>
+            </div>
+            <a href="{{ url_for('login') }}" class="logout-btn">Logout</a>
+        </div>
         {% endif %}
-        <h2>English to தமிழ் Translator <p style="text-align: center; font-size: 18px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: #ff003c; text-shadow: 0 0 10px #8cff00;"><i>Sabarish-Inc 🚀</i></p></h2>
+        <h2 class="heading">BIT Translator</h2>
         <form method="POST">
-            <textarea name="text" id="text" placeholder="Enter text to translate" required></textarea>
+            <div class="dropdown-group">
+                <select name="src_lang" required>
+                    <option value="auto">Detect Language</option>
+                    <option value="en">English</option>
+                    <option value="ta">Tamil</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="zh-cn">Chinese (Simplified)</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ru">Russian</option>
+                    <option value="ko">Korean</option>
+                    <option value="ar">Arabic</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="bn">Bengali</option>
+                </select>
+                <select name="dest_lang" required>
+                    <option value="en">English</option>
+                    <option value="ta">Tamil</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="zh-cn">Chinese (Simplified)</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ru">Russian</option>
+                    <option value="ko">Korean</option>
+                    <option value="ar">Arabic</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="bn">Bengali</option>
+                </select>
+            </div>
+            <textarea class="textarea" name="text" id="text" placeholder="Enter text to translate" required></textarea>
             <div class="form-group">
                 <button type="button" onclick="startDictation()" class="button">🎤 Speak</button>
-                <div class="dropdown-group">
-                    <select name="src_lang">
-                        <option value="auto">Detect Language</option>
-                        <option value="en">English</option>
-                        <option value="ta">Tamil</option>
-                        <option value="es">Spanish</option>
-                        <option value="fr">French</option>
-                        <option value="de">German</option>
-                        <option value="zh-cn">Chinese (Simplified)</option>
-                        <option value="hi">Hindi</option>
-                        <option value="ja">Japanese</option>
-                        <option value="ru">Russian</option>
-                        <option value="ko">Korean</option>
-                        <option value="ar">Arabic</option>
-                        <option value="it">Italian</option>
-                        <option value="pt">Portuguese</option>
-                        <option value="bn">Bengali</option>
-                    </select>
-                    <select name="dest_lang">
-                        <option value="en">English</option>
-                        <option value="ta">Tamil</option>
-                        <option value="es">Spanish</option>
-                        <option value="fr">French</option>
-                        <option value="de">German</option>
-                        <option value="zh-cn">Chinese (Simplified)</option>
-                        <option value="hi">Hindi</option>
-                        <option value="ja">Japanese</option>
-                        <option value="ru">Russian</option>
-                        <option value="ko">Korean</option>
-                        <option value="ar">Arabic</option>
-                        <option value="it">Italian</option>
-                        <option value="pt">Portuguese</option>
-                        <option value="bn">Bengali</option>
-                    </select>
-                </div>
-                <button type="submit" class="button">Translate</button>
+                <button type="submit" class="button" style="padding-top: 14px;">Translate</button>
             </div>
         </form>
-        
+
+
+        <div class="voice-select-container">
+            <select id="voiceSelect"></select>
+        </div>
 
         {% if translation %}
         <div class="result">
@@ -253,9 +315,12 @@
         <!-- Social Sharing Buttons -->
         <div class="social-sharing">
             <h2>Share Your Translation:</h2>
-            <a href="https://twitter.com/intent/tweet?text={{ translation }}" target="_blank" class="social-button">Share on Twitter</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('index', _external=True) }}" target="_blank" class="social-button">Share on Facebook</a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('index', _external=True) }}&title=Translation&summary={{ translation }}" target="_blank" class="social-button">Share on LinkedIn</a>
+            <a href="https://twitter.com/intent/tweet?text={{ translation }}" target="_blank"
+                class="social-button">Share on Twitter</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('index', _external=True) }}"
+                target="_blank" class="social-button">Share on Facebook</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('index', _external=True) }}&title=Translation&summary={{ translation }}"
+                target="_blank" class="social-button">Share on LinkedIn</a>
         </div>
         {% endif %}
 
@@ -270,29 +335,20 @@
         <div class="history">
             <h2>Translation History</h2>
             <p style="color: red;">
-                After translating the text, clear the history. If you try to translate again, it still shows the previous text.
+                After translating the text, clear the history. If you try to translate again, it still shows the
+                previous text.
             </p>
-            
+
             <ul>
                 {% for item in history %}
                 <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
                 {% endfor %}
             </ul>
         </div>
-         <!-- Navigation Dropdown -->
-        <div class="navigation-dropdown">
-            <select onchange="location = this.value;">
-                <option value="#">Navigation</option>
-                <option value="{{ url_for('leaderboard') }}">View Leaderboard</option>
-                <option value="{{ url_for('show_history') }}">View History</option>
-                <option value="{{ url_for('show_favorites') }}">View Favorites</option>
-                <option value="{{ url_for('feedback') }}">Feedback</option>
-            </select>
-        </div>
+        <!-- Navigation Dropdown -->
 
-        <div class="voice-select-container">
-            <select id="voiceSelect"></select>
-        </div>
+
+
     </div>
     <script>
         function startDictation() {
@@ -302,11 +358,11 @@
                 recognition.interimResults = false;
                 recognition.lang = "en-US";
                 recognition.start();
-                recognition.onresult = function(e) {
+                recognition.onresult = function (e) {
                     document.getElementById('text').value = e.results[0][0].transcript;
                     recognition.stop();
                 };
-                recognition.onerror = function(e) {
+                recognition.onerror = function (e) {
                     recognition.stop();
                 };
             }
@@ -339,9 +395,9 @@
 
         function copyText() {
             let translatedText = document.getElementById('translatedText').innerText;
-            navigator.clipboard.writeText(translatedText).then(function() {
+            navigator.clipboard.writeText(translatedText).then(function () {
                 alert('Translation copied to clipboard!');
-            }, function() {
+            }, function () {
                 alert('Failed to copy text.');
             });
         }
@@ -349,4 +405,5 @@
         document.addEventListener('DOMContentLoaded', populateVoiceList);
     </script>
 </body>
+
 </html>

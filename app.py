@@ -53,11 +53,15 @@ def home():
     suggestion = ''
 
     if request.method == 'POST':
-        text_to_translate = request.form['text']
-        src_lang = request.form['src_lang']
-        dest_lang = request.form['dest_lang']
+        text_to_translate = request.form.get('text')  # Use .get() to avoid KeyError
+        src_lang = request.form.get('src_lang', 'auto')  # Default to 'auto' if not provided
+        dest_lang = request.form.get('dest_lang')
 
         try:
+            # Ensure 'text' and 'dest_lang' are provided
+            if not text_to_translate or not dest_lang:
+                raise ValueError("Missing required fields: text or destination language")
+
             history = session.get('history', [])
             suggestion = suggest_translation(text_to_translate, history)
             if not suggestion:
@@ -79,6 +83,7 @@ def home():
             logging.error(f"Error translating from {src_lang} to {dest_lang}: {text_to_translate} - {error}")
 
     return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
