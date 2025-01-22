@@ -5,13 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
+
+:root {
+            --bg-color: #222831;
+            --text-color: #00ADB5;
+            --main-color: #393E46;
+            --secondary-bg-color: #EEEEEE;
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,7 +30,7 @@
         }
 
         .container {
-            background: #fff;
+            background-color: var(--main-color);
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -29,22 +40,64 @@
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: #444;
+            color: var(--text-color)    ;
         }
-
         form {
-            display: flex;
+            /* display: flex; */
             flex-direction: column;
+            margin: 20px 20px 10px 20px;
         }
 
-        input {
+        .box {
+            position: relative;
+            width: 80%;
             margin-bottom: 1rem;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
+        }
+
+        .box input {
+            width: 80%;
+            height: 25px;
+            padding: 10px;
+            border: 1px solid #fff;
+            background-color: var(--bg-color);
             border-radius: 5px;
-            font-size: 1rem;
+            outline: none;
+            color: #fff;
+            font-size: 1em;
+
+        }
+
+        .box span {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            font-size: 10px;
+            color: var(--secondary-bg-color);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-left: 10px;
+            letter-spacing: 0.2em;
+            transition: 0.2s;
+        }
+
+        .box input:valid~span,
+        .box input:focus~span {
+            color: var(--text-color);
+            transform: translateX(10px) translateY(-30px);
+            font-size: 0.75em;
+            padding: 0 5px;
+            background-color: var(--bg-color);
+            border-left: 1px solid var(--main-color);
+            border-right: 1px solid var(--main-color);
+        }
+
+        .box input:valid,
+        .box input:focus {
+            border: 1px solid var(--main-color);
         }
 
         button {
@@ -53,13 +106,22 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            background-color: #007BFF;
-            color: #fff;
             margin-bottom: 1rem;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
-        button:hover {
-            opacity: 0.9;
+        .submit {
+            background: linear-gradient(45deg, #00ADB5, #009688);
+            padding: 10px;
+            width: 50%;
+            align-items: center;
+        }
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         p {
@@ -67,10 +129,10 @@
         }
 
         a {
-            color: #007BFF;
-            text-decoration: none;
+            color: var(--secondary-bg-color);
+            text-decoration: underline;
+            font-size: 13px;
         }
-
         a:hover {
             text-decoration: underline;
         }
@@ -81,12 +143,27 @@
     <div class="container">
         <h1>Register</h1>
         <form id="register-form">
-            <input type="text" id="name" placeholder="Full Name" required />
-            <input type="email" id="email" placeholder="Email" required />
-            <input type="tel" id="phone" placeholder="Phone Number" required />
-            <input type="password" id="password" placeholder="Password" required />
-            <input type="password" id="confirm-password" placeholder="Confirm Password" required />
-            <button type="submit">Register</button>
+            <div class="box">
+                <input type="text" id="name" required />
+                <span>Full Name</span>
+            </div>
+            <div class="box">
+                <input type="email" id="email" required />
+                <span>Email</span>
+            </div>
+            <div class="box">
+                <input type="tel" id="phone" required />
+                <span>Phone Number</span>
+            </div>
+            <div class="box">
+                <input type="password" id="password" required />
+                <span>Password</span>
+            </div>
+            <div class="box">
+                <input type="password" id="confirm-password" required />
+                <span>Confirm Password</span>
+            </div>
+            <button type="submit" class="submit">Register</button>
         </form>
         <p>Already have an account? <a href="/login">Login</a></p>
     </div>
