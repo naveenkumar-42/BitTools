@@ -157,6 +157,33 @@ def add_favorite():
     session['favorites'] = favorites
     return redirect(url_for('home'))
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        password = request.form['password']
+        confirm_password = request.form['confirm-password']
+
+        if password != confirm_password:
+            return render_template('register.html', error='Passwords do not match.')
+
+        try:
+            # Create a Firebase user
+            user = auth.create_user(
+                email=email,
+                password=password,
+                display_name=name,
+                phone_number=phone
+            )
+            return redirect(url_for('login'))  # Redirect to login page after successful registration
+        except Exception as e:
+            return render_template('register.html', error=str(e))
+
+    return render_template('register.html')
+
+
 @app.route('/show_history')
 def show_history():
     if check_logged_in():
