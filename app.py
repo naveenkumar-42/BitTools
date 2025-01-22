@@ -135,6 +135,7 @@ def translate():
     session['history'] = history
     session['translation'] = result.text
     return redirect(url_for('home'))
+    return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
 
 @app.route('/add_favorite', methods=['POST'])
 def add_favorite():
