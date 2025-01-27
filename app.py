@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify, make_response
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, make_response,send_file
 from flask_session import Session
 import requests
 import firebase_admin
@@ -9,11 +9,16 @@ from sklearn.metrics.pairwise import cosine_similarity
 import logging
 import csv
 from io import StringIO
+from werkzeug.utils import secure_filename
 from PyPDF2 import PdfReader
+from docx import Document
 
 # Initialize Flask app
 app = Flask(__name__)
 app.secret_key = "adfasfasasdf"
+
+# Specify upload folder (relative path)
+app.config['UPLOAD_FOLDER'] = 'uploads'
 
 # Flask-Session configuration
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -258,12 +263,6 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
-UPLOAD_FOLDER = 'uploads'
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 @app.route('/convert_pdf', methods=['GET', 'POST'])
 def convert_pdf():
     if request.method == 'POST':
@@ -275,8 +274,9 @@ def convert_pdf():
             return render_template('convert_pdf.html', error="No file selected.")
         
         try:
-            # Save uploaded PDF
-            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], pdf_file.filename)
+            # Save uploaded PDF securely
+            filename = secure_filename(pdf_file.filename)
+            pdf_path = f"{app.config['UPLOAD_FOLDER']}/{filename}"
             pdf_file.save(pdf_path)
 
             # Convert PDF to Word
@@ -286,9 +286,12 @@ def convert_pdf():
             for page in reader.pages:
                 doc.add_paragraph(page.extract_text())
 
-            word_path = os.path.join(app.config['UPLOAD_FOLDER'], pdf_file.filename.replace('.pdf', '.docx'))
+            # Save the Word file in the same folder
+            word_filename = filename.rsplit('.', 1)[0] + '.docx'
+            word_path = f"{app.config['UPLOAD_FOLDER']}/{word_filename}"
             doc.save(word_path)
 
+            # Serve the Word file for download
             return send_file(word_path, as_attachment=True)
 
         except Exception as e:
