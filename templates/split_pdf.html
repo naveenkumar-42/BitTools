@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split PDF</title>
+</head>
+<body>
+    <h1>Split PDF</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="pdf_file">Upload PDF:</label>
+        <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
+        <label for="pages">Enter Pages or Ranges (e.g., 1, 3-5):</label>
+        <input type="text" name="pages" id="pages">
+        <button type="submit">Split</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

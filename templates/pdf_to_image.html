@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert PDF to Images</title>
+</head>
+<body>
+    <h1>Convert PDF to Images</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="pdf_file">Upload PDF:</label>
+        <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
+        <button type="submit">Convert</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

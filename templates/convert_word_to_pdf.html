@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Word to PDF</title>
+</head>
+<body>
+    <h1>Convert Word to PDF</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="word_file">Upload Word Document:</label>
+        <input type="file" name="word_file" id="word_file" accept=".docx, .doc">
+        <button type="submit">Convert</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

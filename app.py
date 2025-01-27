@@ -12,6 +12,19 @@ from io import StringIO
 from werkzeug.utils import secure_filename
 from PyPDF2 import PdfReader
 from docx import Document
+from werkzeug.utils import secure_filename
+from PyPDF2 import PdfReader, PdfWriter
+from PIL import Image
+from fpdf import FPDF
+import os
+import img2pdf
+import openpyxl
+import io
+import zipfile
+from io import BytesIO
+import shutil
+import tempfile
+
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -19,6 +32,7 @@ app.secret_key = "adfasfasasdf"
 
 # Specify upload folder (relative path)
 app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['ALLOWED_EXTENSIONS'] = {'pdf', 'docx', 'jpg', 'jpeg', 'png', 'xlsx', 'txt', 'html'}
 
 # Flask-Session configuration
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -42,6 +56,10 @@ def suggest_translation(text, history):
     cosine_matrix = cosine_similarity(vectors)
     similar_index = cosine_matrix[-1][:-1].argmax()
     return history[similar_index]['translation']
+
+# Helper function to check file extensions
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 # Redirect to login page if not logged in
 def check_logged_in():
@@ -298,6 +316,245 @@ def convert_pdf():
             return render_template('convert_pdf.html', error=f"Error converting PDF: {str(e)}")
     
     return render_template('convert_pdf.html')
+
+# Convert Word to PDF
+@app.route('/convert_word_to_pdf', methods=['GET', 'POST'])
+def convert_word_to_pdf():
+    if request.method == 'POST':
+        if 'word_file' not in request.files:
+            return render_template('convert_word_to_pdf.html', error="No file uploaded.")
+        
+        word_file = request.files['word_file']
+        if word_file.filename == '':
+            return render_template('convert_word_to_pdf.html', error="No file selected.")
+        
+        try:
+            filename = secure_filename(word_file.filename)
+            word_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            word_file.save(word_path)
+            
+            # Convert Word to PDF
+            # You can use libraries like python-docx or comtypes on Windows for conversion
+            # A simple method: Here we use reportlab to generate a PDF from the Word file.
+            # You'll need a more robust method for real Word to PDF conversion
+            
+            pdf_path = word_path.rsplit('.', 1)[0] + '.pdf'
+            doc = Document(word_path)  # You'll need to install python-docx
+            pdf = FPDF()
+            pdf.add_page()
+            for para in doc.paragraphs:
+                pdf.multi_cell(200, 10, txt=para.text, align='L')
+            pdf.output(pdf_path)
+
+            return send_file(pdf_path, as_attachment=True)
+        except Exception as e:
+            return render_template('convert_word_to_pdf.html', error=f"Error: {str(e)}")
+    
+    return render_template('convert_word_to_pdf.html')
+
+# Convert Image to PDF
+@app.route('/convert_image_to_pdf', methods=['GET', 'POST'])
+def convert_image_to_pdf():
+    if request.method == 'POST':
+        if 'image_files' not in request.files:
+            return render_template('convert_image_to_pdf.html', error="No file uploaded.")
+        
+        image_files = request.files.getlist('image_files')
+        image_paths = []
+        for file in image_files:
+            if allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(image_path)
+                image_paths.append(image_path)
+        
+        try:
+            # Convert Images to PDF
+            images = [Image.open(path) for path in image_paths]
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'output.pdf')
+            images[0].save(pdf_path, save_all=True, append_images=images[1:])
+            
+            # Clean up images after conversion
+            for path in image_paths:
+                os.remove(path)
+            
+            return send_file(pdf_path, as_attachment=True)
+        except Exception as e:
+            return render_template('convert_image_to_pdf.html', error=f"Error: {str(e)}")
+    
+    return render_template('convert_image_to_pdf.html')
+
+# Convert Excel to PDF
+@app.route('/convert_excel_to_pdf', methods=['GET', 'POST'])
+def convert_excel_to_pdf():
+    if request.method == 'POST':
+        if 'excel_file' not in request.files:
+            return render_template('convert_excel_to_pdf.html', error="No file uploaded.")
+        
+        excel_file = request.files['excel_file']
+        if excel_file.filename == '':
+            return render_template('convert_excel_to_pdf.html', error="No file selected.")
+        
+        try:
+            filename = secure_filename(excel_file.filename)
+            excel_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            excel_file.save(excel_path)
+            
+            # Convert Excel to PDF (simplified)
+            wb = openpyxl.load_workbook(excel_path)
+            sheet = wb.active
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename.rsplit('.', 1)[0] + '.pdf')
+            pdf = FPDF()
+            pdf.add_page()
+            for row in sheet.iter_rows():
+                row_text = ' '.join([str(cell.value) for cell in row])
+                pdf.cell(200, 10, txt=row_text, ln=True)
+            pdf.output(pdf_path)
+
+            return send_file(pdf_path, as_attachment=True)
+        except Exception as e:
+            return render_template('convert_excel_to_pdf.html', error=f"Error: {str(e)}")
+    
+    return render_template('convert_excel_to_pdf.html')
+
+# Compress PDF
+@app.route('/compress_pdf', methods=['GET', 'POST'])
+def compress_pdf():
+    if request.method == 'POST':
+        if 'pdf_file' not in request.files:
+            return render_template('compress_pdf.html', error="No file uploaded.")
+        
+        pdf_file = request.files['pdf_file']
+        if pdf_file.filename == '':
+            return render_template('compress_pdf.html', error="No file selected.")
+        
+        try:
+            filename = secure_filename(pdf_file.filename)
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            pdf_file.save(pdf_path)
+            
+            # Compress PDF
+            input_pdf = PdfReader(pdf_path)
+            output_pdf = PdfWriter()
+            for page in input_pdf.pages:
+                output_pdf.add_page(page)
+            
+            compressed_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'compressed_' + filename)
+            with open(compressed_pdf_path, 'wb') as f:
+                output_pdf.write(f)
+
+            return send_file(compressed_pdf_path, as_attachment=True)
+        except Exception as e:
+            return render_template('compress_pdf.html', error=f"Error: {str(e)}")
+    
+    return render_template('compress_pdf.html')
+
+# Convert PDF to Image
+@app.route('/pdf_to_image', methods=['GET', 'POST'])
+def pdf_to_image():
+    if request.method == 'POST':
+        if 'pdf_file' not in request.files:
+            return render_template('pdf_to_image.html', error="No file uploaded.")
+        
+        pdf_file = request.files['pdf_file']
+        if pdf_file.filename == '':
+            return render_template('pdf_to_image.html', error="No file selected.")
+        
+        try:
+            filename = secure_filename(pdf_file.filename)
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            pdf_file.save(pdf_path)
+            
+            # Convert PDF to Images (one image per page)
+            images = []
+            with open(pdf_path, 'rb') as f:
+                pdf = PdfReader(f)
+                for i, page in enumerate(pdf.pages):
+                    image = page.to_image()
+                    img_path = os.path.join(app.config['UPLOAD_FOLDER'], f"page_{i+1}.png")
+                    image.save(img_path)
+                    images.append(img_path)
+            
+            # Return first image for download (you can return a zip of all images too)
+            return send_file(images[0], as_attachment=True)
+        except Exception as e:
+            return render_template('pdf_to_image.html', error=f"Error: {str(e)}")
+    
+    return render_template('pdf_to_image.html')
+
+# Merge PDFs
+@app.route('/merge_pdfs', methods=['GET', 'POST'])
+def merge_pdfs():
+    if request.method == 'POST':
+        if 'pdf_files' not in request.files:
+            return render_template('merge_pdfs.html', error="No file uploaded.")
+        
+        pdf_files = request.files.getlist('pdf_files')
+        pdf_paths = []
+        for file in pdf_files:
+            if allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(pdf_path)
+                pdf_paths.append(pdf_path)
+        
+        try:
+            # Merge PDFs
+            pdf_writer = PdfWriter()
+            for path in pdf_paths:
+                pdf_reader = PdfReader(path)
+                for page in pdf_reader.pages:
+                    pdf_writer.add_page(page)
+            
+            merged_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'merged.pdf')
+            with open(merged_pdf_path, 'wb') as f:
+                pdf_writer.write(f)
+
+            # Clean up individual PDF files
+            for path in pdf_paths:
+                os.remove(path)
+            
+            return send_file(merged_pdf_path, as_attachment=True)
+        except Exception as e:
+            return render_template('merge_pdfs.html', error=f"Error: {str(e)}")
+    
+    return render_template('merge_pdfs.html')
+
+# Split PDF
+@app.route('/split_pdf', methods=['GET', 'POST'])
+def split_pdf():
+    if request.method == 'POST':
+        if 'pdf_file' not in request.files:
+            return render_template('split_pdf.html', error="No file uploaded.")
+        
+        pdf_file = request.files['pdf_file']
+        if pdf_file.filename == '':
+            return render_template('split_pdf.html', error="No file selected.")
+        
+        try:
+            filename = secure_filename(pdf_file.filename)
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            pdf_file.save(pdf_path)
+            
+            # Split PDF (simplified, selecting page ranges)
+            reader = PdfReader(pdf_path)
+            start_page = int(request.form['start_page']) - 1  # Adjusting for 0-based index
+            end_page = int(request.form['end_page'])
+
+            writer = PdfWriter()
+            for i in range(start_page, end_page):
+                writer.add_page(reader.pages[i])
+            
+            split_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'split.pdf')
+            with open(split_pdf_path, 'wb') as f:
+                writer.write(f)
+
+            return send_file(split_pdf_path, as_attachment=True)
+        except Exception as e:
+            return render_template('split_pdf.html', error=f"Error: {str(e)}")
+    
+    return render_template('split_pdf.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

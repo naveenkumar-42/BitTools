@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Excel to PDF</title>
+</head>
+<body>
+    <h1>Convert Excel to PDF</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="excel_file">Upload Excel File:</label>
+        <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
+        <button type="submit">Convert</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
