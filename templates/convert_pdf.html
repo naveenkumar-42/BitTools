@@ -4,16 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert PDF to Word</title>
+    <style>
+        :root {
+            --bg-color: #222831;
+            --text-color: #00ADB5;
+            --main-color: #393E46;
+            --secondary-bg-color: #EEEEEE;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: var(--main-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        form {
+            flex-direction: column;
+            margin: 20px 20px 10px 20px;
+        }
+
+        .box {
+            position: relative;
+            width: 80%;
+            margin-bottom: 1rem;
+        }
+
+        .box input {
+            width: 80%;
+            height: 25px;
+            padding: 10px;
+            border: 1px solid #fff;
+            background-color: var(--bg-color);
+            border-radius: 5px;
+            outline: none;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .box span {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            font-size: 10px;
+            color: var(--secondary-bg-color);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-left: 10px;
+            letter-spacing: 0.2em;
+            transition: 0.2s;
+        }
+
+        .box input:valid~span,
+        .box input:focus~span {
+            color: var(--text-color);
+            transform: translateX(10px) translateY(-30px);
+            font-size: 0.75em;
+            padding: 0 5px;
+            background-color: var(--bg-color);
+            border-left: 1px solid var(--main-color);
+            border-right: 1px solid var(--main-color);
+        }
+
+        .box input:valid,
+        .box input:focus {
+            border: 1px solid var(--main-color);
+        }
+
+        button {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            color: #fff;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .submit {
+            background: linear-gradient(45deg, #00ADB5, #009688);
+            padding: 10px;
+            width: 50%;
+            align-items: center;
+        }
+
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            margin-top: 1rem;
+        }
+
+        a {
+            color: var(--secondary-bg-color);
+            text-decoration: underline;
+            font-size: 13px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Convert PDF to Word</h1>
-    <form action="/convert_pdf" method="POST" enctype="multipart/form-data">
-        <label for="pdf_file">Select a PDF file to convert:</label><br><br>
-        <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" required><br><br>
-        <button type="submit">Convert</button>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <div class="container">
+        <h1>Convert PDF to Word</h1>
+        <form action="/convert_pdf" method="POST" enctype="multipart/form-data">
+            <div class="box">
+                <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" required>
+                <span>Select a PDF file</span>
+            </div>
+            <button type="submit" class="submit">Convert</button>
+        </form>
+        <div class="bottom">
+            <p>Need help? <a href="/help">Contact Support</a></p>
+        </div>
+    </div>
 </body>
 </html>
