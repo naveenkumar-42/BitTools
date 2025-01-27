@@ -9,6 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import logging
 import csv
 from io import StringIO
+from PyPDF2 import PdfReader
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -19,7 +20,7 @@ app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
 # Firebase setup
-cred = credentials.Certificate("D:/GitHub/Translator/translator-f9772-firebase-adminsdk-ybzox-3d49d5b518.json")
+cred = credentials.Certificate("translator-f9772-firebase-adminsdk-ybzox-3d49d5b518.json")
 firebase_admin.initialize_app(cred)
 
 # Initialize Google Translator
@@ -256,6 +257,44 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for('login'))
+
+UPLOAD_FOLDER = 'uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/convert_pdf', methods=['GET', 'POST'])
+def convert_pdf():
+    if request.method == 'POST':
+        if 'pdf_file' not in request.files:
+            return render_template('convert_pdf.html', error="No file uploaded.")
+        
+        pdf_file = request.files['pdf_file']
+        if pdf_file.filename == '':
+            return render_template('convert_pdf.html', error="No file selected.")
+        
+        try:
+            # Save uploaded PDF
+            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], pdf_file.filename)
+            pdf_file.save(pdf_path)
+
+            # Convert PDF to Word
+            reader = PdfReader(pdf_path)
+            doc = Document()
+
+            for page in reader.pages:
+                doc.add_paragraph(page.extract_text())
+
+            word_path = os.path.join(app.config['UPLOAD_FOLDER'], pdf_file.filename.replace('.pdf', '.docx'))
+            doc.save(word_path)
+
+            return send_file(word_path, as_attachment=True)
+
+        except Exception as e:
+            return render_template('convert_pdf.html', error=f"Error converting PDF: {str(e)}")
+    
+    return render_template('convert_pdf.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
