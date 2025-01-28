@@ -29,6 +29,7 @@ import threading
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from docx2pdf import convert
 
 
 # Initialize Flask app
@@ -386,7 +387,7 @@ def convert_pdf():
     
     return render_template('convert_pdf.html')
 
-# Convert Word to PDF
+# Define route
 @app.route('/convert_word_to_pdf', methods=['GET', 'POST'])
 def convert_word_to_pdf():
     if request.method == 'POST':
@@ -402,24 +403,16 @@ def convert_word_to_pdf():
             word_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             word_file.save(word_path)
             
-            # Convert Word to PDF
-            # You can use libraries like python-docx or comtypes on Windows for conversion
-            # A simple method: Here we use reportlab to generate a PDF from the Word file.
-            # You'll need a more robust method for real Word to PDF conversion
-            
+            # Convert Word document to PDF
             pdf_path = word_path.rsplit('.', 1)[0] + '.pdf'
-            doc = Document(word_path)  # You'll need to install python-docx
-            pdf = FPDF()
-            pdf.add_page()
-            for para in doc.paragraphs:
-                pdf.multi_cell(200, 10, txt=para.text, align='L')
-            pdf.output(pdf_path)
+            convert(word_path, pdf_path)
 
             return send_file(pdf_path, as_attachment=True)
         except Exception as e:
             return render_template('convert_word_to_pdf.html', error=f"Error: {str(e)}")
     
     return render_template('convert_word_to_pdf.html')
+
 
 @app.route('/convert_image_to_pdf', methods=['GET', 'POST'])
 def convert_image_to_pdf():
