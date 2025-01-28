@@ -24,7 +24,8 @@ import zipfile
 from io import BytesIO
 import shutil
 import tempfile
-
+import os
+import threading
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -297,44 +298,20 @@ def convert_pdf():
             pdf_path = f"{app.config['UPLOAD_FOLDER']}/{filename}"
             pdf_file.save(pdf_path)
 
-            # Convert PDF to selected output format
-            output_format = request.form.get('output_format', 'word')
+            # Convert PDF to Word
+            reader = PdfReader(pdf_path)
+            doc = Document()
 
-            if output_format == 'word':
-                # Convert PDF to Word
-                reader = PdfReader(pdf_path)
-                doc = Document()
+            for page in reader.pages:
+                doc.add_paragraph(page.extract_text())
 
-                for page in reader.pages:
-                    doc.add_paragraph(page.extract_text())
+            # Save the Word file in the same folder
+            word_filename = filename.rsplit('.', 1)[0] + '.docx'
+            word_path = f"{app.config['UPLOAD_FOLDER']}/{word_filename}"
+            doc.save(word_path)
 
-                # Save the Word file in the same folder
-                word_filename = filename.rsplit('.', 1)[0] + '.docx'
-                word_path = f"{app.config['UPLOAD_FOLDER']}/{word_filename}"
-                doc.save(word_path)
-
-                # Serve the Word file for download
-                return send_file(word_path, as_attachment=True)
-
-            elif output_format == 'text':
-                # Convert PDF to plain text
-                reader = PdfReader(pdf_path)
-                text_content = ""
-
-                for page in reader.pages:
-                    text_content += page.extract_text() + '\n'
-
-                # Save the text file in the same folder
-                text_filename = filename.rsplit('.', 1)[0] + '.txt'
-                text_path = f"{app.config['UPLOAD_FOLDER']}/{text_filename}"
-                with open(text_path, 'w', encoding='utf-8') as text_file:
-                    text_file.write(text_content)
-
-                # Serve the text file for download
-                return send_file(text_path, as_attachment=True)
-
-            else:
-                return render_template('convert_pdf.html', error="Unsupported output format.")
+            # Serve the Word file for download
+            return send_file(word_path, as_attachment=True)
 
         except Exception as e:
             return render_template('convert_pdf.html', error=f"Error converting PDF: {str(e)}")
@@ -441,37 +418,46 @@ def convert_excel_to_pdf():
     
     return render_template('convert_excel_to_pdf.html')
 
-# Compress PDF
+# Route for PDF compression
 @app.route('/compress_pdf', methods=['GET', 'POST'])
 def compress_pdf():
     if request.method == 'POST':
         if 'pdf_file' not in request.files:
-            return render_template('compress_pdf.html', error="No file uploaded.")
+            return jsonify({'error': 'No file uploaded.'})
         
         pdf_file = request.files['pdf_file']
         if pdf_file.filename == '':
-            return render_template('compress_pdf.html', error="No file selected.")
+            return jsonify({'error': 'No file selected.'})
         
-        try:
-            filename = secure_filename(pdf_file.filename)
-            pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            pdf_file.save(pdf_path)
-            
-            # Compress PDF
-            input_pdf = PdfReader(pdf_path)
-            output_pdf = PdfWriter()
-            for page in input_pdf.pages:
-                output_pdf.add_page(page)
-            
-            compressed_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'compressed_' + filename)
-            with open(compressed_pdf_path, 'wb') as f:
-                output_pdf.write(f)
+        filename = secure_filename(pdf_file.filename)
+        pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        pdf_file.save(pdf_path)
 
-            return send_file(compressed_pdf_path, as_attachment=True)
-        except Exception as e:
-            return render_template('compress_pdf.html', error=f"Error: {str(e)}")
-    
+        # Compress PDF
+        original_size = os.path.getsize(pdf_path)
+        input_pdf = PdfReader(pdf_path)
+        output_pdf = PdfWriter()
+
+        for page in input_pdf.pages:
+            output_pdf.add_page(page)
+
+        compressed_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'compressed_' + filename)
+        with open(compressed_pdf_path, 'wb') as f:
+            output_pdf.write(f)
+
+        compressed_size = os.path.getsize(compressed_pdf_path)
+
+        return jsonify({
+            'original_size': original_size / 1024,  # KB
+            'compressed_size': compressed_size / 1024,  # KB
+            'compressed_filename': 'compressed_' + filename
+        })
+
     return render_template('compress_pdf.html')
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), as_attachment=True)
 
 # Convert PDF to Image
 @app.route('/pdf_to_image', methods=['GET', 'POST'])
