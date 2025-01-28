@@ -570,6 +570,17 @@ def merge_pdfs():
     
     return render_template('merge_pdfs.html')
 
+# Function to parse page ranges
+def parse_page_range(page_str):
+    pages = set()
+    for part in page_str.split(','):
+        if '-' in part:
+            start, end = part.split('-')
+            pages.update(range(int(start), int(end) + 1))  # Add pages in the range
+        else:
+            pages.add(int(part))
+    return sorted(pages)
+
 # Split PDF
 @app.route('/split_pdf', methods=['GET', 'POST'])
 def split_pdf():
@@ -586,24 +597,29 @@ def split_pdf():
             pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             pdf_file.save(pdf_path)
             
-            # Split PDF (simplified, selecting page ranges)
-            reader = PdfReader(pdf_path)
-            start_page = int(request.form['start_page']) - 1  # Adjusting for 0-based index
-            end_page = int(request.form['end_page'])
-
-            writer = PdfWriter()
-            for i in range(start_page, end_page):
-                writer.add_page(reader.pages[i])
+            # Parse pages or ranges entered by the user
+            page_str = request.form['pages']
+            page_numbers = parse_page_range(page_str)
             
+            # Read the PDF
+            reader = PdfReader(pdf_path)
+            writer = PdfWriter()
+
+            for page_num in page_numbers:
+                if 1 <= page_num <= len(reader.pages):
+                    writer.add_page(reader.pages[page_num - 1])  # Adjust for 0-based index
+
             split_pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'split.pdf')
             with open(split_pdf_path, 'wb') as f:
                 writer.write(f)
 
             return send_file(split_pdf_path, as_attachment=True)
+        
         except Exception as e:
             return render_template('split_pdf.html', error=f"Error: {str(e)}")
     
     return render_template('split_pdf.html')
+
 
 
 if __name__ == '__main__':
