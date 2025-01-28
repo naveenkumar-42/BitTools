@@ -26,6 +26,10 @@ import shutil
 import tempfile
 import os
 import threading
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -202,11 +206,46 @@ def register():
                 display_name=name,
                 phone_number=phone
             )
+
+            # Send a Thank You email
+            send_thank_you_email(email, name)
+            
             return redirect(url_for('login'))  # Redirect to login page after successful registration
         except Exception as e:
             return render_template('register.html', error=str(e))
 
     return render_template('register.html')
+
+
+def send_thank_you_email(user_email, user_name):
+    # Email credentials
+    sender_email = "bittranslator2@gmail.com"
+    sender_password = "rwvnocanknpbxgyb"  # Use App Password here if 2FA is enabled
+
+    # Email content
+    subject = "Thank You for Registering!"
+    body = f"Hello {user_name},\n\nThank you for registering on our platform. We're excited to have you on board!\n\nBest regards,\nYour App Team"
+
+    # Setting up the MIME
+    message = MIMEMultipart()
+    message['From'] = sender_email
+    message['To'] = user_email
+    message['Subject'] = subject
+    message.attach(MIMEText(body, 'plain'))
+
+    try:
+        # Sending the email
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+            server.login(sender_email, sender_password)
+            text = message.as_string()
+            server.sendmail(sender_email, user_email, text)
+            print("Thank you email sent successfully.")
+    except smtplib.SMTPAuthenticationError as e:
+        print(f"Authentication Error: {e}")
+    except smtplib.SMTPConnectError as e:
+        print(f"Connection Error: {e}")
+    except Exception as e:
+        print(f"Failed to send email: {str(e)}")
 
 
 @app.route('/show_history')
@@ -353,7 +392,6 @@ def convert_word_to_pdf():
     
     return render_template('convert_word_to_pdf.html')
 
-# Convert Image to PDF
 @app.route('/convert_image_to_pdf', methods=['GET', 'POST'])
 def convert_image_to_pdf():
     if request.method == 'POST':
@@ -378,8 +416,10 @@ def convert_image_to_pdf():
             # Clean up images after conversion
             for path in image_paths:
                 os.remove(path)
-            
-            return send_file(pdf_path, as_attachment=True)
+
+            # Return PDF file for download
+            return send_file(pdf_path, as_attachment=True, download_name="converted_images.pdf")
+
         except Exception as e:
             return render_template('convert_image_to_pdf.html', error=f"Error: {str(e)}")
     

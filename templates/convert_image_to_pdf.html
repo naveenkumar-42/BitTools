@@ -4,16 +4,141 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Image to PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+            color: #333;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background-color: #f3f3f3;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #4CAF50;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Convert Images to PDF</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label for="images">Upload Images (JPG, PNG):</label>
-        <input type="file" name="images" id="images" accept="image/png, image/jpeg" multiple>
-        <button type="submit">Convert</button>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <div class="container">
+        <h1>Convert Images to PDF</h1>
+        <form id="convertForm" method="POST" enctype="multipart/form-data">
+            <label for="image_files">Upload Images (JPG, PNG):</label>
+            <input type="file" name="image_files" id="image_files" accept="image/png, image/jpeg" multiple required>
+            <button type="submit">Convert</button>
+        </form>
+        <div id="progressContainer" class="progress-container" style="display: none;">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if success %}
+            <p class="success">{{ success }}</p>
+        {% endif %}
+        <div id="downloadLink" style="display: none;">
+            <a href="" id="downloadPDF">Download PDF</a>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('convertForm');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+    
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            progressContainer.style.display = 'block';
+            
+            let formData = new FormData(form);
+    
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/convert_image_to_pdf', true);
+    
+            // Update progress bar during upload
+            xhr.upload.onprogress = function(event) {
+                if (event.lengthComputable) {
+                    let percent = (event.loaded / event.total) * 100;
+                    progressBar.style.width = percent + '%';
+                }
+            };
+    
+            // Handle the response after upload
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Trigger file download
+                    const blob = xhr.response;
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = "converted_images.pdf";
+                    link.click();
+                } else {
+                    alert('Error: ' + xhr.responseText);
+                }
+            };
+    
+            // Ensure that the response is treated as a blob (binary data)
+            xhr.responseType = 'blob';
+            xhr.send(formData);
+        });
+    </script>
 </body>
 </html>
