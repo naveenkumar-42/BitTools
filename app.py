@@ -297,20 +297,44 @@ def convert_pdf():
             pdf_path = f"{app.config['UPLOAD_FOLDER']}/{filename}"
             pdf_file.save(pdf_path)
 
-            # Convert PDF to Word
-            reader = PdfReader(pdf_path)
-            doc = Document()
+            # Convert PDF to selected output format
+            output_format = request.form.get('output_format', 'word')
 
-            for page in reader.pages:
-                doc.add_paragraph(page.extract_text())
+            if output_format == 'word':
+                # Convert PDF to Word
+                reader = PdfReader(pdf_path)
+                doc = Document()
 
-            # Save the Word file in the same folder
-            word_filename = filename.rsplit('.', 1)[0] + '.docx'
-            word_path = f"{app.config['UPLOAD_FOLDER']}/{word_filename}"
-            doc.save(word_path)
+                for page in reader.pages:
+                    doc.add_paragraph(page.extract_text())
 
-            # Serve the Word file for download
-            return send_file(word_path, as_attachment=True)
+                # Save the Word file in the same folder
+                word_filename = filename.rsplit('.', 1)[0] + '.docx'
+                word_path = f"{app.config['UPLOAD_FOLDER']}/{word_filename}"
+                doc.save(word_path)
+
+                # Serve the Word file for download
+                return send_file(word_path, as_attachment=True)
+
+            elif output_format == 'text':
+                # Convert PDF to plain text
+                reader = PdfReader(pdf_path)
+                text_content = ""
+
+                for page in reader.pages:
+                    text_content += page.extract_text() + '\n'
+
+                # Save the text file in the same folder
+                text_filename = filename.rsplit('.', 1)[0] + '.txt'
+                text_path = f"{app.config['UPLOAD_FOLDER']}/{text_filename}"
+                with open(text_path, 'w', encoding='utf-8') as text_file:
+                    text_file.write(text_content)
+
+                # Serve the text file for download
+                return send_file(text_path, as_attachment=True)
+
+            else:
+                return render_template('convert_pdf.html', error="Unsupported output format.")
 
         except Exception as e:
             return render_template('convert_pdf.html', error=f"Error converting PDF: {str(e)}")

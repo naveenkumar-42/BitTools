@@ -5,134 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert PDF to Word</title>
     <style>
-        :root {
-            --bg-color: #222831;
-            --text-color: #00ADB5;
-            --main-color: #393E46;
-            --secondary-bg-color: #EEEEEE;
-        }
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-color);
-            background-color: var(--bg-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f4f4f9;
         }
-
         .container {
-            background-color: var(--main-color);
-            padding: 2rem;
+            background: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
             max-width: 400px;
             width: 100%;
         }
-
         h1 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
         }
-
-        form {
-            flex-direction: column;
-            margin: 20px 20px 10px 20px;
-        }
-
         .box {
-            position: relative;
-            width: 80%;
-            margin-bottom: 1rem;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 20px;
         }
-
-        .box input {
-            width: 80%;
-            height: 25px;
-            padding: 10px;
-            border: 1px solid #fff;
-            background-color: var(--bg-color);
-            border-radius: 5px;
-            outline: none;
-            color: #fff;
-            font-size: 1em;
+        .box.dragover {
+            border-color: #007bff;
+            background-color: #e9f5ff;
         }
-
         .box span {
-            position: absolute;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
-            font-size: 10px;
-            color: var(--secondary-bg-color);
-            text-transform: uppercase;
-            font-weight: 500;
-            margin-left: 10px;
-            letter-spacing: 0.2em;
-            transition: 0.2s;
+            display: block;
+            margin-top: 10px;
+            color: #666;
         }
-
-        .box input:valid~span,
-        .box input:focus~span {
-            color: var(--text-color);
-            transform: translateX(10px) translateY(-30px);
-            font-size: 0.75em;
-            padding: 0 5px;
-            background-color: var(--bg-color);
-            border-left: 1px solid var(--main-color);
-            border-right: 1px solid var(--main-color);
-        }
-
-        .box input:valid,
-        .box input:focus {
-            border: 1px solid var(--main-color);
-        }
-
-        button {
-            padding: 0.8rem;
-            font-size: 1rem;
+        .submit {
+            display: block;
+            width: 100%;
+            background: #007bff;
+            color: #fff;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 1rem;
-            color: #fff;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .submit {
-            background: linear-gradient(45deg, #00ADB5, #009688);
             padding: 10px;
-            width: 50%;
-            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
         }
-
+        .submit:hover {
+            background: #0056b3;
+        }
+        .output-format {
+            margin-bottom: 20px;
+        }
+        .output-format label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
         .bottom {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
         }
-
-        p {
-            margin-top: 1rem;
+        .bottom a {
+            color: #007bff;
+            text-decoration: none;
         }
-
-        a {
-            color: var(--secondary-bg-color);
+        .bottom a:hover {
             text-decoration: underline;
-            font-size: 13px;
         }
-
-        a:hover {
-            text-decoration: underline;
+        #file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
         }
     </style>
 </head>
@@ -140,9 +90,18 @@
     <div class="container">
         <h1>Convert PDF to Word</h1>
         <form action="/convert_pdf" method="POST" enctype="multipart/form-data">
-            <div class="box">
-                <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" required>
-                <span>Select a PDF file</span>
+            <div class="box" id="drop-zone">
+                <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" hidden required>
+                <span>Drag and drop a PDF file or click to select</span>
+            </div>
+            <p id="file-name"></p>
+            <div class="output-format">
+                <label for="output_format">Select Output Format:</label>
+                <select name="output_format" id="output_format" required>
+                    <option value="word">Word (.docx)</option>
+                    <option value="text">Text (.txt)</option>
+                    <option value="other">Other</option>
+                </select>
             </div>
             <button type="submit" class="submit">Convert</button>
         </form>
@@ -150,5 +109,37 @@
             <p>Need help? <a href="/help">Contact Support</a></p>
         </div>
     </div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('pdf_file');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
+            }
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
+            }
+        });
+    </script>
 </body>
 </html>
