@@ -1,4 +1,13 @@
-Flask==2.0.3
+Flask
+Flask-Session
+requests
+firebase-admin
 googletrans==4.0.0-rc1
-numpy==1.24.2
-scikit-learn==1.2.2
+scikit-learn
+PyPDF2
+python-docx
+Pillow
+fpdf
+img2pdf
+openpyxl
+docx2pdf
