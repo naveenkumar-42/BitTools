@@ -5,269 +5,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIT Translator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-        :root {
-            --bg-color: #222831;
-            --text-color: #00ADB5;
-            --main-color: #393E46;
-            --secondary-bg-color: #EEEEEE;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
+            background-color: wheat;
             margin: 0;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            background-size: cover;
-            background-position: center;
-
+            padding: 0;
+            color: #333;
         }
 
         .container {
-            background-color: var(--main-color);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
-            padding: 10px 20px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s forwards;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        .feature-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 40px;
         }
 
-        .textarea {
-            width: 80%;
-            padding: 10px;
-            border-radius: 5px;
-            color: var(--bg-color);
-            margin-top: 10px;
-            resize: none;
-            margin-left: 50px;
-            height: 100px;
+        .feature-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width:80%;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .feature-box a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #3182ce;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .feature-box a:hover {
+            background-color: #2b6cb0;
         }
 
         .top-btn {
             display: flex;
             justify-content: space-between;
-            margin-right: 20px;
-            gap: 10px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .top-btn .navigation-dropdown select {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: 1px solid black;
+            background-color: white;
         }
 
         .logout-btn {
-            text-align: right;
-            align-items: flex-end;
-            padding: 10px 20px;
+            background-color: orangered;
+            color: rgb(34, 24, 24);
             text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 10px;
-            color: var(--secondary-bg-color);
-            background-color: rgb(174, 13, 13);
+            padding: 10px 20px;
+            border-radius: 6px;
         }
 
         .logout-btn:hover {
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-
-        .heading {
-            color: var(--secondary-bg-color);
-        }
-
-        .form-group {
-            margin-top: 20px;
-        }
-
-        .dropdown-group {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 10px;
-            flex-wrap: wrap;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--text-color);
-            color: var(--secondary-bg-color);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        .button:hover {
-            transition: 0.3s;
-        }
-
-        .button:active {
-            transform: scale(0.95);
-        }
-
-        select {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: var(--text-color);
-            color: var(--bg-color);
-            margin-top: 10px;
-        }
-
-        .result,
-        .suggestion {
-            opacity: 0;
-            background-color: var(--secondary-bg-color);
-            animation: fadeIn 1s forwards;
-            width: 80%;
-            margin: 10px 0px 0px 60px;
-            padding: auto;
-            border: 1px solid var(--main-color);
-            border-radius: 3px;
-        }
-
-        .history {
-            margin-top: 20px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .navigation-dropdown {
-            text-align: left;
-            gap: 10px;
-        }
-
-        .navigation-dropdown select {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            background-color: var(--bg-color);
-            color: white;
-        }
-
-        .voice-select-container {
-            margin-top: 20px;
-        }
-
-        .social-sharing {
-            margin-top: 20px;
-        }
-
-        .social-button {
-            display: inline-block;
-            margin: 5px;
-            padding: 10px;
-            background-color: #00aced;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .social-button:hover {
-            background-color: #0084b4;
-        }
-
-        h2 {
-            color: var(--text-color);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-
-            .button,
-            select {
-                width: 100%;
-                box-sizing: border-box;
-            }
-
-            .dropdown-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .dropdown-group select {
-                margin-bottom: 10px;
-            }
-
-            .navigation-dropdown {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .navigation-dropdown select {
-                margin-bottom: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                width: 90%;
-            }
-
-            .dropdown-group {
-                gap: 5px;
-            }
-
-            .button,
-            select {
-                padding: 8px 15px;
-            }
+            background-color: rgb(198, 60, 10);
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-
         {% if session.username %}
         <h1>Hi, {{ session.username }}!</h1>
-        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+        <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
         {% else %}
         <div class="top-btn">
             <div class="navigation-dropdown">
                 <select onchange="location = this.value;">
                     <option value="#">Navigation</option>
-
-                    <option value="{{ url_for('convert_pdf') }}">Convert PDF to Word</option>
-                    <option value="{{ url_for('convert_word_to_pdf') }}">Convert Word to PDF</option>
-                    <option value="{{ url_for('convert_image_to_pdf') }}">Convert Image to PDF</option>
-                    <option value="{{ url_for('convert_excel_to_pdf') }}">Convert Excel to PDF</option>
+                    <option value="{{ url_for('convert_pdf') }}">PDF to Word</option>
+                    <option value="{{ url_for('convert_word_to_pdf') }}">Word to PDF</option>
+                    <option value="{{ url_for('convert_image_to_pdf') }}">Image to PDF</option>
+                    <option value="{{ url_for('convert_excel_to_pdf') }}">Excel to PDF</option>
                     <option value="{{ url_for('compress_pdf') }}">Compress PDF</option>
-                    <option value="{{ url_for('pdf_to_image') }}">Convert PDF to Image</option>
+                    <option value="{{ url_for('pdf_to_image') }}">PDF to Image</option>
                     <option value="{{ url_for('merge_pdfs') }}">Merge PDFs</option>
                     <option value="{{ url_for('split_pdf') }}">Split PDF</option>
                     <option value="{{ url_for('translator') }}">Translator</option>
                     <option value="{{ url_for('feedback') }}">Feedback</option>
                 </select>
-
             </div>
-            <a href="{{ url_for('login') }}" class="logout-btn">Logout</a>
+            <a href="{{ url_for('login') }}" class="logout-btn">Login</a>
         </div>
         {% endif %}
-    </div>
 
+        <!-- Feature Section -->
+        <div class="feature-container">
+            <div class="feature-box">
+                <h3>PDF to Word</h3>
+                <a href="{{ url_for('convert_pdf') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Word to PDF</h3>
+                <a href="{{ url_for('convert_word_to_pdf') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Image to PDF</h3>
+                <a href="{{ url_for('convert_image_to_pdf') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Excel to PDF</h3>
+                <a href="{{ url_for('convert_excel_to_pdf') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Compress PDF</h3>
+                <a href="{{ url_for('compress_pdf') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>PDF to Image</h3>
+                <a href="{{ url_for('pdf_to_image') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Merge PDFs</h3>
+                <a href="{{ url_for('merge_pdfs') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Split PDF</h3>
+                <a href="{{ url_for('split_pdf') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Translator</h3>
+                <a href="{{ url_for('translator') }}">Go</a>
+            </div>
+
+            <div class="feature-box">
+                <h3>Feedback</h3>
+                <a href="{{ url_for('feedback') }}">Go</a>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
