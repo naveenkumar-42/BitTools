@@ -71,104 +71,144 @@ def check_logged_in():
     if 'user_email' not in session:
         return redirect(url_for('login'))
 
-@app.route('/home', methods=['GET', 'POST'])
+# @app.route('/home', methods=['GET', 'POST'])
+# def home():
+#     if check_logged_in():
+#         return check_logged_in()
+
+#     translation = ''
+#     detected_lang = ''
+#     error = ''
+#     suggestion = ''
+
+#     if request.method == 'POST':
+#         text_to_translate = request.form.get('text')  # Use .get() to avoid KeyError
+#         src_lang = request.form.get('src_lang', 'auto')  # Default to 'auto' if not provided
+#         dest_lang = request.form.get('dest_lang')
+
+#         try:
+#             # Ensure 'text' and 'dest_lang' are provided
+#             if not text_to_translate or not dest_lang:
+#                 raise ValueError("Missing required fields: text or destination language")
+
+#             history = session.get('history', [])
+#             suggestion = suggest_translation(text_to_translate, history)
+#             if not suggestion:
+#                 if src_lang == 'auto':
+#                     detected_lang = translator.detect(text_to_translate).lang
+#                     src_lang = detected_lang
+#                 translated = translator.translate(text_to_translate, src=src_lang, dest=dest_lang)
+#                 translation = translated.text
+#                 history.append({
+#                     'text': text_to_translate,
+#                     'translation': translation,
+#                     'src': src_lang,
+#                     'dest': dest_lang
+#                 })
+#                 session['history'] = history
+#                 logging.info(f"Translated from {src_lang} to {dest_lang}: {text_to_translate} -> {translation}")
+#         except Exception as e:
+#             error = str(e)
+#             logging.error(f"Error translating from {src_lang} to {dest_lang}: {text_to_translate} - {error}")
+
+#     return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
+
+
+# @app.route('/', methods=['GET', 'POST'])
+# def index():
+#     # Check if user is logged in
+#     if check_logged_in():
+#         return check_logged_in()
+
+#     translation = ''
+#     detected_lang = ''
+#     error = ''
+#     suggestion = ''
+#     if request.method == 'POST':
+#         text_to_translate = request.form['text']
+#         src_lang = request.form['src_lang']
+#         dest_lang = request.form['dest_lang']
+#         try:
+#             history = session.get('history', [])
+#             suggestion = suggest_translation(text_to_translate, history)
+#             if not suggestion:
+#                 if src_lang == 'auto':
+#                     detected_lang = translator.detect(text_to_translate).lang
+#                     src_lang = detected_lang
+#                 translated = translator.translate(text_to_translate, src=src_lang, dest=dest_lang)
+#                 translation = translated.text
+#                 history.append({
+#                     'text': text_to_translate,
+#                     'translation': translation,
+#                     'src': src_lang,
+#                     'dest': dest_lang
+#                 })
+#                 session['history'] = history
+#                 logging.info(f"Translated from {src_lang} to {dest_lang}: {text_to_translate} -> {translation}")
+#         except Exception as e:
+#             error = str(e)
+#             logging.error(f"Error translating from {src_lang} to {dest_lang}: {text_to_translate} - {error}")
+#     return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
+
+# @app.route('/translate', methods=['POST'])
+# def translate():
+#     if check_logged_in():
+#         return check_logged_in()
+
+#     text = request.form['text']
+#     src_lang = request.form['src_lang']
+#     dest_lang = request.form['dest_lang']
+#     result = translator.translate(text, src=src_lang, dest=dest_lang)
+#     history = session.get('history', [])
+#     history.append({
+#         'src': src_lang,
+#         'dest': dest_lang,
+#         'text': text,
+#         'translation': result.text
+#     })
+#     session['history'] = history
+#     session['translation'] = result.text
+#     return redirect(url_for('home'))
+
+
+
+# History and favorites (in-memory for now)
+history = []
+favorites = []
+
+@app.route('/')
 def home():
-    if check_logged_in():
-        return check_logged_in()
+    return render_template('home.html')
 
-    translation = ''
-    detected_lang = ''
-    error = ''
-    suggestion = ''
+@app.route('/translator', methods=['GET', 'POST'])
+def translator():
+    translation = None
+    suggestion = None
 
     if request.method == 'POST':
-        text_to_translate = request.form.get('text')  # Use .get() to avoid KeyError
-        src_lang = request.form.get('src_lang', 'auto')  # Default to 'auto' if not provided
+        src_lang = request.form.get('src_lang')
         dest_lang = request.form.get('dest_lang')
+        text = request.form.get('text')
 
-        try:
-            # Ensure 'text' and 'dest_lang' are provided
-            if not text_to_translate or not dest_lang:
-                raise ValueError("Missing required fields: text or destination language")
+        # Using googletrans library to translate
+        translator = Translator()
+        translated = translator.translate(text, src=src_lang, dest=dest_lang)
 
-            history = session.get('history', [])
-            suggestion = suggest_translation(text_to_translate, history)
-            if not suggestion:
-                if src_lang == 'auto':
-                    detected_lang = translator.detect(text_to_translate).lang
-                    src_lang = detected_lang
-                translated = translator.translate(text_to_translate, src=src_lang, dest=dest_lang)
-                translation = translated.text
-                history.append({
-                    'text': text_to_translate,
-                    'translation': translation,
-                    'src': src_lang,
-                    'dest': dest_lang
-                })
-                session['history'] = history
-                logging.info(f"Translated from {src_lang} to {dest_lang}: {text_to_translate} -> {translation}")
-        except Exception as e:
-            error = str(e)
-            logging.error(f"Error translating from {src_lang} to {dest_lang}: {text_to_translate} - {error}")
+        # Saving history
+        history.append({
+            'src': src_lang,
+            'dest': dest_lang,
+            'text': text,
+            'translation': translated.text
+        })
 
-    return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
+        translation = translated.text
 
+        # If you want to give suggestions (for example, use the same translation if empty)
+        if not translation:
+            suggestion = "Suggested translation goes here."
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    # Check if user is logged in
-    if check_logged_in():
-        return check_logged_in()
-
-    translation = ''
-    detected_lang = ''
-    error = ''
-    suggestion = ''
-    if request.method == 'POST':
-        text_to_translate = request.form['text']
-        src_lang = request.form['src_lang']
-        dest_lang = request.form['dest_lang']
-        try:
-            history = session.get('history', [])
-            suggestion = suggest_translation(text_to_translate, history)
-            if not suggestion:
-                if src_lang == 'auto':
-                    detected_lang = translator.detect(text_to_translate).lang
-                    src_lang = detected_lang
-                translated = translator.translate(text_to_translate, src=src_lang, dest=dest_lang)
-                translation = translated.text
-                history.append({
-                    'text': text_to_translate,
-                    'translation': translation,
-                    'src': src_lang,
-                    'dest': dest_lang
-                })
-                session['history'] = history
-                logging.info(f"Translated from {src_lang} to {dest_lang}: {text_to_translate} -> {translation}")
-        except Exception as e:
-            error = str(e)
-            logging.error(f"Error translating from {src_lang} to {dest_lang}: {text_to_translate} - {error}")
-    return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
-
-@app.route('/translate', methods=['POST'])
-def translate():
-    if check_logged_in():
-        return check_logged_in()
-
-    text = request.form['text']
-    src_lang = request.form['src_lang']
-    dest_lang = request.form['dest_lang']
-    result = translator.translate(text, src=src_lang, dest=dest_lang)
-    history = session.get('history', [])
-    history.append({
-        'src': src_lang,
-        'dest': dest_lang,
-        'text': text,
-        'translation': result.text
-    })
-    session['history'] = history
-    session['translation'] = result.text
-    return redirect(url_for('home'))
+    return render_template('translator.html', translation=translation, suggestion=suggestion, history=history)
 
 @app.route('/add_favorite', methods=['POST'])
 def add_favorite():
