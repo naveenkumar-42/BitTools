@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify, make_response,send_file
+from flask import Flask,flash, render_template, request, redirect, url_for, session, jsonify, make_response,send_file
 from flask_session import Session
 import requests
 import firebase_admin
@@ -180,6 +180,7 @@ favorites = []
 def home():
     return render_template('home.html')
 
+
 @app.route('/translator', methods=['GET', 'POST'])
 def translator():
     translation = None
@@ -210,6 +211,7 @@ def translator():
 
     return render_template('translator.html', translation=translation, suggestion=suggestion, history=history)
 
+
 @app.route('/add_favorite', methods=['POST'])
 def add_favorite():
     if check_logged_in():
@@ -224,7 +226,35 @@ def add_favorite():
     favorites = session.get('favorites', [])
     favorites.append(favorite)
     session['favorites'] = favorites
-    return redirect(url_for('home'))
+    flash('Added to favorites!')
+    return redirect(url_for('translator'))
+
+
+@app.route('/favorites')
+def favorites():
+    if check_logged_in():
+        return check_logged_in()
+
+    favorites = session.get('favorites', [])
+    return render_template('favorites.html', favorites=favorites)
+
+@app.route('/clear_favorites', methods=['POST'])
+def clear_favorites():
+    if 'favorites' in session:
+        session.pop('favorites')  # Remove the favorites from the session
+        flash('Favorites cleared successfully!', 'success')
+    else:
+        flash('No favorites to clear!', 'info')
+    return redirect(url_for('favorites'))
+
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    if request.method == 'POST':
+        feedback = request.form['feedback']
+        logging.info(f"Feedback received: {feedback}")
+        return redirect(url_for('home'))
+    return render_template('feedback.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -287,61 +317,6 @@ def send_thank_you_email(user_email, user_name):
     except Exception as e:
         print(f"Failed to send email: {str(e)}")
 
-
-@app.route('/show_history')
-def show_history():
-    if check_logged_in():
-        return check_logged_in()
-    return render_template('history.html', history=session.get('history', []))
-
-@app.route('/clear_history')
-def clear_history():
-    session['history'] = []
-    return redirect(url_for('show_history'))
-
-@app.route('/show_favorites')
-def show_favorites():
-    if check_logged_in():
-        return check_logged_in()
-    return render_template('favorites.html', favorites=session.get('favorites', []))
-
-@app.route('/clear_favorites')
-def clear_favorites():
-    session['favorites'] = []
-    return redirect(url_for('show_favorites'))
-
-@app.route('/feedback', methods=['GET', 'POST'])
-def feedback():
-    if request.method == 'POST':
-        feedback = request.form['feedback']
-        logging.info(f"Feedback received: {feedback}")
-        return redirect(url_for('home'))
-    return render_template('feedback.html')
-
-@app.route('/leaderboard')
-def leaderboard():
-    # Placeholder leaderboard logic
-    return "Leaderboard page (not implemented yet)"
-
-@app.route('/download_history')
-def download_history():
-    history = session.get('history', [])
-    si = StringIO()
-    writer = csv.writer(si)
-    writer.writerow(['Source Language', 'Destination Language', 'Original Text', 'Translation'])
-    for item in history:
-        writer.writerow([item['src'], item['dest'], item['text'], item['translation']])
-    output = make_response(si.getvalue())
-    output.headers["Content-Disposition"] = "attachment; filename=translation_history.csv"
-    output.headers["Content-type"] = "text/csv"
-    return output
-
-@app.route('/toggle_dark_mode', methods=['POST'])
-def toggle_dark_mode():
-    data = request.get_json()
-    dark_mode = data.get('dark_mode', False)
-    session['dark_mode'] = dark_mode
-    return '', 204
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

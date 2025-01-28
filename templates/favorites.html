@@ -1,114 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorites</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-
-         :root {
-            --bg-color: #222831;
-            --text-color: #00ADB5;
-            --main-color: #393E46;
-            --secondary-bg-color: #EEEEEE;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
+            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url("{{ url_for('static', filename='background.jpg') }}");
-            background-size: cover;
-            background-position: center;
-        }
-
-        .container {
-            background-color: var(--main-color);
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
             padding: 20px;
-            text-align: center;
-            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
-            color: var(--secondary-bg-color);
-            margin-bottom: 20px;
-            font-size: 28px;
+            text-align: center;
+            color: #333;
         }
 
-        nav a {
-            margin: 0 15px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
+        .favorites-list {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
-        nav a:hover {
-            color: var(--text-color);
+        .favorite-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
         }
 
-        .favorites ul {
-            list-style: none;
-            padding: 0;
+        .favorite-item:last-child {
+            border-bottom: none;
+        }
+
+        .favorite-item h3 {
             margin: 0;
+            color: #333;
         }
 
-        .favorites li {
-            background-color: #f9f9f9;
-            border: 1px solid #dddddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 10px 0;
-            font-size: 18px;
+        .favorite-item p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+
+        .actions {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            transition: background-color 0.3s;
+            height: 100%;
+            /* Adjust if needed */
         }
 
-        .favorites li:nth-child(odd) {
-            background-color: #f1f1f1;
+        .button {
+            padding: 8px 15px;
+            background-color: #00ADB5;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        .favorites li:hover {
-            background-color: #e2e2e2;
-        }
-
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .button:hover {
+            background-color: #007B84;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Favorites</h1>
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('show_history') }}">Translation History</a>
-        </nav>
-        <div class="favorites">
-            <ul>
-                {% for item in favorites %}
-                <li>
-                    <span>{{ item.src }} to {{ item.dest }}:</span>
-                    <span>{{ item.text }} &rarr; {{ item.translation }}</span>
-                </li>
-                {% endfor %}
-            </ul>
-            <a href="{{ url_for('clear_favorites') }}" class="button">Clear Favorites</a>
+    <h1>Your Favorites</h1>
+    <div class="favorites-list">
+        {% if favorites %}
+        {% for favorite in favorites %}
+        <div class="favorite-item">
+            <h3>{{ favorite.text }} → {{ favorite.translation }}</h3>
+            <p>From: {{ favorite.src }} | To: {{ favorite.dest }}</p>
         </div>
+        {% endfor %}
+        {% else %}
+        <p>No favorites added yet.</p>
+        {% endif %}
+    </div>
+    <form method="POST" action="{{ url_for('clear_favorites') }}">
+        <button type="submit" class="button">Clear Favorites</button>
+    </form>
+    <div class="actions">
+        <a href="{{ url_for('translator') }}" class="button">Back to Translator</a>
     </div>
 </body>
+
 </html>

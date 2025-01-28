@@ -249,14 +249,12 @@
             <div class="navigation-dropdown">
                 <select onchange="location = this.value;">
                     <option value="#">Navigation</option>
-                    <option value="{{ url_for('leaderboard') }}">View Leaderboard</option>
-                    <option value="{{ url_for('show_history') }}">View History</option>
-                    <option value="{{ url_for('show_favorites') }}">View Favorites</option>
                     <option value="{{ url_for('feedback') }}">Feedback</option>
+                    <option value="{{ url_for('favorites') }}">Favorites</option>
                 </select>
                 
             </div>
-            <a href="{{ url_for('login') }}" class="logout-btn">Logout</a>
+            <a href="{{ url_for('home') }}" class="logout-btn">Home</a>
         </div>
         {% endif %}
         <h2 class="heading">BIT Translator</h2>

@@ -26,7 +26,7 @@
             height: auto;
             background-size: cover;
             background-position: center;
-            
+
         }
 
         .container {
@@ -137,7 +137,7 @@
             background-color: var(--secondary-bg-color);
             animation: fadeIn 1s forwards;
             width: 80%;
-            margin:10px 0px 0px 60px;
+            margin: 10px 0px 0px 60px;
             padding: auto;
             border: 1px solid var(--main-color);
             border-radius: 3px;
@@ -187,7 +187,7 @@
             background-color: #0084b4;
         }
 
-        h2{
+        h2 {
             color: var(--text-color);
         }
 
@@ -249,7 +249,7 @@
             <div class="navigation-dropdown">
                 <select onchange="location = this.value;">
                     <option value="#">Navigation</option>
-                   
+
                     <option value="{{ url_for('convert_pdf') }}">Convert PDF to Word</option>
                     <option value="{{ url_for('convert_word_to_pdf') }}">Convert Word to PDF</option>
                     <option value="{{ url_for('convert_image_to_pdf') }}">Convert Image to PDF</option>
@@ -261,169 +261,13 @@
                     <option value="{{ url_for('translator') }}">Translator</option>
                     <option value="{{ url_for('feedback') }}">Feedback</option>
                 </select>
-                
+
             </div>
             <a href="{{ url_for('login') }}" class="logout-btn">Logout</a>
         </div>
         {% endif %}
-        <h2 class="heading">BIT Translator</h2>
-        <form method="POST">
-            <div class="dropdown-group">
-                <select name="src_lang" required>
-                    <option value="auto">Detect Language</option>
-                    <option value="en">English</option>
-                    <option value="ta">Tamil</option>
-                    <option value="es">Spanish</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="zh-cn">Chinese (Simplified)</option>
-                    <option value="hi">Hindi</option>
-                    <option value="ja">Japanese</option>
-                    <option value="ru">Russian</option>
-                    <option value="ko">Korean</option>
-                    <option value="ar">Arabic</option>
-                    <option value="it">Italian</option>
-                    <option value="pt">Portuguese</option>
-                    <option value="bn">Bengali</option>
-                </select>
-                <select name="dest_lang" required>
-                    <option value="en">English</option>
-                    <option value="ta">Tamil</option>
-                    <option value="es">Spanish</option>
-                    <option value="fr">French</option>
-                    <option value="de">German</option>
-                    <option value="zh-cn">Chinese (Simplified)</option>
-                    <option value="hi">Hindi</option>
-                    <option value="ja">Japanese</option>
-                    <option value="ru">Russian</option>
-                    <option value="ko">Korean</option>
-                    <option value="ar">Arabic</option>
-                    <option value="it">Italian</option>
-                    <option value="pt">Portuguese</option>
-                    <option value="bn">Bengali</option>
-                </select>
-            </div>
-            <textarea class="textarea" name="text" id="text" placeholder="Enter text to translate" required></textarea>
-            <div class="form-group">
-                <button type="button" onclick="startDictation()" class="button">🎤 Speak</button>
-                <button type="submit" class="button" style="padding-top: 14px;">Translate</button>
-            </div>
-        </form>
-
-
-        <div class="voice-select-container">
-            <select id="voiceSelect"></select>
-        </div>
-
-        {% if translation %}
-        <div class="result">
-            <h2>Translation:</h2>
-            <p id="translatedText">{{ translation }}</p>
-            <button onclick="copyText()" class="button">Copy</button>
-            <button onclick="speak('{{ translation }}')" class="button">Listen</button>
-
-            <!-- Add to Favorites Form -->
-            <form id="favoriteForm" method="POST" action="{{ url_for('add_favorite') }}" style="display: none;">
-                <input type="hidden" name="text" value="{{ translation }}">
-                <input type="hidden" name="translation" value="{{ translation }}">
-                <input type="hidden" name="src" value="{{ src_lang }}">
-                <input type="hidden" name="dest" value="{{ dest_lang }}">
-            </form>
-            <button onclick="document.getElementById('favoriteForm').submit();" class="button">Add to Favorites</button>
-        </div>
-
-        <!-- Social Sharing Buttons -->
-        <div class="social-sharing">
-            <h2>Share Your Translation:</h2>
-            <a href="https://twitter.com/intent/tweet?text={{ translation }}" target="_blank"
-                class="social-button">Share on Twitter</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('index', _external=True) }}"
-                target="_blank" class="social-button">Share on Facebook</a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('index', _external=True) }}&title=Translation&summary={{ translation }}"
-                target="_blank" class="social-button">Share on LinkedIn</a>
-        </div>
-        {% endif %}
-
-        {% if suggestion %}
-        <div class="suggestion">
-            <h2>Suggested Translation:</h2>
-            <p>{{ suggestion }}</p>
-            <button onclick="speak('{{ suggestion }}')" class="button">Listen</button>
-        </div>
-        {% endif %}
-
-        <div class="history">
-            <h2>Translation History</h2>
-            <p style="color: red;">
-                After translating the text, clear the history. If you try to translate again, it still shows the
-                previous text.
-            </p>
-
-            <ul>
-                {% for item in history %}
-                <li>{{ item.src }} to {{ item.dest }}: {{ item.text }} -> {{ item.translation }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <!-- Navigation Dropdown -->
-
-
-
     </div>
-    <script>
-        function startDictation() {
-            if (window.hasOwnProperty('webkitSpeechRecognition')) {
-                var recognition = new webkitSpeechRecognition();
-                recognition.continuous = false;
-                recognition.interimResults = false;
-                recognition.lang = "en-US";
-                recognition.start();
-                recognition.onresult = function (e) {
-                    document.getElementById('text').value = e.results[0][0].transcript;
-                    recognition.stop();
-                };
-                recognition.onerror = function (e) {
-                    recognition.stop();
-                };
-            }
-        }
 
-        let voices = [];
-        function populateVoiceList() {
-            voices = window.speechSynthesis.getVoices();
-            let voiceSelect = document.getElementById('voiceSelect');
-            voiceSelect.innerHTML = '';
-            for (let i = 0; i < voices.length; i++) {
-                let option = document.createElement('option');
-                option.value = voices[i].name;
-                option.textContent = voices[i].name;
-                voiceSelect.appendChild(option);
-            }
-        }
-
-        window.speechSynthesis.onvoiceschanged = populateVoiceList;
-
-        function speak(text) {
-            let msg = new SpeechSynthesisUtterance(text);
-            let selectedVoiceName = document.getElementById('voiceSelect').value;
-            let selectedVoice = voices.find(voice => voice.name === selectedVoiceName);
-            if (selectedVoice) {
-                msg.voice = selectedVoice;
-            }
-            window.speechSynthesis.speak(msg);
-        }
-
-        function copyText() {
-            let translatedText = document.getElementById('translatedText').innerText;
-            navigator.clipboard.writeText(translatedText).then(function () {
-                alert('Translation copied to clipboard!');
-            }, function () {
-                alert('Failed to copy text.');
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', populateVoiceList);
-    </script>
 </body>
 
 </html>
