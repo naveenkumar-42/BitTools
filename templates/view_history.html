@@ -3,31 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View History</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Translation History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h2>Translation History</h2>
+<body class="bg-gray-50 text-gray-800">
+    <div class="container mx-auto max-w-4xl py-8 px-4">
+        <div class="bg-white shadow-lg rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b pb-2">Translation History</h2>
 
-        {% if history %}
-        <ul>
-            {% for item in history %}
-            <li>
-                <strong>Text:</strong> {{ item.text }} <br>
-                <strong>Translation:</strong> {{ item.translation }} <br>
-                <strong>From:</strong> {{ item.src }} <strong>To:</strong> {{ item.dest }}
-            </li>
-            {% endfor %}
-        </ul>
-        <form method="POST" action="{{ url_for('clear_history') }}">
-            <button type="submit" class="button">Clear History</button>
-        </form>
-        {% else %}
-        <p>No history to display.</p>
-        {% endif %}
-        
-        <a href="{{ url_for('translator') }}" class="button">Back to Translator</a>
+            {% if history %}
+            <ul class="space-y-4">
+                {% for item in history %}
+                <li class="p-4 border rounded-lg bg-gray-100 shadow-sm">
+                    <p><strong>Text:</strong> {{ item.text }}</p>
+                    <p><strong>Translation:</strong> {{ item.translation }}</p>
+                    <p class="text-sm text-gray-600"><strong>From:</strong> {{ item.src }} | <strong>To:</strong> {{ item.dest }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="mt-6 flex justify-between">
+                <form method="POST" action="{{ url_for('clear_history') }}">
+                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg shadow">
+                        Clear History
+                    </button>
+                </form>
+                <a href="{{ url_for('translator') }}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow">
+                    Back to Translator
+                </a>
+            </div>
+            {% else %}
+            <p class="text-gray-500 text-center py-6">No history to display.</p>
+            <div class="text-center">
+                <a href="{{ url_for('translator') }}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow">
+                    Back to Translator
+                </a>
+            </div>
+            {% endif %}
+        </div>
     </div>
 </body>
 </html>

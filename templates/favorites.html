@@ -4,32 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorites</title>
+    <title>Your Favorites</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #f7fafc;
             margin: 0;
             padding: 20px;
+            color: #333;
         }
 
         h1 {
             text-align: center;
+            font-size: 2.5rem;
             color: #333;
+            margin-bottom: 20px;
         }
 
         .favorites-list {
-            max-width: 800px;
-            margin: 20px auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
         }
 
         .favorite-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 15px 0;
         }
 
         .favorite-item:last-child {
@@ -37,41 +40,56 @@
         }
 
         .favorite-item h3 {
-            margin: 0;
-            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #2d3748;
         }
 
         .favorite-item p {
-            margin: 5px 0 0;
-            color: #666;
+            font-size: 1rem;
+            color: #718096;
         }
 
         .actions {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            /* Adjust if needed */
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .button {
-            padding: 8px 15px;
-            background-color: #00ADB5;
-            color: #fff;
+            padding: 12px 24px;
+            background-color: #3182ce;
+            color: white;
             text-decoration: none;
+            font-weight: 500;
+            border-radius: 6px;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .button:hover {
-            background-color: #007B84;
+            background-color: #2b6cb0;
+        }
+
+        .button:active {
+            background-color: #2c5282;
+        }
+
+        .no-favorites {
+            text-align: center;
+            color: #a0aec0;
+            font-size: 1.1rem;
+            padding: 20px;
         }
     </style>
 </head>
 
 <body>
     <h1>Your Favorites</h1>
+
     <div class="favorites-list">
         {% if favorites %}
         {% for favorite in favorites %}
@@ -81,14 +99,16 @@
         </div>
         {% endfor %}
         {% else %}
-        <p>No favorites added yet.</p>
+        <div class="no-favorites">
+            <p>No favorites added yet.</p>
+        </div>
         {% endif %}
     </div>
-    <form method="POST" action="{{ url_for('clear_favorites') }}" class="actions">
-        <button type="submit" class="button">Clear Favorites</button>
-    </form>
-    <br>
+
     <div class="actions">
+        <form method="POST" action="{{ url_for('clear_favorites') }}">
+            <button type="submit" class="button">Clear Favorites</button>
+        </form>
         <a href="{{ url_for('translator') }}" class="button">Back to Translator</a>
     </div>
 </body>
