@@ -84,9 +84,10 @@
         <p>No favorites added yet.</p>
         {% endif %}
     </div>
-    <form method="POST" action="{{ url_for('clear_favorites') }}">
+    <form method="POST" action="{{ url_for('clear_favorites') }}" class="actions">
         <button type="submit" class="button">Clear Favorites</button>
     </form>
+    <br>
     <div class="actions">
         <a href="{{ url_for('translator') }}" class="button">Back to Translator</a>
     </div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Translation History</h2>
+
+        {% if history %}
+        <ul>
+            {% for item in history %}
+            <li>
+                <strong>Text:</strong> {{ item.text }} <br>
+                <strong>Translation:</strong> {{ item.translation }} <br>
+                <strong>From:</strong> {{ item.src }} <strong>To:</strong> {{ item.dest }}
+            </li>
+            {% endfor %}
+        </ul>
+        <form method="POST" action="{{ url_for('clear_history') }}">
+            <button type="submit" class="button">Clear History</button>
+        </form>
+        {% else %}
+        <p>No history to display.</p>
+        {% endif %}
+        
+        <a href="{{ url_for('translator') }}" class="button">Back to Translator</a>
+    </div>
+</body>
+</html>

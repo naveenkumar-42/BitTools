@@ -247,6 +247,20 @@ def clear_favorites():
         flash('No favorites to clear!', 'info')
     return redirect(url_for('favorites'))
 
+
+@app.route('/view_history')
+def view_history():
+    # Render the history page with the current history list
+    return render_template('view_history.html', history=history)
+
+@app.route('/clear_history', methods=['POST'])
+def clear_history():
+    global history
+    history = []  # Clear the history list
+    flash('Translation history cleared successfully!', 'success')
+    return redirect(url_for('view_history'))
+
+
 @app.route('/feedback', methods=['GET', 'POST'])
 def feedback():
     if request.method == 'POST':
