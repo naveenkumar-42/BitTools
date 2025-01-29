@@ -4,25 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert PDF to Word</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f9;
-        }
-        .container {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 400px;
-            width: 100%;
-        }
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <!-- <style>
+
+
         h1 {
             text-align: center;
             margin-bottom: 20px;
@@ -84,7 +69,7 @@
             font-size: 14px;
             color: #555;
         }
-    </style>
+    </style> -->
 </head>
 <body>
     <div class="container">
@@ -103,7 +88,9 @@
                     <option value="other">Other</option>
                 </select>
             </div>
+            <div class="sub">
             <button type="submit" class="submit">Convert</button>
+            </div>
         </form>
         <div class="bottom">
             <p>Need help? <a href="/help">Contact Support</a></p>
