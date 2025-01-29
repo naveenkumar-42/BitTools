@@ -9,20 +9,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap');
-
         :root {
             --bg-color: #FFFFFF;
             --text-color: #000000;
             --main-color: #F0F0F0;
             --secondary-bg-color: #CCCCCC;
-            --button-bg-color: #007BFF;
-            /* New button background color */
-            --button-text-color: #000000;
-            /* Changed button text color */
-            --dropdown-bg-color: #007BFF;
-            /* New dropdown background color */
-            --dropdown-text-color: #000000;
-            /* Changed dropdown text color */
+            --button-bg-color: #007BFF; /* New button background color */
+            --button-text-color: #000000; /* Changed button text color */
+            --dropdown-bg-color: #007BFF; /* New dropdown background color */
+            --dropdown-text-color: #000000; /* Changed dropdown text color */
         }
 
         body {
@@ -63,10 +58,8 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.7);
-            /* Glassy background */
-            backdrop-filter: blur(10px);
-            /* Blur effect */
+            background-color: rgba(255, 255, 255, 0.7); /* Glassy background */
+            backdrop-filter: blur(10px); /* Blur effect */
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -106,8 +99,7 @@
             width: 80%;
             padding: 10px;
             border-radius: 5px;
-            color: var(--text-color);
-            /* Changed text color */
+            color: var(--text-color); /* Changed text color */
             margin-top: 10px;
             resize: none;
             margin-left: 50px;
@@ -160,10 +152,8 @@
         .button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: var(--button-bg-color);
-            /* Updated button background color */
-            color: var(--button-text-color);
-            /* Updated button text color */
+            background-color: var(--button-bg-color); /* Updated button background color */
+            color: var(--button-text-color); /* Updated button text color */
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -183,10 +173,8 @@
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            background-color: var(--dropdown-bg-color);
-            /* Updated dropdown background color */
-            color: var(--dropdown-text-color);
-            /* Updated dropdown text color */
+            background-color: var(--dropdown-bg-color); /* Updated dropdown background color */
+            color: var(--dropdown-text-color); /* Updated dropdown text color */
             margin-top: 10px;
         }
 
@@ -220,10 +208,8 @@
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
-            background-color: var(--dropdown-bg-color);
-            /* Updated dropdown background color */
-            color: var(--dropdown-text-color);
-            /* Updated dropdown text color */
+            background-color: var(--dropdown-bg-color); /* Updated dropdown background color */
+            color: var(--dropdown-text-color); /* Updated dropdown text color */
         }
 
         .voice-select-container {
@@ -239,8 +225,7 @@
             margin: 5px;
             padding: 10px;
             background-color: #00aced;
-            color: var(--text-color);
-            /* Changed text color */
+            color: var(--text-color); /* Changed text color */
             border-radius: 5px;
             text-decoration: none;
         }
@@ -330,12 +315,12 @@
 
 <body>
     <div class="navbar">
-
+        
         <div class="menu-icon" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
         <div class="navigation-links">
-            <a href="{{ url_for('home') }}">
+            <a href="{{ url_for('home') }}" >
                 <i class="fas fa-home"></i>
                 Home
             </a>
@@ -419,8 +404,8 @@
             <h2>Share Your Translation:</h2>
             <a href="https://twitter.com/intent/tweet?text={{ translation }}" target="_blank"
                 class="social-button">Share on Twitter</a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('home', _external=True) }}" target="_blank"
-                class="social-button">Share on Facebook</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ url_for('home', _external=True) }}"
+                target="_blank" class="social-button">Share on Facebook</a>
             <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url_for('home', _external=True) }}&title=Translation&summary={{ translation }}"
                 target="_blank" class="social-button">Share on LinkedIn</a>
         </div>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,8 +39,7 @@
             align-items: center;
         }
 
-        input,
-        textarea {
+        input, textarea {
             width: 90%;
             padding: 12px;
             margin-top: 15px;
@@ -52,8 +50,7 @@
             background-color: #f9f9f9;
         }
 
-        input:focus,
-        textarea:focus {
+        input:focus, textarea:focus {
             border-color: #007bff;
             box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
             outline: none;
@@ -79,29 +76,18 @@
 
         /* Animations */
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        input,
-        textarea {
+        input, textarea {
             opacity: 0;
             transform: translateY(20px);
             animation: inputFade 0.5s forwards;
         }
 
         @keyframes inputFade {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         input:nth-child(1) {
@@ -127,8 +113,7 @@
                 font-size: 24px;
             }
 
-            input,
-            textarea {
+            input, textarea {
                 width: 100%;
                 font-size: 14px;
             }
@@ -140,7 +125,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <header>
@@ -162,5 +146,4 @@
         </form>
     </div>
 </body>
-
 </html>

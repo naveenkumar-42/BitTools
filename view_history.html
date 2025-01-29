@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,6 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -25,33 +23,27 @@
         }
     </style>
 </head>
-
 <body class="bg-blue-50 text-gray-800">
     <div class="container mx-auto max-w-4xl py-12 px-6">
         <div class="bg-white shadow-xl rounded-lg p-10 fade-in">
             <div class="flex justify-start items-center gap-x-6 mb-10">
-                <a href="{{ url_for('translator') }}"
-                    class="bg-blue-400 hover:bg-blue-500 text-white py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 flex items-center">
+                <a href="{{ url_for('translator') }}" class="bg-blue-400 hover:bg-blue-500 text-white py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 flex items-center">
                     <i class="fas fa-arrow-left mr-2"></i></a>
                 <h2 class="text-4xl font-bold text-blue-900 border-b pb-4">Translation History</h2>
             </div>
             {% if history %}
             <ul class="space-y-8">
                 {% for item in history %}
-                <li
-                    class="p-6 border rounded-lg bg-gradient-to-r from-blue-100 to-blue-200 shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 fade-in">
+                <li class="p-6 border rounded-lg bg-gradient-to-r from-blue-100 to-blue-200 shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 fade-in">
                     <p class="text-lg font-semibold mb-2 text-blue-900"><strong>Text:</strong> {{ item.text }}</p>
-                    <p class="text-lg font-semibold mb-2 text-blue-900"><strong>Translation:</strong> {{
-                        item.translation }}</p>
-                    <p class="text-sm text-blue-700"><strong>From:</strong> {{ item.src }} | <strong>To:</strong> {{
-                        item.dest }}</p>
+                    <p class="text-lg font-semibold mb-2 text-blue-900"><strong>Translation:</strong> {{ item.translation }}</p>
+                    <p class="text-sm text-blue-700"><strong>From:</strong> {{ item.src }} | <strong>To:</strong> {{ item.dest }}</p>
                 </li>
                 {% endfor %}
             </ul>
             <div class="mt-10 flex justify-center fade-in">
                 <form method="POST" action="{{ url_for('clear_history') }}">
-                    <button type="submit"
-                        class="bg-red-400 hover:bg-red-500 text-white py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 flex items-center">
+                    <button type="submit" class="bg-red-400 hover:bg-red-500 text-white py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105 flex items-center">
                         <i class="fas fa-trash-alt mr-2"></i>
                     </button>
                 </form>
@@ -62,5 +54,4 @@
         </div>
     </div>
 </body>
-
 </html>
