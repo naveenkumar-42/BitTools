@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Game</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    let startTime;
+    let userInput = '';
+    let isTypingStarted = false;
+    let timer;
+    let timeLeft = 60;
+    let wordsTyped = 0;
+    let isGameRunning = false;
+
+    // 🟢 Function to Start the Game
+    function startTyping() {
+      if (!isGameRunning) {
+        timeLeft = 60; // Reset timer
+        wordsTyped = 0; // Reset words count
+        document.getElementById('wordsTyped').textContent = "Words Typed: 0";
+        document.getElementById('timer').textContent = timeLeft + " seconds left";
+        document.getElementById('results').innerHTML = ""; // Clear previous results
+        document.getElementById('inputBox').value = ""; // Clear input box
+        document.getElementById('inputBox').disabled = false; // Enable input
+        document.getElementById('inputBox').focus(); // Focus cursor
+        isTypingStarted = false;
+        isGameRunning = true;
+        startTimer();
+      }
+    }
+
+    // 🟢 Function to Start Countdown Timer
+    function startTimer() {
+      startTime = new Date().getTime();
+      timer = setInterval(function () {
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          finishGame();
+        } else {
+          document.getElementById('timer').textContent = timeLeft + " seconds left";
+          timeLeft--;
+        }
+      }, 1000);
+    }
+
+    // 🟢 Function to Reset the Game
+    function refreshGame() {
+      clearInterval(timer);
+      document.getElementById('inputBox').value = ''; // Clear input
+      document.getElementById('inputBox').disabled = true; // Disable typing
+      document.getElementById('wordsTyped').textContent = "Words Typed: 0";
+      document.getElementById('timer').textContent = "Game not started";
+      document.getElementById('results').innerHTML = ""; // Clear results
+      isGameRunning = false;
+    }
+
+    // 🟢 Function to Check Input and Count Words
+    function checkInput(event) {
+      if (!isTypingStarted) {
+        startTyping();
+        isTypingStarted = true;
+      }
+      userInput = event.target.value;
+      wordsTyped = userInput.trim().split(/\s+/).length;
+      document.getElementById('wordsTyped').textContent = "Words Typed: " + wordsTyped;
+    }
+
+    // 🟢 Function to Finish the Game and Show Results
+    function finishGame() {
+      let endTime = new Date().getTime();
+      document.getElementById('inputBox').disabled = true; // Disable input
+
+      let userInputEncoded = encodeURIComponent(userInput);
+      let url = `/calculate_result/${userInputEncoded}/${startTime}/${endTime}/{{ difficulty }}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('results').innerHTML = `
+                        <h3>Game Over!</h3>
+                        <p><strong>WPM:</strong> ${data.wpm}</p>
+                        <p><strong>Accuracy:</strong> ${data.accuracy}%</p>
+                        <p><strong>Time Taken:</strong> ${data.time_taken} seconds</p>
+                        <p><strong>Total Words Typed:</strong> ${data.words_typed}</p>
+                        <p><strong>Correct Words:</strong> ${data.correct_words}</p>
+                    `;
+        });
+    }
+  </script>
+</head>
+
+<body>
+  <h2>Typing Game - Difficulty: {{ difficulty | capitalize }}</h2>
+  <p id="paragraph">{{ paragraph }}</p>
+  <p id="timer">Game not started</p>
+  <p id="wordsTyped">Words Typed: 0</p>
+  <textarea id="inputBox" placeholder="Start typing here..." oninput="checkInput(event)" disabled rows="4"></textarea>
+  <div>
+    <button onclick="startTyping()">Start</button>
+    <button onclick="refreshGame()">Refresh</button>
+  </div>
+  <div id="results"></div>
+</body>
+<style>
+  /* General Styling */
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Game Container */
+  .container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Paragraph Display */
+  #paragraph {
+    font-size: 18px;
+    background: #f0f2f5;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: justify;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  /* Timer and Stats */
+  #timer,
+  #wordsTyped {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  /* Typing Input */
+  textarea {
+    width: 100%;
+    height: 120px;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+
+  textarea:focus {
+    border: 2px solid #007bff;
+  }
+
+  /* Buttons */
+  button {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 12px 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  /* Results */
+  #results {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e9f5e9;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #results h3 {
+    color: #28a745;
+    margin-bottom: 10px;
+  }
+
+  #results p {
+    font-size: 16px;
+  }
+</style>
+
+</html>

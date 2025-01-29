@@ -1,5 +1,6 @@
 from flask import Flask,flash, render_template, request, redirect, url_for, session, jsonify, make_response,send_file
 from flask_session import Session
+import random
 import requests
 import firebase_admin
 from firebase_admin import credentials, auth
@@ -30,6 +31,10 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from docx2pdf import convert
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+import openpyxl
+import fitz  # PyMuPDF
 
 
 # Initialize Flask app
@@ -50,6 +55,23 @@ firebase_admin.initialize_app(cred)
 
 # Initialize Google Translator
 translator = Translator()
+
+# Paths for the text files containing different difficulty sentences
+SENTENCES_DIR = 'static/sentences'
+
+# Function to read paragraphs from a file
+def load_paragraphs(file_name):
+    file_path = os.path.join(SENTENCES_DIR, file_name)
+    with open(file_path, 'r', encoding="utf-8") as file:
+        paragraphs = file.read().strip().split("\n\n")  # Split by double newlines
+    return paragraphs
+
+# Load paragraphs for each difficulty level
+paragraphs = {
+    "easy": load_paragraphs("easy.txt"),
+    "medium": load_paragraphs("medium.txt"),
+    "hard": load_paragraphs("hard.txt")
+}
 
 # Helper function to suggest translations
 def suggest_translation(text, history):
@@ -448,6 +470,7 @@ def convert_image_to_pdf():
     return render_template('convert_image_to_pdf.html')
 
 # Convert Excel to PDF
+
 @app.route('/convert_excel_to_pdf', methods=['GET', 'POST'])
 def convert_excel_to_pdf():
     if request.method == 'POST':
@@ -463,16 +486,22 @@ def convert_excel_to_pdf():
             excel_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             excel_file.save(excel_path)
             
-            # Convert Excel to PDF (simplified)
+            # Convert Excel to PDF using ReportLab
             wb = openpyxl.load_workbook(excel_path)
             sheet = wb.active
             pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename.rsplit('.', 1)[0] + '.pdf')
-            pdf = FPDF()
-            pdf.add_page()
+            c = canvas.Canvas(pdf_path, pagesize=letter)
+
+            y_position = 750  # Starting Y position for writing to the PDF
             for row in sheet.iter_rows():
                 row_text = ' '.join([str(cell.value) for cell in row])
-                pdf.cell(200, 10, txt=row_text, ln=True)
-            pdf.output(pdf_path)
+                c.drawString(50, y_position, row_text)
+                y_position -= 15  # Move to the next line
+                if y_position < 50:  # Add a new page if text overflows
+                    c.showPage()
+                    y_position = 750
+
+            c.save()
 
             return send_file(pdf_path, as_attachment=True)
         except Exception as e:
@@ -537,18 +566,19 @@ def pdf_to_image():
             pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             pdf_file.save(pdf_path)
             
-            # Convert PDF to Images (one image per page)
-            images = []
-            with open(pdf_path, 'rb') as f:
-                pdf = PdfReader(f)
-                for i, page in enumerate(pdf.pages):
-                    image = page.to_image()
-                    img_path = os.path.join(app.config['UPLOAD_FOLDER'], f"page_{i+1}.png")
-                    image.save(img_path)
-                    images.append(img_path)
+            # Open the PDF with PyMuPDF (fitz)
+            doc = fitz.open(pdf_path)
+            image_paths = []
+            for i in range(len(doc)):
+                # Get the page as a pixmap (image)
+                page = doc.load_page(i)
+                pix = page.get_pixmap()
+                img_path = os.path.join(app.config['UPLOAD_FOLDER'], f"page_{i+1}.png")
+                pix.save(img_path)
+                image_paths.append(img_path)
             
-            # Return first image for download (you can return a zip of all images too)
-            return send_file(images[0], as_attachment=True)
+            # Return the first image for download (you can modify to return all images)
+            return send_file(image_paths[0], as_attachment=True)
         except Exception as e:
             return render_template('pdf_to_image.html', error=f"Error: {str(e)}")
     
@@ -642,6 +672,34 @@ def split_pdf():
     
     return render_template('split_pdf.html')
 
+
+@app.route('/game/<difficulty>')
+def game(difficulty):
+    if difficulty not in paragraphs:
+        return "Invalid difficulty", 404
+    paragraph = random.choice(paragraphs[difficulty]).strip()
+    return render_template('typing.html', paragraph=paragraph, difficulty=difficulty)
+
+@app.route('/calculate_result/<string:user_input>/<int:start_time>/<int:end_time>/<difficulty>')
+def calculate_result(user_input, start_time, end_time, difficulty):
+    time_taken = (end_time - start_time) / 1000
+    words_typed_list = user_input.strip().split()
+    paragraph = random.choice(paragraphs[difficulty]).strip()
+    correct_paragraph_words = paragraph.split()
+
+    correct_count = sum(1 for i in range(min(len(words_typed_list), len(correct_paragraph_words))) if words_typed_list[i] == correct_paragraph_words[i])
+    total_words_typed = len(words_typed_list)
+
+    wpm = (total_words_typed / time_taken) * 60 if time_taken > 0 else 0
+    accuracy = (correct_count / len(correct_paragraph_words)) * 100 if correct_paragraph_words else 0
+
+    return jsonify({
+        'wpm': round(wpm, 2),
+        'accuracy': round(accuracy, 2),
+        'time_taken': round(time_taken, 2),
+        'words_typed': total_words_typed,
+        'correct_words': correct_count
+    })
 
 
 if __name__ == '__main__':

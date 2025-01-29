@@ -11,3 +11,7 @@ fpdf
 img2pdf
 openpyxl
 docx2pdf
+reportlab
+fitz
+frontend
+tools
