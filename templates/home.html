@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIT Tools - PDF & More</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
             --primary-color: #D32F2F;
@@ -28,9 +29,12 @@
 
         header {
             background-color: var(--primary-color);
-            padding: 10px;
+            /* padding: 10px; */
             margin: 10px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000; /
         }
 
         header h1 {
@@ -40,9 +44,10 @@
 
         .nav-bar {
             display: flex;
-            background-color: var(--secondary-color);
+            background-color: var(--bg-secondary-color);
             color: var(--text-color);
             align-items: center;
+ 
         }
 
         .nav-bar a {
@@ -54,7 +59,7 @@
 
         .container {
             margin: auto;
-            max-width: 1200px;
+            /* max-width: 1200px; */
             padding: 5px 50px 20px 50px;
             background-color: var(--bg-secondary-color);
             border-radius: 10px;
@@ -107,16 +112,17 @@
             background-color: var(--bg-secondary-color);
             padding: 15px;
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.5em;
             margin: 20px 10px;
             border-radius: 8px;
-            width: 80% auto;
+            width:auto;
+            font-weight: bold;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .login-btn {
-            background-color: var(--entry-color);
-            color: var(--secondary-color);
+            background-color: var(--primary-color);
+            color: var(--bg-color);
             padding: 10px;
             border-radius: 5px;
             font-weight: bold;
@@ -125,7 +131,7 @@
         }
 
         .login-btn:hover {
-            background-color: rgb(147, 201, 149) ;
+            background-color: var(--button-hover) ;
         }
 
         .login {
@@ -203,32 +209,146 @@
         .logo-container{
             margin-top: 0px;
         }
+
+        .next{
+            grid-template-columns: repeat(4, 1fr);
+        }  
+
+        .menu-icon {
+    display: block; /* Ensure it is visible */
+    font-size: 1.8em;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+     .nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: var(--bg-secondary-color);
+            position: relative;
+        }
+
+        .menu-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-links.active {
+            display: flex;
+        }
+
+
+        .game-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.difficulty-select {
+    display: none;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+
+        @media (max-width: 768px) {
+            .menu-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-secondary-color);
+                text-align: center;
+                padding: 10px 0;
+            }
+
+                    .next{
+            grid-template-columns: repeat(2, 1fr);
+            }  
+
+            .feature-container .feature-box:nth-of-type(1),
+            .feature-container .feature-box:nth-of-type(2) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .menu-links a {
+                display: block;
+                padding: 10px;
+                border-bottom: 1px solid var(--primary-color);
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .menu-links.active {
+                display: flex;
+            }
+              .button-group {
+        display: none;
+    }
+    
+    .difficulty-select {
+        display: block;
+    }`
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <!-- <h1>BIT Tools - PDF & More</h1> -->
-        <div class="nav-bar">
-            <div class="logo-container">
+<header>
+    <div class="nav-bar">
+        <div class="logo-container">
             <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo" />
-            </div>
+        </div>
+<div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+
+
+        <div class="menu-links">
             <a href="#">Home</a>
             <a href="#">Features</a>
-            <a href=" {{url_for('about')}} ">About</a>
+            <a href="{{ url_for('about') }}">About</a>
             <a href="#">Contact</a>
             <a href="{{ url_for('feedback') }}">Feedback</a>
             <div class="login">
-                <a class="login-btn" href="{{ url_for('login') }}">Login</a>
+                <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
             </div>
-        </div>
-    </header>
+        <!-- </div> -->
+    </div>
+</header>
 
     <div class="project-description">
-        <p>BIT Tools offers a variety of utilities for working with PDFs and other document formats. From converting
-            files
-            to merging and splitting PDFs, this toolset is designed to enhance your productivity. Explore the available
-            features and start using them now!</p>
+        <p>BIT Tools offers a variety of utilities for working with PDFs and other document formats.</p>
     </div>
 
     <div class="container">
@@ -277,16 +397,28 @@
                         <line class="cls-1" x1="16.77" y1="9.14" x2="18.68" y2="9.14"></line>
                     </g>
                 </svg>
-
-                <h3 style="margin-top: 0px ;">Typing Speed Game</h3>
-                <a href="{{ url_for('game', difficulty='easy') }}" class="btn">Easy</a>
-                <a href="{{ url_for('game', difficulty='medium') }}" class="btn">Medium</a>
-                <a href="{{ url_for('game', difficulty='hard') }}" class="btn">Hard</a>
+    
+                <h3 style="margin-top: 0px;">Typing Speed Game</h3>
+                <div class="game-options">
+                    <!-- Desktop buttons -->
+                    <div class="button-group">
+                        <a href="{{ url_for('game', difficulty='easy') }}" class="btn">Easy</a>
+                        <a href="{{ url_for('game', difficulty='medium') }}" class="btn">Medium</a>
+                        <a href="{{ url_for('game', difficulty='hard') }}" class="btn">Hard</a>
+                    </div>
+                    <!-- Mobile dropdown -->
+                    <select class="difficulty-select" onchange="window.location.href=this.value">
+                        <option value="" disabled selected>Select Difficulty</option>
+                        <option value="{{ url_for('game', difficulty='easy') }}">Easy</option>
+                        <option value="{{ url_for('game', difficulty='medium') }}">Medium</option>
+                        <option value="{{ url_for('game', difficulty='hard') }}">Hard</option>
+                    </select>
+                </div>
             </div>
         </div>
-        <div class="feature-container" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="feature-container next">
             <a class="feature-box" href="{{ url_for('convert_pdf') }}">
-
+    
                 <!-- External SVG --><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50">
                     <path
                         d="M32.324 15.656h-9.547c-2.477 0-3.375.258-4.28.742a5.04 5.04 0 0 0-2.098 2.102c-.484.902-.742 1.8-.742 4.277v9.547H5.18c-1.8 0-2.45-.187-3.113-.54-.648-.348-1.184-.88-1.527-1.527-.352-.66-.54-1.31-.54-3.113V5.18c0-1.8.188-2.45.54-3.113S1.4.89 2.066.54 3.38 0 5.18 0h21.965c1.8 0 2.453.188 3.113.54.648.344 1.18.88 1.527 1.527.352.66.54 1.313.54 3.113zm0 0"
@@ -304,8 +436,8 @@
                 <!-- Inline SVG -->
                 <h3>PDF to Word</h3>
             </a>
-
-            <a class="feature-box" href="{{ url_for('convert_word_to_pdf') }}" >
+    
+            <a class="feature-box" href="{{ url_for('convert_word_to_pdf') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50">
                     <path
                         d="M17.676 34.344h9.55c2.477 0 3.375-.258 4.28-.742a5.04 5.04 0 0 0 2.098-2.102c.484-.902.742-1.8.742-4.277v-9.547H44.82c1.8 0 2.453.188 3.113.54s1.176.87 1.527 1.527.54 1.31.54 3.113V44.82c0 1.8-.187 2.453-.54 3.113a3.69 3.69 0 0 1-1.527 1.527c-.66.352-1.312.54-3.113.54H22.855c-1.8 0-2.453-.187-3.113-.54s-1.172-.87-1.527-1.527-.54-1.312-.54-3.113zm0 0"
@@ -322,7 +454,7 @@
                 </svg>
                 <h3>Word to PDF</h3>
             </a>
-
+    
             <a class="feature-box" href="{{ url_for('convert_image_to_pdf') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50">
                     <path
@@ -342,8 +474,8 @@
                 </svg>
                 <h3>Image to PDF</h3>
             </a>
-
-            <a class="feature-box" href="{{ url_for('convert_excel_to_pdf') }}" >
+    
+            <a class="feature-box" href="{{ url_for('convert_excel_to_pdf') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50">
                     <path
                         d="M17.676 34.344h9.55c2.477 0 3.375-.258 4.28-.742a5.04 5.04 0 0 0 2.098-2.102c.484-.902.742-1.8.742-4.277v-9.547H44.82c1.8 0 2.453.188 3.113.54s1.176.87 1.527 1.527.54 1.31.54 3.113V44.82c0 1.8-.187 2.453-.54 3.113a3.69 3.69 0 0 1-1.527 1.527c-.66.352-1.312.54-3.113.54H22.855c-1.8 0-2.453-.187-3.113-.54s-1.172-.87-1.527-1.527-.54-1.312-.54-3.113zm0 0"
@@ -362,8 +494,8 @@
                 </svg>
                 <h3>Excel to PDF</h3>
             </a>
-
-            <a class="feature-box" href="{{ url_for('compress_pdf') }}" >
+    
+            <a class="feature-box" href="{{ url_for('compress_pdf') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50">
                     <path
                         d="M31.523 28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H31.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04-.242-.45-.367-.895-.367-2.117V31.523c0-1.223.13-1.668.367-2.117.234-.44.598-.805 1.04-1.04.45-.242.895-.367 2.117-.367zm0-28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H31.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04-.242-.45-.367-.895-.367-2.117V3.523c0-1.223.13-1.668.367-2.117.234-.44.598-.805 1.04-1.04C29.855.125 30.3 0 31.523 0zm-28 28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H3.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04C.125 48.145 0 47.7 0 46.477V31.523c0-1.223.13-1.668.367-2.117.234-.44.598-.805 1.04-1.04.45-.242.895-.367 2.117-.367zm0-28h14.953c1.223 0 1.668.13 2.117.367.44.234.805.598 1.04 1.04.242.45.367.895.367 2.117v14.953c0 1.223-.13 1.668-.367 2.117-.234.44-.598.805-1.04 1.04-.45.242-.895.367-2.117.367H3.523c-1.223 0-1.668-.13-2.117-.367-.44-.234-.805-.598-1.04-1.04C.125 20.145 0 19.7 0 18.477V3.523C0 2.3.13 1.852.367 1.406A2.56 2.56 0 0 1 1.406.367C1.855.13 2.3 0 3.523 0zm0 0"
@@ -374,8 +506,8 @@
                 </svg>
                 <h3>Compress PDF</h3>
             </a>
-
-            <a class="feature-box" href="{{ url_for('pdf_to_image') }}" >
+    
+            <a class="feature-box" href="{{ url_for('pdf_to_image') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50">
                     <path
                         d="M32.324 15.656h-9.55c-2.477 0-3.375.258-4.28.742a5.06 5.06 0 0 0-2.098 2.102c-.484.902-.742 1.8-.742 4.277v9.55H5.18c-1.8 0-2.453-.187-3.113-.54a3.69 3.69 0 0 1-1.527-1.527C.188 29.598 0 28.945 0 27.145V5.18c0-1.8.188-2.453.54-3.113A3.69 3.69 0 0 1 2.066.539C2.727.188 3.38 0 5.18 0h21.965c1.8 0 2.453.188 3.113.54a3.69 3.69 0 0 1 1.527 1.527c.352.66.54 1.313.54 3.113zm0 0"
@@ -394,7 +526,7 @@
                 </svg>
                 <h3>PDF to Image</h3>
             </a>
-
+    
             <a class="feature-box" href="{{ url_for('merge_pdfs') }}">
                 <svg width="48" height="48" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g fill="rgb(93.333333%,42.352941%,30.196078%)" fill-rule="evenodd">
@@ -411,7 +543,7 @@
                 </svg>
                 <h3>Merge PDFs</h3>
             </a>
-
+    
             <a class="feature-box" href="{{ url_for('split_pdf') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 50 50">
                     <g fill="rgb(93.333333%,42.352941%,30.196078%)" fill-rule="evenodd">
@@ -430,9 +562,10 @@
             </a>
         </div>
     </div>
+
     <footer>
         <div class="footer-container">
-            <div class="footer-section footer-section-about">
+            <div class="footer-section">
                 <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="h-20 me-3" alt="FlowBite Logo" />
                 </div>
             <div class="footer-section links">
@@ -464,9 +597,22 @@
         </div>
     </footer>
 
-    <style>
+<script>
+    function toggleMenu() {
+        document.querySelector('.menu-links').classList.toggle('active');
+    }
 
-    </style>
+    // Close menu when clicking outside (for mobile only)
+    document.addEventListener('click', function (event) {
+        const menu = document.querySelector('.menu-links');
+        const menuIcon = document.querySelector('.menu-icon');
+
+        if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+            menu.classList.remove('active');
+        }
+    });
+
+</script>
 </body>
 
 </html>
