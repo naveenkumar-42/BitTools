@@ -57,12 +57,21 @@
             font-weight: bold;
         }
 
+        .nav-btn:hover{
+            background-color:  rgba(204, 25, 25, 0.1) ;
+            box-shadow:0px 0px 14px 14px rgba(204, 25, 25, 0.1) ;
+        }
+
         .container {
-            margin: auto;
-            /* max-width: 1200px; */
-            padding: 5px 50px 20px 50px;
+            margin:  auto 10px;
+            padding: 5px 90px 20px 90px;
             background-color: var(--bg-secondary-color);
             border-radius: 10px;
+        }
+        .container:hover{
+            
+            border: solid 1px var(--text-color);
+            box-shadow:17px 20px 14px 4px rgba(92, 69, 69, 0.1) ;
         }
 
         .feature-container {
@@ -76,7 +85,7 @@
             background-color: var(--secondary-color);
             padding: 30px;
             text-align: center;
-            height: fit-content;
+            height: -webkit-fill-available;
             border-radius: 10px;
             box-shadow: 17px 20px 14px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
@@ -86,6 +95,7 @@
 
         .feature-box:hover {
             transform: translateY(-5px);
+            box-shadow:0px 0px 14px 14px rgba(204, 25, 25, 0.1) ;
         }
 
         .feature-box img {
@@ -106,6 +116,7 @@
 
         .btn:hover {
             background-color: var(--button-hover);
+            box-shadow:17px 20px 14px 4px rgba(204, 25, 25, 0.1) ;
         }
 
         .project-description {
@@ -119,6 +130,11 @@
             font-weight: bold;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
+
+        .project-description:hover{
+            border: solid 1px var(--text-color);
+            box-shadow:17px 20px 14px 4px rgba(92, 69, 69, 0.1) ;
+        } 
 
         .login-btn {
             background-color: var(--primary-color);
@@ -144,7 +160,13 @@
             padding: 40px 0 0 0;
             text-align: center;
             border-radius: 10px;
-            margin: 10px;
+            margin: 20px 10px;
+        }
+
+        footer:hover{
+            
+            border: solid 1px var(--text-color);
+            box-shadow:17px 20px 14px 4px rgba(92, 69, 69, 0.1) ;
         }
 
         .footer-container {
@@ -192,6 +214,7 @@
         .footer-bottom {
             margin-top: 20px;
             color: var(--text-color);
+            font-weight: bold;
         }
 
         .footer-section-about {
@@ -278,6 +301,31 @@
 }
 
 
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    background-color:rgba(204, 25, 25, 0.1);
+     box-shadow:0px 0px 14px 14px rgba(204, 25, 25, 0.1) ;
+}
+
+
         @media (max-width: 768px) {
             .menu-links {
                 display: none;
@@ -319,7 +367,12 @@
     
     .difficulty-select {
         display: block;
-    }`
+    }
+
+    .container{
+        padding: 10px;
+        margin: 10px;
+    }
         }
     </style>
 </head>
@@ -335,11 +388,11 @@
 
 
         <div class="menu-links">
-            <a href="#">Home</a>
-            <a href="#">Features</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <a href="#">Contact</a>
-            <a href="{{ url_for('feedback') }}">Feedback</a>
+            <a class="nav-btn" href="#">Home</a>
+            <a class="nav-btn" href="#">Features</a>
+            <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+            <a class="nav-btn" href="#">Contact</a>
+            <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
             <div class="login">
                 <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
             </div>
@@ -584,13 +637,16 @@
                 <p>Phone: +123 456 7890</p>
                 <p>Address: 123 BIT Tools Street, Tech City</p>
             </div>
-            <div class="footer-section social">
-                <h2>Follow Us</h2>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+
+        <div class="footer-section">
+            <h3>Connect With Us</h3>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
             </div>
+        </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2023 BIT Tools. All rights reserved.</p>
