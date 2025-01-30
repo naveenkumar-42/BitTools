@@ -700,6 +700,10 @@ def calculate_result(user_input, start_time, end_time, difficulty):
         'words_typed': total_words_typed,
         'correct_words': correct_count
     })
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 
 if __name__ == '__main__':
