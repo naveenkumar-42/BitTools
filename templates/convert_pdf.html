@@ -1,77 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert PDF to Word</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
-    <!-- <style>
-
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .box {
-            border: 2px dashed #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-        .box.dragover {
-            border-color: #007bff;
-            background-color: #e9f5ff;
-        }
-        .box span {
-            display: block;
-            margin-top: 10px;
-            color: #666;
-        }
-        .submit {
-            display: block;
-            width: 100%;
-            background: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .submit:hover {
-            background: #0056b3;
-        }
-        .output-format {
-            margin-bottom: 20px;
-        }
-        .output-format label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        .bottom {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-        .bottom a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .bottom a:hover {
-            text-decoration: underline;
-        }
-        #file-name {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-    </style> -->
 </head>
+
 <body>
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo" />
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    
+    
+    
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home')}}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+    </header>
+    <div class="main-container">
     <div class="container">
         <h1>Convert PDF to Word</h1>
         <form action="/convert_pdf" method="POST" enctype="multipart/form-data">
@@ -88,7 +46,7 @@
                     <option value="other">Other</option>
                 </select>
             </div>
-            <div class="sub">
+            <div class="form-btn">
             <button type="submit" class="submit">Convert</button>
             </div>
         </form>
@@ -96,37 +54,12 @@
             <p>Need help? <a href="/help">Contact Support</a></p>
         </div>
     </div>
+    </div>
 
-    <script>
-        const dropZone = document.getElementById('drop-zone');
-        const fileInput = document.getElementById('pdf_file');
-        const fileNameDisplay = document.getElementById('file-name');
-
-        dropZone.addEventListener('click', () => fileInput.click());
-
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files.length > 0) {
-                fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
-            }
-        });
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('dragover');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            if (e.dataTransfer.files.length > 0) {
-                fileInput.files = e.dataTransfer.files;
-                fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
-            }
-        });
+    <script src="{{ url_for('static', filename='script.js') }}">
+        
     </script>
+
 </body>
+
 </html>
