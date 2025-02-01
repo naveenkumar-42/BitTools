@@ -1,215 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compress PDF</title>
-    <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        label {
-            color: #555;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        input[type="file"] {
-            margin: 15px 0;
-            padding: 10px;
-            font-size: 16px;
-            width: 100%;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            outline: none;
-        }
-
-        input[type="file"]:focus {
-            border-color: #4CAF50;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            font-size: 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        /* Circular Progress Bar */
-        .progress-container {
-            margin-top: 20px;
-            position: relative;
-            width: 150px;
-            height: 150px;
-            margin: 30px auto;
-        }
-
-        .progress-ring {
-            transform: rotate(-90deg);
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
-
-        .progress-ring circle {
-            fill: none;
-            stroke-width: 10;
-            stroke-linecap: round;
-            transform: rotate(90deg);
-        }
-
-        .progress-ring .behind {
-            stroke: #f0f0f0;
-        }
-
-        .progress-ring .front {
-            stroke: #4CAF50;
-            stroke-dasharray: 440; /* Circumference of the circle (2 * pi * r) */
-            stroke-dashoffset: 440;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-
-        /* File Info */
-        .file-info {
-            margin-top: 20px;
-            color: #333;
-            font-size: 16px;
-        }
-
-        .file-info a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
-
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Compress PDF</h1>
-        <form id="uploadForm" method="POST" enctype="multipart/form-data">
-            <label for="pdf_file">Upload PDF:</label>
-            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
-            <button type="submit">Compress</button>
-        </form>
-
-        <!-- Circular Progress Bar -->
-        <div class="progress-container" id="progressContainer" style="display: none;">
-            <svg class="progress-ring" width="150" height="150">
-                <circle class="behind" cx="75" cy="75" r="70"></circle>
-                <circle class="front" cx="75" cy="75" r="70"></circle>
-            </svg>
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo">
+            </div>
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home') }}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
         </div>
+    </header>
+    <section class="main-container">
+        <div class="container">
+            <h1>Compress PDF</h1>
+            <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                <div class="box" id="dropZone">
+                    <label for="pdf_file"></label>
+                    <span>Drag & Drop your PDF file here or click to upload</span>
+                    <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" hidden required>
+                </div>
+                <div class="form-btn">
+                    <button type="submit" class="submit">Compress</button>
+                </div>
+            </form>
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <svg class="progress-ring" width="150" height="150">
+                    <circle class="behind" cx="75" cy="75" r="70"></circle>
+                    <circle class="front" cx="75" cy="75" r="70"></circle>
+                </svg>
+            </div>
+            <div class="file-info" id="fileInfo"></div>
+            <p class="error" id="errorMessage"></p>
+            <div class="bottom">
+                <p>Need help? <a href="/help">Contact Support</a></p>
+            </div>
+        </div>
+    </section>
+    <script>
+        const fileInput = document.getElementById('pdf_file');
+        const dropZone = document.getElementById('dropZone');
+        const uploadForm = document.getElementById('uploadForm');
+        const progressContainer = document.getElementById('progressContainer');
+        const frontCircle = document.querySelector('.progress-ring .front');
+        const fileInfo = document.getElementById('fileInfo');
+        const errorMessage = document.getElementById('errorMessage');
 
-        <div class="file-info" id="fileInfo"></div>
-        <p class="error" id="errorMessage"></p>
-    </div>
+        dropZone.addEventListener('click', () => fileInput.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+        });
 
-<script>
-    const uploadForm = document.getElementById('uploadForm');
-    const progressContainer = document.getElementById('progressContainer');
-    const frontCircle = document.querySelector('.progress-ring .front');
-    const fileInfo = document.getElementById('fileInfo');
-    const errorMessage = document.getElementById('errorMessage');
+        function updateProgress(percentage) {
+            const offset = 440 - (440 * percentage / 100);
+            frontCircle.style.strokeDashoffset = offset;
+        }
 
-    // Function to update progress
-    function updateProgress(percentage) {
-        const offset = 440 - (440 * percentage / 100); // Circumference of the circle (440)
-        frontCircle.style.strokeDashoffset = offset;
-    }
-
-    uploadForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(uploadForm);
-        const xhr = new XMLHttpRequest();
-        
-        xhr.open('POST', '/compress_pdf', true);
-
-        // Show the progress circle when the upload starts
-        progressContainer.style.display = 'block';
-
-        // Track upload progress
-        xhr.upload.onprogress = function(e) {
-            if (e.lengthComputable) {
-                const percent = (e.loaded / e.total) * 100;
-                updateProgress(percent);
-            }
-        };
-
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                const response = JSON.parse(xhr.responseText);
-
-                if (response.error) {
-                    errorMessage.textContent = response.error;
-                } else {
-                    // Display file sizes and download link
+        uploadForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(uploadForm);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/compress_pdf', true);
+            progressContainer.style.display = 'block';
+            xhr.upload.onprogress = function (e) {
+                if (e.lengthComputable) {
+                    const percent = (e.loaded / e.total) * 100;
+                    updateProgress(percent);
+                }
+            };
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
                     fileInfo.innerHTML = `
                         <p>Original File Size: ${response.original_size.toFixed(2)} KB</p>
                         <p>Compressed File Size: ${response.compressed_size.toFixed(2)} KB</p>
                         <a href="/uploads/${response.compressed_filename}" download>Download Compressed PDF</a>
                     `;
+                } else {
+                    errorMessage.textContent = 'An error occurred while uploading.';
                 }
-            } else {
-                errorMessage.textContent = 'An error occurred while uploading.';
-            }
-        };
-        
-        xhr.onerror = function() {
-            errorMessage.textContent = 'An error occurred during the file upload.';
-        };
-        
-        // Send the FormData object to the server
-        xhr.send(formData);
-    });
-</script>
-
+            };
+            xhr.send(formData);
+        });
+    </script>
 </body>
+
 </html>

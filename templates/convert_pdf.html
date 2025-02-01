@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert PDF to Word</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static',filename = 'script.js')}}"></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@
                 </div>
             </div>
     </header>
-    <div class="main-container">
+    <section class="main-container">
     <div class="container">
         <h1>Convert PDF to Word</h1>
         <form action="/convert_pdf" method="POST" enctype="multipart/form-data">
@@ -54,10 +55,38 @@
             <p>Need help? <a href="/help">Contact Support</a></p>
         </div>
     </div>
-    </div>
+</section>
 
-    <script src="{{ url_for('static', filename='script.js') }}">
-        
+    <script >
+    const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('pdf_file');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
+            }
+        });
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
+            }
+        });
     </script>
 
 </body>

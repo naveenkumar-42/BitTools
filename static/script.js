@@ -12,32 +12,5 @@ document.addEventListener('click', function (event) {
   }
 });
 
-const dropZone = document.getElementById('drop-zone');
-const fileInput = document.getElementById('pdf_file');
-const fileNameDisplay = document.getElementById('file-name');
 
-dropZone.addEventListener('click', () => fileInput.click());
 
-fileInput.addEventListener('change', () => {
-  if (fileInput.files.length > 0) {
-    fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
-  }
-});
-
-dropZone.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  dropZone.classList.add('dragover');
-});
-
-dropZone.addEventListener('dragleave', () => {
-  dropZone.classList.remove('dragover');
-});
-
-dropZone.addEventListener('drop', (e) => {
-  e.preventDefault();
-  dropZone.classList.remove('dragover');
-  if (e.dataTransfer.files.length > 0) {
-    fileInput.files = e.dataTransfer.files;
-    fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
-  }
-});

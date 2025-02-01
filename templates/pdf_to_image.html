@@ -1,19 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert PDF to Images</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <
+
 </head>
+
 <body>
-    <h1>Convert PDF to Images</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label for="pdf_file">Upload PDF:</label>
-        <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
-        <button type="submit">Convert</button>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo">
+            </div>
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home') }}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="main-container">
+    <div class="container">
+        <h1>Convert PDF to Images</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="box" id="dragArea">
+                <span>Drag & Drop your PDF here or click to upload</span>
+                <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" hidden required>
+            </div>
+            <p class="file-info" id="fileInfo"></p>
+            <div class="form-btn">
+            <button type="submit" class="submit">Convert</button>
+            </div>
+            <div class="bottom">
+                <p>Need help? <a href="/help">Contact Support</a></p>
+            </div>
+        </form>
+        {% if error %}
+        <p>{{ error }}</p>
+        {% endif %}
+        {% if success %}
+        <p class="success">{{ success }}</p>
+        {% endif %}
+    </div>
+    </section>
+
+    <script>
+        const dragArea = document.getElementById("dragArea");
+        const fileInput = document.getElementById("pdf_file");
+        const fileInfo = document.getElementById("fileInfo");
+
+        dragArea.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", () => displayFileName(fileInput.files[0]));
+
+        dragArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dragArea.classList.add("dragover");
+        });
+
+        dragArea.addEventListener("dragleave", () => dragArea.classList.remove("dragover"));
+        dragArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dragArea.classList.remove("dragover");
+            const file = e.dataTransfer.files[0];
+            if (file && file.type === "application/pdf") {
+                fileInput.files = e.dataTransfer.files;
+                displayFileName(file);
+            }
+        });
+
+        function displayFileName(file) {
+            fileInfo.textContent = file ? `Selected File: ${file.name}` : "";
+        }
+    </script>
 </body>
+
 </html>

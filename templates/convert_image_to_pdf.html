@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Image to PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static',filename = 'script.js')}}"></script>
     <style>
-        body {
+        .body-container {
             font-family: Arial, sans-serif;
-            background-color: #f4f7fc;
+            background-color: #f4f4f9;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            height: 80vh;
+            margin: 10px;
+            border-radius: 10px;
         }
         .container {
             background-color: #fff;
@@ -20,6 +23,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 500px;
             border-radius: 8px;
+            text-align: center;
         }
         h1 {
             text-align: center;
@@ -65,7 +69,7 @@
         .progress-container {
             width: 100%;
             height: 20px;
-            background-color: #f3f3f3;
+            background-color: var(--bg-color);
             border-radius: 4px;
             margin-top: 20px;
         }
@@ -78,67 +82,109 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo" />
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    
+    
+    
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home')}}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+    </header>
+
+    <div class="body-container">
     <div class="container">
         <h1>Convert Images to PDF</h1>
         <form id="convertForm" method="POST" enctype="multipart/form-data">
-            <label for="image_files">Upload Images (JPG, PNG):</label>
-            <input type="file" name="image_files" id="image_files" accept="image/png, image/jpeg" multiple required>
-            <button type="submit">Convert</button>
+            <div  id="dropZone" class="drop-zone box">
+            <input type="file" name="image_files" id="image_files" accept="image/png, image/jpeg" multiple hidden>
+                <span>Drag & Drop Images Here or Click to Upload</span>
+                <div id="fileList"></div>
+            </div>
+            <div class="form-btn">
+            <button type="submit" class="submit">Convert</button>
+            </div>
         </form>
-        <div id="progressContainer" class="progress-container" style="display: none;">
+        <div id="progressContainer" class="progress-container">
             <div id="progressBar" class="progress-bar"></div>
         </div>
-        {% if error %}
-            <p class="error">{{ error }}</p>
-        {% endif %}
-        {% if success %}
-            <p class="success">{{ success }}</p>
-        {% endif %}
-        <div id="downloadLink" style="display: none;">
-            <a href="" id="downloadPDF">Download PDF</a>
+        <div class="bottom">
+            <p>Need help? <a href="/help">Contact Support</a></p>
+        </div>
         </div>
     </div>
 
     <script>
-        const form = document.getElementById('convertForm');
-        const progressContainer = document.getElementById('progressContainer');
-        const progressBar = document.getElementById('progressBar');
-    
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            progressContainer.style.display = 'block';
-            
-            let formData = new FormData(form);
-    
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/convert_image_to_pdf', true);
-    
-            // Update progress bar during upload
-            xhr.upload.onprogress = function(event) {
-                if (event.lengthComputable) {
-                    let percent = (event.loaded / event.total) * 100;
-                    progressBar.style.width = percent + '%';
+            const dropZone = document.getElementById('dropZone');
+                const fileInput = document.getElementById('image_files');
+                const fileList = document.getElementById('fileList');
+                const form = document.getElementById('convertForm');
+                const progressContainer = document.getElementById('progressContainer');
+                const progressBar = document.getElementById('progressBar');
+
+                dropZone.addEventListener('click', () => fileInput.click());
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.add('dragover');
+                });
+                dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.classList.remove('dragover');
+                    fileInput.files = e.dataTransfer.files;
+                    updateFileList();
+                });
+
+                fileInput.addEventListener('change', updateFileList);
+
+                function updateFileList() {
+                    fileList.innerHTML = '';
+                    for (const file of fileInput.files) {
+                        fileList.innerHTML += `<p>${file.name}</p>`;
+                    }
                 }
-            };
-    
-            // Handle the response after upload
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    // Trigger file download
-                    const blob = xhr.response;
-                    const link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = "converted_images.pdf";
-                    link.click();
-                } else {
-                    alert('Error: ' + xhr.responseText);
-                }
-            };
-    
-            // Ensure that the response is treated as a blob (binary data)
-            xhr.responseType = 'blob';
-            xhr.send(formData);
-        });
+
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    progressContainer.style.display = 'block';
+                    let formData = new FormData(form);
+
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/convert_image_to_pdf', true);
+
+                    xhr.upload.onprogress = function (event) {
+                        if (event.lengthComputable) {
+                            let percent = (event.loaded / event.total) * 100;
+                            progressBar.style.width = percent + '%';
+                        }
+                    };
+
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            const blob = xhr.response;
+                            const link = document.createElement('a');
+                            link.href = URL.createObjectURL(blob);
+                            link.download = "converted_images.pdf";
+                            link.click();
+                        } else {
+                            alert('Error: ' + xhr.responseText);
+                        }
+                    };
+
+                    xhr.responseType = 'blob';
+                    xhr.send(formData);
+                });
     </script>
 </body>
 </html>

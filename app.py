@@ -35,7 +35,28 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import openpyxl
 import fitz  # PyMuPDF
+from dotenv import load_dotenv
 
+
+load_dotenv()
+
+paragraphs = {
+    'easy': [
+        "This is an easy typing test paragraph.",
+        "Type this simple paragraph to test your speed.",
+        "Typing games can help improve typing skills."
+    ],
+    'medium': [
+        "This is a medium difficulty typing test. It's a bit longer and more challenging.",
+        "Improving your typing speed can be a great skill for productivity.",
+        "The more you practice, the faster you will become."
+    ],
+    'hard': [
+        "This is a hard typing test with more complex vocabulary and sentence structures.",
+        "Typing quickly and accurately requires consistent practice and focus.",
+        "Advanced typing skills are useful for many professional tasks like coding and writing."
+    ]
+}
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -59,18 +80,19 @@ translator = Translator()
 # Paths for the text files containing different difficulty sentences
 SENTENCES_DIR = 'static/sentences'
 
-# Function to read paragraphs from a file
-def load_paragraphs(file_name):
+# Function to read sentences from a file
+def load_sentences(file_name):
     file_path = os.path.join(SENTENCES_DIR, file_name)
     with open(file_path, 'r', encoding="utf-8") as file:
         paragraphs = file.read().strip().split("\n\n")  # Split by double newlines
-    return paragraphs
+    sentences = [sentence.strip() for para in paragraphs for sentence in para.split(". ") if sentence]
+    return sentences
 
-# Load paragraphs for each difficulty level
-paragraphs = {
-    "easy": load_paragraphs("easy.txt"),
-    "medium": load_paragraphs("medium.txt"),
-    "hard": load_paragraphs("hard.txt")
+# Load sentences for each difficulty level
+sentences = {
+    "easy": load_sentences("easy.txt"),
+    "medium": load_sentences("medium.txt"),
+    "hard": load_sentences("hard.txt")
 }
 
 # Helper function to suggest translations
@@ -94,114 +116,14 @@ def check_logged_in():
     if 'user_email' not in session:
         return redirect(url_for('login'))
 
-# @app.route('/home', methods=['GET', 'POST'])
-# def home():
-#     if check_logged_in():
-#         return check_logged_in()
-
-#     translation = ''
-#     detected_lang = ''
-#     error = ''
-#     suggestion = ''
-
-#     if request.method == 'POST':
-#         text_to_translate = request.form.get('text')  # Use .get() to avoid KeyError
-#         src_lang = request.form.get('src_lang', 'auto')  # Default to 'auto' if not provided
-#         dest_lang = request.form.get('dest_lang')
-
-#         try:
-#             # Ensure 'text' and 'dest_lang' are provided
-#             if not text_to_translate or not dest_lang:
-#                 raise ValueError("Missing required fields: text or destination language")
-
-#             history = session.get('history', [])
-#             suggestion = suggest_translation(text_to_translate, history)
-#             if not suggestion:
-#                 if src_lang == 'auto':
-#                     detected_lang = translator.detect(text_to_translate).lang
-#                     src_lang = detected_lang
-#                 translated = translator.translate(text_to_translate, src=src_lang, dest=dest_lang)
-#                 translation = translated.text
-#                 history.append({
-#                     'text': text_to_translate,
-#                     'translation': translation,
-#                     'src': src_lang,
-#                     'dest': dest_lang
-#                 })
-#                 session['history'] = history
-#                 logging.info(f"Translated from {src_lang} to {dest_lang}: {text_to_translate} -> {translation}")
-#         except Exception as e:
-#             error = str(e)
-#             logging.error(f"Error translating from {src_lang} to {dest_lang}: {text_to_translate} - {error}")
-
-#     return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
-
-
-# @app.route('/', methods=['GET', 'POST'])
-# def index():
-#     # Check if user is logged in
-#     if check_logged_in():
-#         return check_logged_in()
-
-#     translation = ''
-#     detected_lang = ''
-#     error = ''
-#     suggestion = ''
-#     if request.method == 'POST':
-#         text_to_translate = request.form['text']
-#         src_lang = request.form['src_lang']
-#         dest_lang = request.form['dest_lang']
-#         try:
-#             history = session.get('history', [])
-#             suggestion = suggest_translation(text_to_translate, history)
-#             if not suggestion:
-#                 if src_lang == 'auto':
-#                     detected_lang = translator.detect(text_to_translate).lang
-#                     src_lang = detected_lang
-#                 translated = translator.translate(text_to_translate, src=src_lang, dest=dest_lang)
-#                 translation = translated.text
-#                 history.append({
-#                     'text': text_to_translate,
-#                     'translation': translation,
-#                     'src': src_lang,
-#                     'dest': dest_lang
-#                 })
-#                 session['history'] = history
-#                 logging.info(f"Translated from {src_lang} to {dest_lang}: {text_to_translate} -> {translation}")
-#         except Exception as e:
-#             error = str(e)
-#             logging.error(f"Error translating from {src_lang} to {dest_lang}: {text_to_translate} - {error}")
-#     return render_template('home.html', translation=translation, detected_lang=detected_lang, error=error, suggestion=suggestion)
-
-# @app.route('/translate', methods=['POST'])
-# def translate():
-#     if check_logged_in():
-#         return check_logged_in()
-
-#     text = request.form['text']
-#     src_lang = request.form['src_lang']
-#     dest_lang = request.form['dest_lang']
-#     result = translator.translate(text, src=src_lang, dest=dest_lang)
-#     history = session.get('history', [])
-#     history.append({
-#         'src': src_lang,
-#         'dest': dest_lang,
-#         'text': text,
-#         'translation': result.text
-#     })
-#     session['history'] = history
-#     session['translation'] = result.text
-#     return redirect(url_for('home'))
-
-
-
-# History and favorites (in-memory for now)
 history = []
 favorites = []
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    if 'user_email' not in session:
+        # return redirect(url_for('login'))  # Redirect to login page if not logged in
+        return render_template('home.html')
 
 
 @app.route('/translator', methods=['GET', 'POST'])
@@ -292,6 +214,11 @@ def feedback():
         return redirect(url_for('home'))
     return render_template('feedback.html')
 
+@app.route('/about', methods=['GET', 'POST'])
+def about():
+    return render_template('about.html')
+
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -323,11 +250,10 @@ def register():
 
     return render_template('register.html')
 
-
 def send_thank_you_email(user_email, user_name):
     # Email credentials
     sender_email = "bittranslator2@gmail.com"
-    sender_password = "rwvnocanknpbxgyb"  # Use App Password here if 2FA is enabled
+    sender_password = "rwvnocanknpbxgyb"  # App Password (if 2FA is enabled)
 
     # Email content
     subject = "Thank You for Registering!"
@@ -343,14 +269,17 @@ def send_thank_you_email(user_email, user_name):
     try:
         # Sending the email
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
-            server.login(sender_email, sender_password)
+            print("Connecting to SMTP server...")
+            server.login(sender_email, sender_password)  # Log in with App Password (or your Gmail password)
             text = message.as_string()
-            server.sendmail(sender_email, user_email, text)
+            server.sendmail(sender_email, user_email, text)  # Send the email
             print("Thank you email sent successfully.")
     except smtplib.SMTPAuthenticationError as e:
         print(f"Authentication Error: {e}")
     except smtplib.SMTPConnectError as e:
         print(f"Connection Error: {e}")
+    except smtplib.SMTPException as e:
+        print(f"SMTP Exception: {e}")
     except Exception as e:
         print(f"Failed to send email: {str(e)}")
 
@@ -362,8 +291,8 @@ def login():
         id_token = request.json['idToken']
         try:
             decoded_token = auth.verify_id_token(id_token)
-            session['user_email'] = decoded_token['email']
-            return jsonify({"message": "Login successful!"}), 200  # Send a success message back to frontend
+            session['user_email'] = decoded_token['email']  # Store user email in session
+            return jsonify({"message": "Login successful!"}), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 401
     return render_template('login.html')
@@ -672,16 +601,24 @@ def split_pdf():
     
     return render_template('split_pdf.html')
 
-
 @app.route('/game/<difficulty>')
 def game(difficulty):
-    if difficulty not in paragraphs:
+    if difficulty not in sentences:
         return "Invalid difficulty", 404
-    paragraph = random.choice(paragraphs[difficulty]).strip()
-    return render_template('typing.html', paragraph=paragraph, difficulty=difficulty)
+
+    # Select two random consecutive sentences
+    sentence_list = sentences[difficulty]
+    if len(sentence_list) < 2:
+        return "Not enough sentences available", 500
+
+    index = random.randint(0, len(sentence_list) - 2)
+    two_lines = f"{sentence_list[index]}. {sentence_list[index + 1]}."
+
+    return render_template('typing.html', paragraph=two_lines, difficulty=difficulty)
 
 @app.route('/calculate_result/<string:user_input>/<int:start_time>/<int:end_time>/<difficulty>')
 def calculate_result(user_input, start_time, end_time, difficulty):
+    print(f"User input: {user_input}, Start time: {start_time}, End time: {end_time}, Difficulty: {difficulty}")
     time_taken = (end_time - start_time) / 1000
     words_typed_list = user_input.strip().split()
     paragraph = random.choice(paragraphs[difficulty]).strip()
@@ -700,10 +637,6 @@ def calculate_result(user_input, start_time, end_time, difficulty):
         'words_typed': total_words_typed,
         'correct_words': correct_count
     })
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
 
 
 if __name__ == '__main__':

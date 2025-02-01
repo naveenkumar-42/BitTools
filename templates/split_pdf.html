@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Split PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <style>
-        body {
+
+        .main-container {
             font-family: Arial, sans-serif;
             background-color: #f4f7fc;
             margin: 0;
@@ -13,7 +17,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
 
         .container {
@@ -31,14 +34,27 @@
             color: #333;
         }
 
-        label {
-            font-size: 16px;
+        .drop-zone {
+            border: 2px dashed #5cb85c;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
             color: #555;
-            display: block;
-            margin-bottom: 10px;
         }
 
-        input[type="file"], input[type="text"] {
+        .drop-zone.dragover {
+            background-color: #e6f7e6;
+        }
+
+        .file-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        input[type="text"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -70,19 +86,75 @@
         }
     </style>
 </head>
+
 <body>
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo">
+            </div>
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home') }}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="main-container">
     <div class="container">
         <h1>Split PDF</h1>
         <form method="POST" enctype="multipart/form-data">
-            <label for="pdf_file">Upload PDF:</label>
-            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf">
+            <div class="box" id="dropZone">
+                <span>Drag & Drop your PDF here or Click to Select</span>
+                </div>
+            <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" hidden required>
+            <p class="file-info" id="fileInfo">No file selected</p>
             <label for="pages">Enter Pages or Ranges (e.g., 1, 3-5):</label>
             <input type="text" name="pages" id="pages">
-            <button type="submit">Split</button>
+            <div class="form-btn">
+            <button type="submit" class="submit">Split</button>
+            </div>
         </form>
         {% if error %}
-            <p class="error">{{ error }}</p>
+        <p class="error">{{ error }}</p>
         {% endif %}
     </div>
+    </section>
+    <script>
+        const dropZone = document.getElementById("dropZone");
+        const fileInput = document.getElementById("pdf_file");
+        const fileInfo = document.getElementById("fileInfo");
+
+        dropZone.addEventListener("click", () => fileInput.click());
+
+        fileInput.addEventListener("change", () => {
+            fileInfo.textContent = fileInput.files.length ? fileInput.files[0].name : "No file selected";
+        });
+
+        dropZone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropZone.classList.add("dragover");
+        });
+
+        dropZone.addEventListener("dragleave", () => {
+            dropZone.classList.remove("dragover");
+        });
+
+        dropZone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropZone.classList.remove("dragover");
+
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                fileInfo.textContent = fileInput.files[0].name;
+            }
+        });
+    </script>
 </body>
+
 </html>

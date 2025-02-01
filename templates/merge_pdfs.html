@@ -1,19 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merge PDFs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </head>
+
 <body>
-    <h1>Merge PDFs</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label for="pdf_files">Upload PDFs:</label>
-        <input type="file" name="pdf_files" id="pdf_files" accept=".pdf" multiple>
-        <button type="submit">Merge</button>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo">
+            </div>
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home') }}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="main-container">
+    <div class="container">
+        <h1>Merge PDFs</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="box" id="drop-zone">
+            <span>Drag & Drop PDFs Here or Click to Upload</span>
+            </div>
+            <input type="file" name="pdf_files" id="pdf_files" accept=".pdf" multiple hidden required>
+            <div class="file-list" id="file-list"></div>
+            <div class="form-btn">
+            <button type="submit" class="submit">Merge</button>
+            </div>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+    </section>
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('pdf_files');
+        const fileList = document.getElementById('file-list');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            updateFileList();
+        });
+
+        fileInput.addEventListener('change', updateFileList);
+
+        function updateFileList() {
+            fileList.innerHTML = '';
+            if (fileInput.files.length > 0) {
+                for (let file of fileInput.files) {
+                    const p = document.createElement('p');
+                    p.textContent = file.name;
+                    fileList.appendChild(p);
+                }
+            }
+        }
+    </script>
 </body>
+
 </html>

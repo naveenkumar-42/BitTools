@@ -1,19 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Excel to PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static',filename = 'script.js')}}"></script>
+
+    <style>
+        .body-container{
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .container {
+            background-color: var(--bg-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .drop-zone {
+            border: 2px dashed #007bff;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #f8f9ff;
+            transition: background-color 0.3s ease;
+        }
+
+        .drop-zone:hover,
+        .drop-zone.dragover {
+            background-color: #e0eaff;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+          button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Convert Excel to PDF</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <label for="excel_file">Upload Excel File:</label>
-        <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls">
-        <button type="submit">Convert</button>
-    </form>
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo" />
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home')}}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+    </header>
+    <section class="main-container">
+    <div class="container">
+        <h1>Convert Excel to PDF</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="box" id="drop-zone">
+                <span>Drag & Drop your Excel file here or click to upload</span>
+                <input type="file" name="excel_file" id="excel_file" accept=".xlsx, .xls" class="file-input">
+            </div>
+            <div class="form-btn">
+            <button type="submit" class="submit">Convert</button>
+            </div>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+    </section>
+
+    <script>
+        const dropArea = document.getElementById("drop-zone");
+        const fileInput = document.getElementById("excel_file");
+        const fileNameDisplay = document.getElementById("file-name");
+
+        dropArea.addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", () => {
+            fileNameDisplay.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "No file selected";
+        });
+
+        dropArea.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropArea.classList.add("dragover");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("dragover");
+        });
+
+        dropArea.addEventListener("drop", (event) => {
+            event.preventDefault();
+            dropArea.classList.remove("dragover");
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                fileInput.files = files;
+                fileNameDisplay.textContent = files[0].name;
+            }
+        });
+    </script>
 </body>
+
 </html>

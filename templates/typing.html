@@ -5,7 +5,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Typing Game</title>
-  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="{{ url_for('static', filename='script.js')}}"></script>
+  <style>
+    /* Optional Custom Styling */
+    .highlight-green {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .highlight-red {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .highlight-black {
+      color: black;
+    }
+
+    .result-transition {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+
+<body >
+      <header>
+        <div class="nav-bar">
+          <div class="logo-container">
+            <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo" />
+          </div>
+          <div class="menu-icon" onclick="toggleMenu()">☰</div>
+      
+      
+      
+          <div class="menu-links">
+            <a class="nav-btn" href="{{url_for('home')}}">Home</a>
+            <a class="nav-btn" href="#">Features</a>
+            <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+            <a class="nav-btn" href="#">Contact</a>
+            <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+            <div class="login">
+              <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
+            </div>
+            <!-- </div> -->
+          </div>
+      </header>
+      <section class="bg-gray-100 font-sans flex justify-center items-center min-h-screen ">
+  <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-3xl">
+    <h2 class="text-3xl font-semibold text-center mb-6">Typing Game - Difficulty: {{ difficulty | capitalize }}</h2>
+    <p id="paragraph" class="text-xl text-gray-600 mb-4">{{ paragraph }}</p>
+    <p id="timer" class="text-lg font-medium text-blue-500 mb-2">Game not started</p>
+    <p id="wordsTyped" class="text-lg text-blue-500 font-semibold mb-4">Words Typed: 0</p>
+    <textarea id="inputBox" placeholder="Start typing here..." oninput="checkInput(event)" disabled rows="4"
+      class="w-full p-4 text-xl rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none mb-4"></textarea>
+    <div class="flex justify-center gap-4">
+      <button onclick="startTyping()"
+        class="bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-600 transition-colors duration-300">Start</button>
+      <button onclick="refreshGame()"
+        class="bg-gray-500 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-gray-600 transition-colors duration-300">Refresh</button>
+    </div>
+    <div id="results" class="mt-6 p-4 bg-blue-50 rounded-lg shadow-md hidden result-transition">
+      <h3 class="text-green-500 text-2xl font-semibold">Game Over!</h3>
+      <p class="text-lg text-gray-700"><strong>WPM:</strong> <span id="wpm">0</span></p>
+      <p class="text-lg text-gray-700"><strong>Accuracy:</strong> <span id="accuracy">0%</span></p>
+      <p class="text-lg text-gray-700"><strong>Time Taken:</strong> <span id="timeTaken">0 seconds</span></p>
+      <p class="text-lg text-gray-700"><strong>Total Words Typed:</strong> <span id="totalWords">0</span></p>
+      <p class="text-lg text-gray-700"><strong>Correct Words:</strong> <span id="correctWords">0</span></p>
+    </div>
+  </div>
+  </section>
+
   <script>
     let startTime;
     let userInput = '';
@@ -14,25 +97,36 @@
     let timeLeft = 60;
     let wordsTyped = 0;
     let isGameRunning = false;
+    let paragraphWords;
 
-    // 🟢 Function to Start the Game
+    document.addEventListener("DOMContentLoaded", function () {
+      const paragraphElement = document.getElementById('paragraph');
+      paragraphWords = paragraphElement.innerText.split(" ").map(word => {
+        let span = document.createElement("span");
+        span.textContent = word + " ";
+        span.classList.add('highlight-black');
+        return span;
+      });
+      paragraphElement.innerHTML = "";
+      paragraphWords.forEach(span => paragraphElement.appendChild(span));
+    });
+
     function startTyping() {
       if (!isGameRunning) {
-        timeLeft = 60; // Reset timer
-        wordsTyped = 0; // Reset words count
+        timeLeft = 60;
+        wordsTyped = 0;
         document.getElementById('wordsTyped').textContent = "Words Typed: 0";
         document.getElementById('timer').textContent = timeLeft + " seconds left";
-        document.getElementById('results').innerHTML = ""; // Clear previous results
-        document.getElementById('inputBox').value = ""; // Clear input box
-        document.getElementById('inputBox').disabled = false; // Enable input
-        document.getElementById('inputBox').focus(); // Focus cursor
+        document.getElementById('results').classList.add("hidden");
+        document.getElementById('inputBox').value = "";
+        document.getElementById('inputBox').disabled = false;
+        document.getElementById('inputBox').focus();
         isTypingStarted = false;
         isGameRunning = true;
         startTimer();
       }
     }
 
-    // 🟢 Function to Start Countdown Timer
     function startTimer() {
       startTime = new Date().getTime();
       timer = setInterval(function () {
@@ -46,170 +140,69 @@
       }, 1000);
     }
 
-    // 🟢 Function to Reset the Game
     function refreshGame() {
-      clearInterval(timer);
-      document.getElementById('inputBox').value = ''; // Clear input
-      document.getElementById('inputBox').disabled = true; // Disable typing
-      document.getElementById('wordsTyped').textContent = "Words Typed: 0";
-      document.getElementById('timer').textContent = "Game not started";
-      document.getElementById('results').innerHTML = ""; // Clear results
-      isGameRunning = false;
+      window.location.reload();
     }
 
-    // 🟢 Function to Check Input and Count Words
     function checkInput(event) {
       if (!isTypingStarted) {
         startTyping();
         isTypingStarted = true;
       }
-      userInput = event.target.value;
-      wordsTyped = userInput.trim().split(/\s+/).length;
+      userInput = event.target.value.trim();
+      let typedWords = userInput.split(/\s+/);
+      wordsTyped = typedWords.length;
       document.getElementById('wordsTyped').textContent = "Words Typed: " + wordsTyped;
+      updateTextHighlighting(typedWords);
     }
 
-    // 🟢 Function to Finish the Game and Show Results
+    function updateTextHighlighting(typedWords) {
+      paragraphWords.forEach((span, index) => {
+        if (index < typedWords.length) {
+          if (typedWords[index] === span.textContent.trim()) {
+            span.classList.add('highlight-green');
+            span.classList.remove('highlight-red', 'highlight-black');
+          } else {
+            span.classList.add('highlight-red');
+            span.classList.remove('highlight-green', 'highlight-black');
+          }
+        } else {
+          span.classList.add('highlight-black');
+          span.classList.remove('highlight-green', 'highlight-red');
+        }
+      });
+    }
+
     function finishGame() {
       let endTime = new Date().getTime();
-      document.getElementById('inputBox').disabled = true; // Disable input
-
+      document.getElementById('inputBox').disabled = true;
       let userInputEncoded = encodeURIComponent(userInput);
       let url = `/calculate_result/${userInputEncoded}/${startTime}/${endTime}/{{ difficulty }}`;
+
+      // Show the results section after game finishes with smooth transition
+      document.getElementById('results').classList.remove("hidden");
+      document.getElementById('results').classList.add("result-transition");
 
       fetch(url)
         .then(response => response.json())
         .then(data => {
-          document.getElementById('results').innerHTML = `
-                        <h3>Game Over!</h3>
-                        <p><strong>WPM:</strong> ${data.wpm}</p>
-                        <p><strong>Accuracy:</strong> ${data.accuracy}%</p>
-                        <p><strong>Time Taken:</strong> ${data.time_taken} seconds</p>
-                        <p><strong>Total Words Typed:</strong> ${data.words_typed}</p>
-                        <p><strong>Correct Words:</strong> ${data.correct_words}</p>
-                    `;
+          // Ensure we have a valid response before updating the UI
+          if (data) {
+            // Update the results section with the fetched data
+            document.getElementById('wpm').textContent = data.wpm || 'N/A';
+            document.getElementById('accuracy').textContent = data.accuracy + "%" || 'N/A';
+            document.getElementById('timeTaken').textContent = data.time_taken + " seconds" || 'N/A';
+            document.getElementById('totalWords').textContent = data.words_typed || 'N/A';
+            document.getElementById('correctWords').textContent = data.correct_words || 'N/A';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching game results:', error);
+          document.getElementById('results').innerHTML = "<p class='text-red-500'>There was an error fetching the results.</p>";
         });
     }
+
   </script>
-</head>
-
-<body>
-  <h2>Typing Game - Difficulty: {{ difficulty | capitalize }}</h2>
-  <p id="paragraph">{{ paragraph }}</p>
-  <p id="timer">Game not started</p>
-  <p id="wordsTyped">Words Typed: 0</p>
-  <textarea id="inputBox" placeholder="Start typing here..." oninput="checkInput(event)" disabled rows="4"></textarea>
-  <div>
-    <button onclick="startTyping()">Start</button>
-    <button onclick="refreshGame()">Refresh</button>
-  </div>
-  <div id="results"></div>
 </body>
-<style>
-  /* 🌞 Light Mode Styling (MonkeyType Inspired) */
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-  }
-
-  /* 🎯 Game Container */
-  .container {
-    max-width: 800px;
-    width: 100%;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  /* 📝 Typing Text Display */
-  #paragraph {
-    font-size: 22px;
-    background: #f0f0f0;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: justify;
-    line-height: 1.6;
-    display: inline-block;
-    color: #666;
-    margin-bottom: 15px;
-  }
-
-  /* ⏳ Timer & Stats */
-  #timer,
-  #wordsTyped {
-    font-size: 20px;
-    font-weight: bold;
-    color: #007bff;
-    /* Blue for visibility */
-    margin-bottom: 10px;
-  }
-
-  /* ⌨️ Typing Input Box */
-  textarea {
-    width: 100%;
-    height: 120px;
-    font-size: 18px;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #ffffff;
-    color: #333;
-    outline: none;
-    resize: none;
-    caret-color: #007bff;
-    /* Blue typing cursor */
-    text-align: center;
-    transition: all 0.2s ease-in-out;
-    border: 2px solid #ddd;
-  }
-
-  textarea:focus {
-    border: 2px solid #007bff;
-    box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
-  }
-
-  /* 🎮 Buttons */
-  button {
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    padding: 12px 18px;
-    margin: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  /* 🏆 Results Section */
-  #results {
-    margin-top: 20px;
-    padding: 15px;
-    background: #f0f8ff;
-    border-radius: 8px;
-    color: #333;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  #results h3 {
-    color: #28a745;
-  }
-
-  #results p {
-    font-size: 18px;
-  }
-</style>
 
 </html>

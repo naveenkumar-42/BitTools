@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Word to PDF</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static',filename = 'script.js')}}"></script>
     <style>
-        body {
+        .body-container{
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            height: 80vh;
+            margin: 10px;
+            border-radius: 10px;
         }
         .container {
-            background-color: #ffffff;
+            background-color: var(--bg-color);
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -64,17 +66,81 @@
     </style>
 </head>
 <body>
+
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo" />
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    
+    
+    
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home')}}">Home</a>
+                <a class="nav-btn" href="#">Features</a>
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="#">Contact</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+    </header>
+    
+    <section class="body-container">
     <div class="container">
         <h1>Convert Word to PDF</h1>
         <form method="POST" enctype="multipart/form-data">
-            <label for="word_file">Upload Word Document:</label>
-            <input type="file" name="word_file" id="word_file" accept=".docx, .doc" required>
-            <button type="submit">Convert</button>
+            <div class="box" id="drop-zone">
+            <input type="file" name="word_file" id="word_file" accept=".docx, .doc" hidden required>
+            <span>Drag and drop a Word file or click to select</span>
+            </div>
+            <div class="form-btn">
+            <button type="submit" class="submit">Convert</button>
+            </div>
+            
         </form>
+        <div class="bottom">
+            <p>Need help? <a href="/help">Contact Support</a></p>
+        </div>
         {% if error %}
             <p class="error">{{ error }}</p>
         {% endif %}
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </section>
+    <script>
+          const dropZone = document.getElementById("drop-zone");
+            const fileInput = document.getElementById("word_file");
+            const fileInfo = document.getElementById("file-info");
+
+            dropZone.addEventListener("click", () => fileInput.click());
+            fileInput.addEventListener("change", updateFileInfo);
+
+            dropZone.addEventListener("dragover", (event) => {
+                event.preventDefault();
+                dropZone.classList.add("dragover");
+            });
+
+            dropZone.addEventListener("dragleave", () => {
+                dropZone.classList.remove("dragover");
+            });
+
+            dropZone.addEventListener("drop", (event) => {
+                event.preventDefault();
+                dropZone.classList.remove("dragover");
+                const file = event.dataTransfer.files[0];
+                fileInput.files = event.dataTransfer.files;
+                updateFileInfo();
+            });
+
+            function updateFileInfo() {
+                if (fileInput.files.length > 0) {
+                    fileInfo.textContent = `Selected file: ${fileInput.files[0].name}`;
+                } else {
+                    fileInfo.textContent = "No file selected";
+                }
+            }
+    </script>
 </body>
 </html>
