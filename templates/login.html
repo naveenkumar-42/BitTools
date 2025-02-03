@@ -7,10 +7,10 @@
     <title>Login</title>
     <style>
         :root {
-            --bg-color: #222831;
-            --text-color: #00ADB5;
-            --main-color: #393E46;
-            --secondary-bg-color: #EEEEEE;
+            --bg-color: #F8F9FA;
+            --text-color: #333;
+            --main-color: #e2e9f0;
+            --secondary-bg-color: #e2e9f0;
         }
 
         body {
@@ -40,7 +40,7 @@
         h1 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--text-color)    ;
+            color: var(--text-color);
         }
 
         form {
@@ -73,7 +73,7 @@
             transform: translateY(-50%);
             pointer-events: none;
             font-size: 10px;
-            color: var(--secondary-bg-color);
+            color: var(--text-color1);
             text-transform: uppercase;
             font-weight: 500;
             margin-left: 10px;
@@ -97,23 +97,22 @@
             border: 1px solid var(--main-color);
         }
 
-        button {
-            padding: 0.8rem;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 1rem;
-            color: #fff;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+
 
         .submit {
-            background: linear-gradient(45deg, #00ADB5, #009688);
+            background: #D32F2F;
             padding: 10px;
             width: 50%;
             align-items: center;
+            border-radius: 10px;
+            border-style: none;
         }
+
+        .submit:hover {
+            background-color: #B71C1C;
+            box-shadow: 0px 0px 10px 13px rgba(204, 25, 25, 0.1);
+        }
+
         .bottom {
             display: flex;
             flex-direction: column;
@@ -125,7 +124,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--secondary-bg-color);
+            background: var(--bg-color);
             color: black;
             padding: 10px;
             border-radius: 5px;
@@ -143,7 +142,7 @@
         .forgot-password {
             text-align: left;
             cursor: pointer;
-            color: var(--secondary-bg-color);
+            color: var(--text-color);
             font-size: 12px;
             text-decoration: underline;
             margin: 20px 0px 20px 30px;
@@ -159,7 +158,7 @@
         }
 
         a {
-            color: var(--secondary-bg-color);
+            color: rgb(58, 58, 139);
             text-decoration: underline;
             font-size: 13px;
         }
@@ -195,17 +194,18 @@
                 <input type="password" id="password" name="password" placeholder=" " required>
                 <span>Password</span>
             </div>
-            <button class="submit" type="submit">Login</button>    
+            <button class="submit" type="submit">Login</button>
         </form>
         <div class="bottom">
-        <div class="google-signin" id="google-signin">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAK4SURBVHgBtZbPSxRhGMefZ2ZWDV0ZyUQhYi5Fp9qBFRYqGi2imz/yoKe2W9FBuwSSoXux6JLeA+20kgUKQUHqjjcrK/0LnIQoCnTMX7E77zy9sz90f8y0q25fGHbmefZ5Ps/s87zvuwhF9OtqSCNgbfxWQyKFAOW0y3Aubpu2KqSpprcLhlcO9HL8bG0Oc+8gv1WgNI0znxhxgxVA1q+HlESCjTmVwyFkk3Cvce79iCckDYhB6dW7CA2fP67WTS2ZGYtQbgBjQks2IAfyTwCCjkgt26y6rmH2IzoXMFCB4JaTOBvQpHv0JN3kMRenCUgdJ2YWdfDQdy2koMj6iIkjboA9yJ8X1Ss7b04p1mpNDsBiouoVeBCJ1ozYjsfY7cpza4A8s7XqT3kI7jTGPuhQBkmAQhsQJR+qLv4AsWEXdmMnjeOTy+NQJklEFMg2+M5sgHT69yhMugdoT7YCogVPoUQRkCnxz0C+A4GWvIIkRrJNqEHJQlOA/y/ZgZj5VkRBhjJK4IusAEJkB6BsQkPiG9o874GSMX1O1MPAZvAywGvXkJl+vw4eu3fr8FYf73TOUPCXMAR+HoxnDM92zsLdjQuwbldqwYnOPji4egssRMtIMZC/xmtXhrdU2XmL/RLAlGyfutAzYUAJan20Pcj3+aF8u+0DVcAWMLvWr0VyAMkKQGaYiDVHO8NF8sOVxzu9bgC+g+j6/Zqlvd82OHHjC7ismeSX+alnI0z7K5iud0wlByUU7VbiENf45NwUrHqt+ls/oJVbqAigvnuQBQlF2xWGYowOeZ5wEFSutYNv81LKYFNk7qF/KF3kvo4KcuSAqtbans8O1IYztoJRPCqIx41+6n6VM5me/1aSDUccLB2GOidEFnte6gWeYqHBaJfGF2uYEM9DatHK6YoNdI5egnn+qLslz+gvWlEbVtdxWJYAAAAASUVORK5CYII=" alt="Google icon">
-            Sign in with Google
-        </div>
+            <div class="google-signin" id="google-signin">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAK4SURBVHgBtZbPSxRhGMefZ2ZWDV0ZyUQhYi5Fp9qBFRYqGi2imz/yoKe2W9FBuwSSoXux6JLeA+20kgUKQUHqjjcrK/0LnIQoCnTMX7E77zy9sz90f8y0q25fGHbmefZ5Ps/s87zvuwhF9OtqSCNgbfxWQyKFAOW0y3Aubpu2KqSpprcLhlcO9HL8bG0Oc+8gv1WgNI0znxhxgxVA1q+HlESCjTmVwyFkk3Cvce79iCckDYhB6dW7CA2fP67WTS2ZGYtQbgBjQks2IAfyTwCCjkgt26y6rmH2IzoXMFCB4JaTOBvQpHv0JN3kMRenCUgdJ2YWdfDQdy2koMj6iIkjboA9yJ8X1Ss7b04p1mpNDsBiouoVeBCJ1ozYjsfY7cpza4A8s7XqT3kI7jTGPuhQBkmAQhsQJR+qLv4AsWEXdmMnjeOTy+NQJklEFMg2+M5sgHT69yhMugdoT7YCogVPoUQRkCnxz0C+A4GWvIIkRrJNqEHJQlOA/y/ZgZj5VkRBhjJK4IusAEJkB6BsQkPiG9o874GSMX1O1MPAZvAywGvXkJl+vw4eu3fr8FYf73TOUPCXMAR+HoxnDM92zsLdjQuwbldqwYnOPji4egssRMtIMZC/xmtXhrdU2XmL/RLAlGyfutAzYUAJan20Pcj3+aF8u+0DVcAWMLvWr0VyAMkKQGaYiDVHO8NF8sOVxzu9bgC+g+j6/Zqlvd82OHHjC7ismeSX+alnI0z7K5iud0wlByUU7VbiENf45NwUrHqt+ls/oJVbqAigvnuQBQlF2xWGYowOeZ5wEFSutYNv81LKYFNk7qF/KF3kvo4KcuSAqtbans8O1IYztoJRPCqIx41+6n6VM5me/1aSDUccLB2GOidEFnte6gWeYqHBaJfGF2uYEM9DatHK6YoNdI5egnn+qLslz+gvWlEbVtdxWJYAAAAASUVORK5CYII="
+                    alt="Google icon">
+                Sign in with Google
+            </div>
         </div>
         <div class="forgot-password" id="forgot-password">Forgot Password</div>
         <p>Don't have an account? <a href="/register">Register</a></p>
-        
+
     </div>
     <script type="module">
         // Import necessary Firebase modules
@@ -243,7 +243,7 @@
 
                 const data = await response.json();
                 if (response.status === 200) {
-                    window.location.replace('/#');  // Redirect to home page after successful login
+                    window.location.replace(data.redirect);  // Redirect to terms page
                 } else {
                     alert(data.error);
                 }
@@ -252,6 +252,7 @@
                 alert(error.message);
             }
         });
+
 
         document.getElementById('google-signin').addEventListener('click', async () => {
             const provider = new GoogleAuthProvider();
