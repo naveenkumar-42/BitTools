@@ -7,12 +7,11 @@
     <title>Register</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-
-:root {
-            --bg-color: #222831;
-            --text-color: #00ADB5;
-            --main-color: #393E46;
-            --secondary-bg-color: #EEEEEE;
+        :root {
+            --bg-color: #F8F9FA;
+            --text-color: #333;
+            --main-color: #e2e9f0;
+            --secondary-bg-color: #e2e9f0;
         }
 
         body {
@@ -26,7 +25,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 90vh;
         }
 
         .container {
@@ -42,8 +41,9 @@
         h1 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
-            color: var(--text-color)    ;
+            color: var(--text-color);
         }
+
         form {
             /* display: flex; */
             flex-direction: column;
@@ -52,7 +52,6 @@
 
         .box {
             position: relative;
-            width: 80%;
             margin-bottom: 1rem;
         }
 
@@ -66,7 +65,6 @@
             outline: none;
             color: #fff;
             font-size: 1em;
-
         }
 
         .box span {
@@ -76,7 +74,7 @@
             transform: translateY(-50%);
             pointer-events: none;
             font-size: 10px;
-            color: var(--secondary-bg-color);
+            color: var(--text-color1);
             text-transform: uppercase;
             font-weight: 500;
             margin-left: 10px;
@@ -100,23 +98,22 @@
             border: 1px solid var(--main-color);
         }
 
-        button {
-            padding: 0.8rem;
-            font-size: 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 1rem;
-            color: #fff;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+
 
         .submit {
-            background: linear-gradient(45deg, #00ADB5, #009688);
+            background: #D32F2F;
             padding: 10px;
             width: 50%;
             align-items: center;
+            border-radius: 10px;
+            border-style: none;
         }
+
+        .submit:hover {
+            background-color: #B71C1C;
+            box-shadow: 0px 0px 10px 13px rgba(204, 25, 25, 0.1);
+        }
+
         .bottom {
             display: flex;
             flex-direction: column;
@@ -129,10 +126,11 @@
         }
 
         a {
-            color: var(--secondary-bg-color);
+            color: rgb(58, 58, 139);
             text-decoration: underline;
             font-size: 13px;
         }
+
         a:hover {
             text-decoration: underline;
         }
@@ -172,7 +170,7 @@
         // Import the necessary Firebase functions
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js";
-    
+
         // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyChW576jwvVZYQJ6Fy1NPthH5eBeTf3WLI",
@@ -183,11 +181,11 @@
             appId: "1:338629626503:web:c9a9f2767f112d1ec88622",
             measurementId: "G-1H16RJE596"
         };
-    
+
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-    
+
         // Register form logic
         document.getElementById('register-form').addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -196,12 +194,12 @@
             const phone = document.getElementById('phone').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
-    
+
             if (password !== confirmPassword) {
                 alert('Passwords do not match.');
                 return;
             }
-    
+
             try {
                 // Register the user
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
