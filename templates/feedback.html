@@ -5,162 +5,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback and Support</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='feature.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
     <style>
-        body {
-            background-color: #f9f9f9;
-            color: #333;
-            font-family: Arial, sans-serif;
+        .main-container {
+            background-color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 0;
-            padding: 0;
         }
 
         .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            width: 100%;
+            max-width: 32rem;
         }
 
-        header h1 {
+        .boxx {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .boxx input {
+            width: 80%;
+            height: 25px;
+            padding: 10px;
+            border: 1px solid #fff;
+            background-color: var(--bg-color);
+            border-radius: 5px;
+            outline: none;
+            color: #fff;
+            font-size: 1em;
+        }
+
+        .boxx span {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            font-size: 10px;
+            color: var(--secondary-bg-color);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-left: 10px;
+            letter-spacing: 0.2em;
+            transition: 0.2s;
+        }
+
+        .boxx input:hover {
+            box-shadow: 0px 0px 14px 14px rgba(27, 22, 22, 0.1);
+        }
+
+
+        .boxx input:valid~span,
+        .boxx input:focus~span {
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transform: translateX(10px) translateY(-30px);
+            font-size: 0.75em;
+            padding: 0 5px;
+            background-color: var(--bg-color);
+            border-left: 1px solid var(--text-color);
+            border-right: 1px solid var(--text-color);
+        }
+
+        .boxx input:valid,
+        .boxx input:focus {
+            border: 1px solid var(--main-color);
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: #007bff;
         }
 
-        .form-group {
-            margin-top: 20px;
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .form-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-        }
-
-        input,
-        textarea {
-            width: 90%;
-            padding: 12px;
-            margin-top: 15px;
-            border-radius: 6px;
-            border: 1px solid #cccccc;
-            font-size: 16px;
-            transition: all 0.3s ease-in-out;
-            background-color: #f9f9f9;
-        }
-
-        input:focus,
-        textarea:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
-            outline: none;
-        }
-
-        .button {
-            background-color: #007bff;
-            color: #ffffff;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-            margin-top: 20px;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        input,
-        textarea {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: inputFade 0.5s forwards;
-        }
-
-        @keyframes inputFade {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        input:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        input:nth-child(2) {
-            animation-delay: 0.4s;
         }
 
         textarea {
-            animation-delay: 0.6s;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 80%;
+            min-height: 100px;
+            resize: vertical;
+            margin-bottom: 1rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                max-width: 90%;
-                padding: 20px;
-            }
+        textarea:hover {
+            box-shadow: 0px 0px 14px 14px rgba(27, 22, 22, 0.1);
+        }
 
-            header h1 {
-                font-size: 24px;
-            }
-
-            input,
-            textarea {
-                width: 100%;
-                font-size: 14px;
-            }
-
-            .button {
-                font-size: 16px;
-                padding: 10px 20px;
-            }
+        .text-center {
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Feedback and Support</h1>
-        </header>
-        <form action="https://formspree.io/f/xvgpadov" method="POST">
-            <div class="form-group">
-                <input type="email" name="email" placeholder="Your Email" required>
+
+    <header>
+        <div class="nav-bar">
+            <div class="logo-container">
+                <img src="https://i.ibb.co/V0gNgWqd/Untitled.png" class="logo" alt="FlowBite Logo" />
             </div>
-            <div class="form-group">
-                <input type="text" name="subject" placeholder="Subject" required>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div class="menu-links">
+                <a class="nav-btn" href="{{ url_for('home')}}">Home</a>
+
+                <!-- Features with Dropdown -->
+                <div class="dropdown">
+                    <a class="nav-btn" href="#" onclick="toggleDropdown(event)">Features ▼</a>
+                    <div class="dropdown-content" id="featuresDropdown">
+                        <a href="{{ url_for('translator')}}">Translator</a>
+                        <a href="{{ url_for('convert_pdf')}}">PDF to Word</a>
+                        <a href="{{ url_for('convert_word_to_pdf')}}">Word to PDF</a>
+                        <a href="{{ url_for('convert_image_to_pdf')}}">Image to PDF</a>
+                        <a href="{{ url_for('convert_excel_to_pdf')}}">Excel to PDF</a>
+                        <a href="{{ url_for('compress_pdf')}}">Compress PDF</a>
+                        <a href="{{ url_for('pdf_to_image')}}">PDF to Image</a>
+                        <a href="{{ url_for('merge_pdfs')}}">Merge PDFs</a>
+                        <a href="{{ url_for('split_pdf')}}">Split PDFs</a>
+                    </div>
+                </div>
+
+                <a class="nav-btn" href="{{ url_for('about') }}">About</a>
+                <a class="nav-btn" href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="login">
+                    <a class="login-btn" style="color: var(--bg-color);" href="{{ url_for('logout') }}">Logout</a>
+                </div>
             </div>
-            <div class="form-group">
-                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="button">Submit</button>
-            </div>
-        </form>
-    </div>
+        </div>
+    </header>
+
+    <section class="main-container">
+        <div class="container">
+            <header class="header">
+                <h1>Feedback and Support</h1>
+            </header>
+            <form action="https://formspree.io/f/xvgpadov" method="POST" onsubmit="redirectToHome()">
+                <div class="form-container">
+                    <div class="boxx">
+
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <span>Email</span>
+                    </div>
+                    <div class="boxx">
+                        <input type="text" id="password" name="subject" placeholder=" " required>
+                        <span>Subject</span>
+
+                    </div>
+                    <div class="boxx">
+                        <textarea name="message" placeholder="Share your feedback" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script>
+        function redirectToHome() {
+            setTimeout(function () {
+                window.location.href = "{{ url_for('home') }}";
+            }, 1000);
+        }
+    </script>
 </body>
 
 </html>

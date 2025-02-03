@@ -629,7 +629,7 @@ def calculate_result(user_input, start_time, end_time, difficulty):
 
     wpm = (total_words_typed / time_taken) * 60 if time_taken > 0 else 0
     accuracy = (correct_count / len(correct_paragraph_words)) * 100 if correct_paragraph_words else 0
-
+    
     return jsonify({
         'wpm': round(wpm, 2),
         'accuracy': round(accuracy, 2),
