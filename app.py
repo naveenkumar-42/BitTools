@@ -119,11 +119,23 @@ def check_logged_in():
 history = []
 favorites = []
 
+TEXTS = [
+    "The quick brown fox jumps over the lazy dog.",
+    "Programming is fun but debugging is the real challenge.",
+    "Speed and accuracy are the key to becoming a fast typist.",
+    "Artificial Intelligence is transforming the world."
+]
+
 @app.route('/')
 def home():
-    if 'user_email' not in session:
-        # return redirect(url_for('login'))  # Redirect to login page if not logged in
-        return render_template('home.html')
+    # if 'user_email' not in session:
+    #     return redirect(url_for('login'))  # Redirect to login page if not logged in
+    
+    # # Check if the user has accepted terms
+    # if not session.get('accepted_terms'):
+    #     return redirect(url_for('terms'))  # Redirect to terms page if not accepted
+    
+    return render_template('home.html')
 
 
 @app.route('/translator', methods=['GET', 'POST'])
@@ -291,8 +303,9 @@ def login():
         id_token = request.json['idToken']
         try:
             decoded_token = auth.verify_id_token(id_token)
-            session['user_email'] = decoded_token['email']  # Store user email in session
-            return jsonify({"message": "Login successful!"}), 200
+            session['user_email'] = decoded_token['email']
+            session['accepted_terms'] = False  # Ensure terms are not accepted initially
+            return jsonify({"message": "Login successful!", "redirect": url_for('terms')}), 200
         except Exception as e:
             return jsonify({"error": str(e)}), 401
     return render_template('login.html')
@@ -629,7 +642,7 @@ def calculate_result(user_input, start_time, end_time, difficulty):
 
     wpm = (total_words_typed / time_taken) * 60 if time_taken > 0 else 0
     accuracy = (correct_count / len(correct_paragraph_words)) * 100 if correct_paragraph_words else 0
-    
+
     return jsonify({
         'wpm': round(wpm, 2),
         'accuracy': round(accuracy, 2),
@@ -638,6 +651,22 @@ def calculate_result(user_input, start_time, end_time, difficulty):
         'correct_words': correct_count
     })
 
+
+@app.route('/terms', methods=['GET', 'POST'])
+def terms():
+    if request.method == 'POST':
+        session['accepted_terms'] = True
+        return redirect(url_for('home'))  # Redirect to home after accepting
+    
+    return render_template('terms.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/accept')
+def accept():
+    return render_template('accept.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
