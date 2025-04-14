@@ -8,7 +8,9 @@ document.addEventListener('click', function (event) {
   const menuIcon = document.querySelector('.menu-icon');
 
   if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
+    
     menu.classList.remove('active');
+
   }
 });
 
