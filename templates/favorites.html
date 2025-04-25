@@ -19,6 +19,7 @@
                     <i class="fas fa-arrow-left mr-2"></i></a>
                 <h1 class="text-4xl font-bold text-blue-900 border-b pb-4">Your Favorites</h1>
             </div>
+            
             {% if favorites %}
             <ul class="space-y-6">
                 {% for favorite in favorites %}
@@ -30,6 +31,7 @@
                 </li>
                 {% endfor %}
             </ul>
+
             {% else %}
             <div class="text-center py-8">
                 <p class="text-blue-700 text-lg">No favorites added yet.</p>

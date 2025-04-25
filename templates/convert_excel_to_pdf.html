@@ -120,18 +120,23 @@
 
     <script>
         const dropArea = document.getElementById("drop-zone");
+        
         const fileInput = document.getElementById("excel_file");
+
         const fileNameDisplay = document.getElementById("file-name");
+
 
         dropArea.addEventListener("click", () => fileInput.click());
         fileInput.addEventListener("change", () => {
             fileNameDisplay.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "No file selected";
         });
 
+
         dropArea.addEventListener("dragover", (event) => {
             event.preventDefault();
             dropArea.classList.add("dragover");
         });
+
 
         dropArea.addEventListener("dragleave", () => {
             dropArea.classList.remove("dragover");
@@ -141,9 +146,11 @@
             event.preventDefault();
             dropArea.classList.remove("dragover");
             const files = event.dataTransfer.files;
+
             if (files.length > 0) {
                 fileInput.files = files;
                 fileNameDisplay.textContent = files[0].name;
+            
             }
         });
     </script>
