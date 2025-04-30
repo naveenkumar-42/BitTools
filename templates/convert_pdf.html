@@ -36,6 +36,7 @@
                 <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" hidden required>
                 <span>Drag and drop a PDF file or click to select</span>
             </div>
+            
             <p id="file-name"></p>
             <div class="output-format">
                 <label for="output_format">Select Output Format:</label>
@@ -48,6 +49,7 @@
             <div class="form-btn">
             <button type="submit" class="submit">Convert</button>
             </div>
+            
         </form>
         <div class="bottom">
             <p>Need help? <a href="/help">Contact Support</a></p>
@@ -67,7 +69,6 @@
                 fileNameDisplay.textContent = `Selected File: ${fileInput.files[0].name}`;
             }
         });
-
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
             dropZone.classList.add('dragover');
