@@ -24,12 +24,16 @@
             <ul class="space-y-6">
                 {% for favorite in favorites %}
                 <li
+
                     class="p-6 border rounded-lg bg-gradient-to-r from-blue-100 to-blue-200 shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
                     <h3 class="text-xl font-semibold text-blue-900">{{ favorite.text }} → {{ favorite.translation }}
                     </h3>
+
                     <p class="text-sm text-blue-700">From: {{ favorite.src }} | To: {{ favorite.dest }}</p>
+                    
                 </li>
                 {% endfor %}
+
             </ul>
 
             {% else %}
