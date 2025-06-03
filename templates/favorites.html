@@ -35,13 +35,11 @@
                 {% endfor %}
 
             </ul>
-
             {% else %}
             <div class="text-center py-8">
                 <p class="text-blue-700 text-lg">No favorites added yet.</p>
             </div>
             {% endif %}
-
             <div class="mt-10 flex justify-center space-x-4">
                 <form method="POST" action="{{ url_for('clear_favorites') }}">
                     <button type="submit"

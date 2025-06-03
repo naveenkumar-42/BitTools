@@ -120,12 +120,8 @@
 
     <script>
         const dropArea = document.getElementById("drop-zone");
-        
         const fileInput = document.getElementById("excel_file");
-
         const fileNameDisplay = document.getElementById("file-name");
-
-
         dropArea.addEventListener("click", () => fileInput.click());
         fileInput.addEventListener("change", () => {
             fileNameDisplay.textContent = fileInput.files.length > 0 ? fileInput.files[0].name : "No file selected";
